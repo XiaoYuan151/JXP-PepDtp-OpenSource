@@ -1,0 +1,775 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.UserControls.ResManageControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:JXP.PepDtp.View.UserControls" xmlns:uc="clr-namespace:pep.sdk.reader.View.UserControls;assembly=pep.sdk.reader" xmlns:jxpuc="clr-namespace:JXP.Controls.UserControls;assembly=JXP.Controls" xmlns:controlAttach="clr-namespace:JXP.Resources;assembly=JXP.Resources" xmlns:cvt="clr-namespace:JXP.PepDtp.Converters" xmlns:customuc="clr-namespace:JXP.Controls;assembly=JXP.Controls" xmlns:uc1="clr-namespace:JXP.Controls.CustomControl;assembly=JXP.Controls"
+	Name="root">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<DataTemplate
+				x:Key="MyItem">
+				<TextBlock
+					Text="{Binding Value}" />
+			</DataTemplate>
+			<DataTemplate
+				x:Key="myGroup">
+				<TextBlock
+					TextTrimming="CharacterEllipsis"
+					Text="{Binding GroupName}"
+					ToolTip="{Binding GroupName}" />
+			</DataTemplate>
+			<BooleanToVisibilityConverter
+				x:Key="Bool2Visibility" />
+			<cvt:MaxWidthConverter
+				x:Key="maxWidthCvt" />
+			<Style
+				TargetType="{x:Type ListBox}"
+				BasedOn="{StaticResource DefaultListBoxStyle}"
+				x:Key="lstboxFilter">
+				<Setter
+					Property="ItemContainerStyle"
+					Value="{StaticResource DefaultListBoxItemStyle}" />
+				<Setter
+					Property="HorizontalScrollBarVisibility"
+					Value="Disabled" />
+				<Setter
+					Property="VerticalScrollBarVisibility"
+					Value="Disabled" />
+				<Setter
+					Property="ListBox.SelectionMode"
+					Value="Single" />
+				<Setter
+					Property="ItemsPanel">
+					<Setter.Value>
+						<ItemsPanelTemplate>
+							<WrapPanel
+								Orientation="Horizontal"
+								HorizontalAlignment="Left"
+								VerticalAlignment="Center"
+								Margin="0" />
+						</ItemsPanelTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="51" />
+			<RowDefinition
+				Height="*" />
+		</Grid.RowDefinitions>
+		<Grid
+			Row="0"
+			Background="#F9F9F9">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="158" />
+				<ColumnDefinition
+					Width="2" />
+				<ColumnDefinition
+					Width="158" />
+				<ColumnDefinition
+					Width="2" />
+				<ColumnDefinition
+					Width="158" />
+				<ColumnDefinition
+					Width="2" />
+				<ColumnDefinition
+					Width="*" />
+				<ColumnDefinition
+					Width="auto" />
+				<ColumnDefinition
+					Width="15" />
+			</Grid.ColumnDefinitions>
+			<Rectangle
+				Height="3"
+				VerticalAlignment="Bottom"
+				Fill="#ededed"
+				Grid.Column="0"
+				Grid.ColumnSpan="11" />
+			<RadioButton
+				Name="radioSyncRes"
+				GroupName="title"
+				Grid.Column="0"
+				Style="{DynamicResource UnderlineRadioBtnStyleNew}"
+				Content="同步资源"
+				Width="158"
+				FontSize="22"
+				IsChecked="{Binding SyncResChecked, ElementName=root}"
+				Click="radio_Click" />
+			<Rectangle
+				Grid.Column="1"
+				Fill="#AEAEAE"
+				Width="2"
+				Height="24"
+				VerticalAlignment="Center" />
+			<RadioButton
+				Name="radioMyRes"
+				GroupName="title"
+				Grid.Column="2"
+				Style="{DynamicResource UnderlineRadioBtnStyleNew}"
+				Content="我的上传"
+				Width="158"
+				FontSize="22"
+				IsChecked="{Binding MyResChecked, ElementName=root}"
+				Click="radio_Click" />
+			<Rectangle
+				Grid.Column="3"
+				Fill="#AEAEAE"
+				Width="2"
+				Height="24"
+				VerticalAlignment="Center" />
+			<RadioButton
+				Name="radioMyCollect"
+				GroupName="title"
+				Grid.Column="4"
+				Style="{DynamicResource UnderlineRadioBtnStyleNew}"
+				Content="我的收藏"
+				Width="158"
+				FontSize="22"
+				IsChecked="{Binding MyCollectChecked, ElementName=root}"
+				Click="radio_Click" />
+			<Rectangle
+				Grid.Column="5"
+				Fill="#AEAEAE"
+				Width="2"
+				Height="24"
+				VerticalAlignment="Center" />
+			<Button
+				Name="btnCourseWare"
+				Grid.Column="7"
+				Width="95"
+				Height="30"
+				Margin="0,0,0,0"
+				Content="教学课件"
+				Style="{DynamicResource GuangXiPrepareLessonsFlatButton}"
+				controlAttach:ControlAttachProperty.CornerRadius="5"
+				Click="btnCourseWare_Click" />
+		</Grid>
+		<Grid
+			Row="1"
+			Background="#FFFFFFFF">
+			<Grid
+				Visibility="{Binding ElementName=radioSyncRes, Path=IsChecked, Converter={StaticResource Bool2Visibility}}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="0" />
+					<ColumnDefinition
+						Width="*" />
+					<ColumnDefinition
+						Width="8" />
+				</Grid.ColumnDefinitions>
+				<Grid
+					Column="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							MinWidth="240"
+							MaxWidth="270"
+							Width="*" />
+						<ColumnDefinition
+							Width="3*" />
+					</Grid.ColumnDefinitions>
+					<uc:ChapterControl
+						Name="ucSyncResChapter"
+						Grid.Column="0"
+						Margin="5,10,0,0" />
+					<Grid
+						Column="1">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="120" />
+							<RowDefinition
+								Height="*" />
+						</Grid.RowDefinitions>
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition
+									Height="*" />
+								<RowDefinition
+									Height="1" />
+							</Grid.RowDefinitions>
+							<Grid
+								Row="0">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition
+										Width="8" />
+									<ColumnDefinition
+										Width="auto" />
+									<ColumnDefinition
+										Width="10" />
+									<ColumnDefinition
+										Width="Auto" />
+									<ColumnDefinition
+										Width="10" />
+									<ColumnDefinition
+										Width="*" />
+									<ColumnDefinition
+										Width="20" />
+									<ColumnDefinition
+										Width="auto" />
+									<ColumnDefinition
+										Width="10" />
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition
+										Height="*" />
+									<RowDefinition
+										Height="*" />
+									<RowDefinition
+										Height="*" />
+								</Grid.RowDefinitions>
+								<TextBlock
+									Text="类型:"
+									Grid.Row="0"
+									Grid.Column="1"
+									Style="{DynamicResource NormalTextStyle}"
+									FontSize="18"
+									Foreground="{DynamicResource ThemeColor}"
+									FontWeight="Bold" />
+								<ListBox
+									Grid.Row="0"
+									Grid.Column="3"
+									Grid.ColumnSpan="3"
+									Style="{StaticResource lstboxFilter}"
+									Background="#00FFFFFF"
+									ItemsSource="{Binding SyncResZyLbLst, ElementName=root}">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<!--Unknown connection ID: 7-->
+											<RadioButton
+												GroupName="0x580bdec1"
+												Margin="0,0,15,0"
+												Style="{StaticResource TextRadioButtonGXStyle}"
+												FontSize="18"
+												IsChecked="{Binding Selected}"
+												Content="{Binding Value}"
+												ToolTip="{Binding Value}" />
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ListBox>
+								<TextBlock
+									Text="格式:"
+									Grid.Row="1"
+									Grid.Column="1"
+									Style="{DynamicResource NormalTextStyle}"
+									FontSize="18"
+									Foreground="{DynamicResource ThemeColor}"
+									FontWeight="Bold" />
+								<ListBox
+									Grid.Row="1"
+									Grid.Column="3"
+									Grid.ColumnSpan="3"
+									Style="{StaticResource lstboxFilter}"
+									Background="#00FFFFFF"
+									ItemsSource="{Binding SyncResZyFormatLst, ElementName=root}">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<!--Unknown connection ID: 8-->
+											<RadioButton
+												GroupName="0x2b4c0a74"
+												Margin="0,0,15,0"
+												Style="{StaticResource TextRadioButtonGXStyle}"
+												FontSize="18"
+												IsChecked="{Binding Selected}"
+												Content="{Binding Value}"
+												ToolTip="{Binding Value}" />
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ListBox>
+								<TextBlock
+									Text="更多:"
+									Grid.Row="2"
+									Grid.Column="1"
+									Style="{DynamicResource NormalTextStyle}"
+									FontSize="18"
+									Foreground="{DynamicResource ThemeColor}"
+									FontWeight="Bold" />
+								<StackPanel
+									Grid.Row="2"
+									Grid.Column="3"
+									HorizontalAlignment="Left"
+									VerticalAlignment="Center"
+									Orientation="Horizontal">
+									<ComboBox
+										Name="syncResComboxLY"
+										Width="100"
+										HorizontalAlignment="Left"
+										Style="{DynamicResource DefaultComboBoxNew}"
+										Margin="0,0,0,0"
+										SelectedIndex="0"
+										ItemTemplate="{StaticResource MyItem}"
+										ItemsSource="{Binding SyncLYLst, ElementName=root}"
+										SelectedItem="{Binding SyncResSelectZyLy, ElementName=root}" />
+									<ComboBox
+										Name="syncResComboxSort"
+										Width="128"
+										HorizontalAlignment="Left"
+										Style="{DynamicResource DefaultComboBoxNew}"
+										Margin="10,0,0,0"
+										SelectedIndex="0"
+										ItemTemplate="{StaticResource MyItem}"
+										ItemsSource="{Binding SyncResSortLst, ElementName=root}"
+										SelectedItem="{Binding SyncResSelectSort, ElementName=root}" />
+								</StackPanel>
+								<jxpuc:KeywordSearchNewControl
+									Name="ucSyncResKeyword"
+									Grid.Row="2"
+									Grid.Column="5"
+									VerticalAlignment="Center"
+									HorizontalAlignment="Right"
+									Height="30"
+									SearchTextBoxWidth="200" />
+								<Grid
+									Name="gridSyncKeywordResult"
+									Row="2"
+									Column="5"
+									Background="#FFFFFFFF"
+									Visibility="Collapsed">
+									<StackPanel
+										Orientation="Horizontal"
+										HorizontalAlignment="Right">
+										<TextBlock
+											Name="lblSyncResult"
+											Style="{DynamicResource NormalTextStyle}"
+											TextTrimming="CharacterEllipsis"
+											ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+											MaxWidth="{Binding ElementName=gridSyncKeywordResult, Path=ActualWidth, Converter={StaticResource maxWidthCvt}, ConverterParameter=70}" />
+										<Button
+											Name="btnSyncBack"
+											Width="60"
+											Height="30"
+											Margin="15,0,0,0"
+											Content="返回"
+											Style="{DynamicResource GuangXiPrepareLessonsFlatButton}"
+											controlAttach:ControlAttachProperty.CornerRadius="5"
+											Click="btnSyncBack_Click" />
+									</StackPanel>
+								</Grid>
+								<uc1:BulletCheckBox
+									Name="imageTextCB"
+									Grid.Row="2"
+									Grid.Column="7"
+									Width="84"
+									Height="35"
+									CheckedText=""
+									FontFamily="{StaticResource PepFontIcon}"
+									FontSize="15"
+									IsChecked="False"
+									Text="" />
+							</Grid>
+							<Rectangle
+								Grid.Row="1"
+								Fill="#e4e4e4"
+								VerticalAlignment="Bottom"
+								Height="1" />
+						</Grid>
+						<local:SchoolResControl
+							Name="ucSyncRes"
+							Grid.Row="1"
+							IsDrag="False"
+							ImageTextChecked="{Binding ElementName=imageTextCB, Path=IsChecked}" />
+					</Grid>
+				</Grid>
+			</Grid>
+			<Grid
+				Visibility="{Binding ElementName=radioMyRes, Path=IsChecked, Converter={StaticResource Bool2Visibility}}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="0" />
+					<ColumnDefinition
+						Width="*" />
+					<ColumnDefinition
+						Width="8" />
+				</Grid.ColumnDefinitions>
+				<Grid
+					Column="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							MinWidth="240"
+							MaxWidth="270"
+							Width="*" />
+						<ColumnDefinition
+							Width="3*" />
+					</Grid.ColumnDefinitions>
+					<uc:ChapterControl
+						Name="ucMyResChapter"
+						Grid.Column="0"
+						Margin="5,10,0,0" />
+					<Grid
+						Column="1">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="80" />
+							<RowDefinition
+								Height="*" />
+						</Grid.RowDefinitions>
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition
+									Height="*" />
+								<RowDefinition
+									Height="1" />
+							</Grid.RowDefinitions>
+							<Grid
+								Row="0">
+								<Grid.RowDefinitions>
+									<RowDefinition
+										Height="0" />
+									<RowDefinition
+										Height="*" />
+									<RowDefinition
+										Height="*" />
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition
+										Width="8" />
+									<ColumnDefinition
+										Width="auto" />
+									<ColumnDefinition
+										Width="10" />
+									<ColumnDefinition
+										Width="Auto" />
+									<ColumnDefinition
+										Width="10" />
+									<ColumnDefinition
+										Width="*" />
+									<ColumnDefinition
+										Width="20" />
+									<ColumnDefinition
+										Width="auto" />
+									<ColumnDefinition
+										Width="10" />
+									<ColumnDefinition
+										Width="auto" />
+									<ColumnDefinition
+										Width="10" />
+								</Grid.ColumnDefinitions>
+								<TextBlock
+									Text="类型:"
+									Grid.Row="1"
+									Grid.Column="1"
+									Style="{DynamicResource NormalTextStyle}"
+									FontSize="18"
+									Foreground="{DynamicResource ThemeColor}"
+									FontWeight="Bold" />
+								<ListBox
+									Grid.Row="1"
+									Grid.Column="3"
+									Style="{StaticResource lstboxFilter}"
+									Background="#00FFFFFF"
+									ItemsSource="{Binding MyResZyLbLst, ElementName=root}">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<!--Unknown connection ID: 18-->
+											<RadioButton
+												GroupName="0x210hdgs2"
+												Margin="0,0,15,0"
+												Style="{StaticResource TextRadioButtonGXStyle}"
+												FontSize="18"
+												IsChecked="{Binding Selected}"
+												Content="{Binding Value}"
+												ToolTip="{Binding Value}" />
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ListBox>
+								<TextBlock
+									Text="格式:"
+									Grid.Row="2"
+									Grid.Column="1"
+									Style="{DynamicResource NormalTextStyle}"
+									FontSize="18"
+									Foreground="{DynamicResource ThemeColor}"
+									FontWeight="Bold" />
+								<ListBox
+									Grid.Row="2"
+									Grid.Column="3"
+									Style="{StaticResource lstboxFilter}"
+									Background="#00FFFFFF"
+									ItemsSource="{Binding MyResZyFormatLst, ElementName=root}">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<!--Unknown connection ID: 19-->
+											<RadioButton
+												GroupName="0x46b1"
+												Margin="0,0,15,0"
+												Style="{StaticResource TextRadioButtonGXStyle}"
+												FontSize="18"
+												IsChecked="{Binding Selected}"
+												Content="{Binding Value}"
+												ToolTip="{Binding Value}" />
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ListBox>
+								<jxpuc:KeywordSearchNewControl
+									Name="ucMyResKeyword"
+									Grid.Row="2"
+									Grid.Column="5"
+									VerticalAlignment="Center"
+									HorizontalAlignment="Right"
+									Height="30"
+									SearchTextBoxWidth="200" />
+								<Grid
+									Name="gridKeywordResult"
+									Row="2"
+									Column="5"
+									Background="#FFFFFF"
+									Visibility="Collapsed">
+									<StackPanel
+										Orientation="Horizontal"
+										HorizontalAlignment="Right">
+										<TextBlock
+											Name="lblResult"
+											Style="{DynamicResource NormalTextStyle}"
+											TextTrimming="CharacterEllipsis"
+											ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+											MaxWidth="{Binding ElementName=gridKeywordResult, Path=ActualWidth, Converter={StaticResource maxWidthCvt}, ConverterParameter=70}" />
+										<Button
+											Name="btnBack"
+											Width="60"
+											Height="30"
+											Margin="15,0,0,0"
+											Content="返回"
+											Style="{DynamicResource GuangXiPrepareLessonsFlatButton}"
+											controlAttach:ControlAttachProperty.CornerRadius="5"
+											Click="btnBack_Click" />
+									</StackPanel>
+								</Grid>
+								<Button
+									Name="btnCreateRes"
+									Grid.Row="2"
+									Grid.Column="7"
+									Content="上传资源"
+									Style="{DynamicResource GuangXiPrepareLessonsFlatButton}"
+									Width="102"
+									controlAttach:ControlAttachProperty.CornerRadius="5"
+									HorizontalAlignment="Left"
+									Height="33"
+									Click="btnCreateRes_Click" />
+								<uc1:BulletCheckBox
+									Name="imageTextCBMyRes"
+									Grid.Row="2"
+									Grid.Column="9"
+									Width="84"
+									Height="35"
+									CheckedText=""
+									FontFamily="{StaticResource PepFontIcon}"
+									FontSize="15"
+									IsChecked="False"
+									Text="" />
+							</Grid>
+							<Rectangle
+								Grid.Row="0"
+								Fill="#e4e4e4"
+								VerticalAlignment="Bottom"
+								Height="1" />
+						</Grid>
+						<local:MyResControl
+							Name="ucMyRes"
+							Grid.Row="1"
+							IsDrag="False"
+							ShowMoreBtn="False"
+							ImageTextChecked="{Binding ElementName=imageTextCBMyRes, Path=IsChecked}" />
+					</Grid>
+				</Grid>
+			</Grid>
+			<Grid
+				Visibility="{Binding ElementName=radioMyCollect, Path=IsChecked, Converter={StaticResource Bool2Visibility}}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="0" />
+					<ColumnDefinition
+						Width="*" />
+					<ColumnDefinition
+						Width="8" />
+				</Grid.ColumnDefinitions>
+				<Grid
+					Column="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							MinWidth="240"
+							MaxWidth="270"
+							Width="*" />
+						<ColumnDefinition
+							Width="3*" />
+					</Grid.ColumnDefinitions>
+					<uc:ChapterControl
+						Name="ucMyCollectChapter"
+						Grid.Column="0"
+						Margin="5,10,0,0" />
+					<Grid
+						Column="1">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="80" />
+							<RowDefinition
+								Height="*" />
+						</Grid.RowDefinitions>
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition
+									Height="*" />
+								<RowDefinition
+									Height="1" />
+							</Grid.RowDefinitions>
+							<Grid
+								Row="0">
+								<Grid.RowDefinitions>
+									<RowDefinition
+										Height="*" />
+									<RowDefinition
+										Height="*" />
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition
+										Width="8" />
+									<ColumnDefinition
+										Width="auto" />
+									<ColumnDefinition
+										Width="10" />
+									<ColumnDefinition
+										Width="Auto" />
+									<ColumnDefinition
+										Width="10" />
+									<ColumnDefinition
+										Width="*" />
+									<ColumnDefinition
+										Width="20" />
+									<ColumnDefinition
+										Width="auto" />
+									<ColumnDefinition
+										Width="10" />
+								</Grid.ColumnDefinitions>
+								<TextBlock
+									Text="类型:"
+									Grid.Row="0"
+									Grid.Column="1"
+									Style="{DynamicResource NormalTextStyle}"
+									FontSize="18"
+									Foreground="{DynamicResource ThemeColor}"
+									FontWeight="Bold" />
+								<ListBox
+									Grid.Row="0"
+									Grid.Column="3"
+									Style="{StaticResource lstboxFilter}"
+									Background="#00FFFFFF"
+									ItemsSource="{Binding MyCollectLbLst, ElementName=root}">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<!--Unknown connection ID: 28-->
+											<RadioButton
+												GroupName="0x71aed5f"
+												Margin="0,0,15,0"
+												Style="{StaticResource TextRadioButtonGXStyle}"
+												FontSize="18"
+												IsChecked="{Binding Selected}"
+												Content="{Binding Value}"
+												ToolTip="{Binding Value}" />
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ListBox>
+								<TextBlock
+									Text="格式:"
+									Grid.Row="1"
+									Grid.Column="1"
+									Style="{DynamicResource NormalTextStyle}"
+									FontSize="18"
+									Foreground="{DynamicResource ThemeColor}"
+									FontWeight="Bold" />
+								<ListBox
+									Grid.Row="1"
+									Grid.Column="3"
+									Style="{StaticResource lstboxFilter}"
+									Background="#00FFFFFF"
+									ItemsSource="{Binding MyCollectFormatLst, ElementName=root}">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<!--Unknown connection ID: 29-->
+											<RadioButton
+												GroupName="0xbea3c768"
+												Margin="0,0,15,0"
+												Style="{StaticResource TextRadioButtonGXStyle}"
+												FontSize="18"
+												IsChecked="{Binding Selected}"
+												Content="{Binding Value}"
+												ToolTip="{Binding Value}" />
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ListBox>
+								<jxpuc:KeywordSearchNewControl
+									Name="ucMyCollectKeyword"
+									Grid.Row="2"
+									Grid.Column="5"
+									VerticalAlignment="Center"
+									HorizontalAlignment="Right"
+									Height="30"
+									SearchTextBoxWidth="180" />
+								<Grid
+									Name="gridMyCollectKeywordResult"
+									Row="2"
+									Column="5"
+									Background="#ffffff"
+									Visibility="Collapsed">
+									<StackPanel
+										Orientation="Horizontal"
+										HorizontalAlignment="Right">
+										<TextBlock
+											Name="myCollectLblResult"
+											Style="{DynamicResource NormalTextStyle}"
+											TextTrimming="CharacterEllipsis"
+											ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+											MaxWidth="{Binding ElementName=gridMyCollectKeywordResult, Path=ActualWidth, Converter={StaticResource maxWidthCvt}, ConverterParameter=70}" />
+										<Button
+											Name="btnMyCollectBack"
+											Width="60"
+											Height="30"
+											Margin="15,0,0,0"
+											Content="返回"
+											Style="{DynamicResource GuangXiPrepareLessonsFlatButton}"
+											controlAttach:ControlAttachProperty.CornerRadius="5"
+											Click="btnMyCollectBack_Click" />
+									</StackPanel>
+								</Grid>
+								<uc1:BulletCheckBox
+									Name="imageTextMyCollect"
+									Grid.Row="2"
+									Grid.Column="7"
+									Width="84"
+									Height="35"
+									CheckedText=""
+									FontFamily="{StaticResource PepFontIcon}"
+									FontSize="15"
+									IsChecked="False"
+									Text="" />
+							</Grid>
+							<Rectangle
+								Grid.Row="0"
+								Fill="#e4e4e4"
+								VerticalAlignment="Bottom"
+								Height="1" />
+						</Grid>
+						<local:SchoolResControl
+							Name="ucMyCollectRes"
+							Grid.Row="1"
+							IsDrag="False"
+							ImageTextChecked="{Binding ElementName=imageTextMyCollect, Path=IsChecked}" />
+					</Grid>
+				</Grid>
+			</Grid>
+		</Grid>
+		<customuc:PopupTopmostEx
+			Name="infoPop"
+			PopupAnimation="Fade"
+			StaysOpen="True"
+			Placement="Bottom"
+			AllowsTransparency="True"
+			Width="450"
+			Height="247"
+			HorizontalOffset="-300"
+			VerticalOffset="-20">
+			<Image
+				Source="../../Resources/Images/setbookPop.png"
+				Width="450"
+				Height="247"
+				Cursor="Hand" />
+		</customuc:PopupTopmostEx>
+	</Grid>
+</UserControl>

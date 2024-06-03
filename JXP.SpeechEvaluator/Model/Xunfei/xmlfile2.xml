@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xml_result>
+	<read_chapter lan="en" type="study" version="7.0.0.1020">
+		<rec_paper>
+			<read_chapter accuracy_score="1.935303" beg_pos="0" content="It&apos;s Saturday now. Zoom, I&apos;m always very busy." end_pos="866" except_info="0" fluency_score="3.430850" integrity_score="2.777778" is_rejected="false" reject_type="0" score_pattern="loose" standard_score="1.283531" total_score="0.677315" word_count="8">
+				<sentence accuracy_score="0.435883" beg_pos="0" content="it&apos;s saturday now" end_pos="442" fluency_score="1.980647" index="0" standard_score="1.323571" total_score="1.076850" word_count="3">
+					<word beg_pos="86" content="it&apos;s" dp_message="32" end_pos="116" global_index="0" index="0" property="0">
+						<syll beg_pos="86" content="ih t" end_pos="103" serr_msg="1" syll_accent="0">
+							<phone beg_pos="86" content="ih" end_pos="92" gwpp="-1.873216"></phone>
+							<phone beg_pos="92" content="t" end_pos="103" gwpp="-1.594314"></phone>
+						</syll>
+						<syll beg_pos="103" content="ih z" end_pos="116" serr_msg="1" syll_accent="0">
+							<phone beg_pos="103" content="ih" end_pos="112" gwpp="-0.009923"></phone>
+							<phone beg_pos="112" content="z" end_pos="116" gwpp="-2.307642"></phone>
+						</syll>
+					</word>
+					<word beg_pos="116" content="sil" end_pos="120"></word>
+					<word beg_pos="120" content="fil" end_pos="156"></word>
+					<word beg_pos="156" content="sil" end_pos="170"></word>
+					<word beg_pos="170" content="fil" end_pos="178"></word>
+					<word beg_pos="178" content="sil" end_pos="206"></word>
+					<word beg_pos="206" content="fil" end_pos="252"></word>
+					<word beg_pos="252" content="sil" end_pos="310"></word>
+					<word beg_pos="310" content="sil" end_pos="334"></word>
+					<word beg_pos="334" content="it&apos;s" dp_message="0" end_pos="371" global_index="0" index="0" property="0" total_score="4.027450">
+						<syll beg_pos="334" content="ih ts" end_pos="371" serr_msg="0" syll_accent="0" syll_score="3.385736">
+							<phone beg_pos="334" content="ih" end_pos="361" gwpp="-0.013678"></phone>
+							<phone beg_pos="361" content="ts" end_pos="371" gwpp="-1.065865"></phone>
+						</syll>
+					</word>
+					<word beg_pos="371" content="saturday" dp_message="0" end_pos="408" global_index="1" index="1" property="0" total_score="2.264764">
+						<syll beg_pos="371" content="s ae" end_pos="387" serr_msg="1" syll_accent="1" syll_score="1.839397">
+							<phone beg_pos="371" content="s" end_pos="376" gwpp="-2.914103"></phone>
+							<phone beg_pos="376" content="ae" end_pos="387" gwpp="-1.790309"></phone>
+						</syll>
+						<syll beg_pos="387" content="t ax" end_pos="396" serr_msg="1" syll_accent="0" syll_score="1.839397">
+							<phone beg_pos="387" content="t" end_pos="390" gwpp="-5.905034"></phone>
+							<phone beg_pos="390" content="ax" end_pos="396" gwpp="-4.484595"></phone>
+						</syll>
+						<syll beg_pos="396" content="d ih" end_pos="408" serr_msg="0" syll_accent="0" syll_score="4.363142">
+							<phone beg_pos="396" content="d" end_pos="403" gwpp="-0.287871"></phone>
+							<phone beg_pos="403" content="ih" end_pos="408" gwpp="-0.004612"></phone>
+						</syll>
+					</word>
+					<word beg_pos="408" content="now" dp_message="0" end_pos="442" global_index="2" index="2" property="0" total_score="4.879776">
+						<syll beg_pos="408" content="n aw" end_pos="442" serr_msg="0" syll_accent="0" syll_score="4.397260">
+							<phone beg_pos="408" content="n" end_pos="422" gwpp="-0.031680"></phone>
+							<phone beg_pos="422" content="aw" end_pos="442" gwpp="-0.235612"></phone>
+						</syll>
+					</word>
+				</sentence>
+				<sentence accuracy_score="0.077727" beg_pos="442" content="zoom, i&apos;m always very busy" end_pos="866" fluency_score="0.407298" index="1" standard_score="0.291546" total_score="0.219362" word_count="5">
+					<word beg_pos="457" content="zoom" dp_message="0" end_pos="484" global_index="3" index="0" property="12" total_score="3.167728">
+						<syll beg_pos="457" content="z uh m" end_pos="484" serr_msg="1" syll_accent="0" syll_score="2.793562">
+							<phone beg_pos="457" content="z" end_pos="460" gwpp="-10.411915"></phone>
+							<phone beg_pos="460" content="uh" end_pos="463" gwpp="-0.677512"></phone>
+							<phone beg_pos="463" content="m" end_pos="484" gwpp="-0.222670"></phone>
+						</syll>
+					</word>
+					<word beg_pos="484" content="i&apos;m" dp_message="16" end_pos="484" global_index="4" index="1" property="0" total_score="0.000000">
+						<syll beg_pos="484" content="ay m" end_pos="484" serr_msg="1" syll_accent="0" syll_score="0.000000">
+							<phone beg_pos="484" content="ay" end_pos="484"></phone>
+							<phone beg_pos="484" content="m" end_pos="484"></phone>
+						</syll>
+					</word>
+					<word beg_pos="484" content="always" dp_message="16" end_pos="484" global_index="5" index="2" property="0" total_score="0.000000">
+						<syll beg_pos="484" content="ao l" end_pos="484" serr_msg="1" syll_accent="1" syll_score="0.000000">
+							<phone beg_pos="484" content="&apos;ao" end_pos="484"></phone>
+							<phone beg_pos="484" content="l" end_pos="484"></phone>
+						</syll>
+						<syll beg_pos="484" content="w ey z" end_pos="484" serr_msg="1" syll_accent="0" syll_score="0.000000">
+							<phone beg_pos="484" content="w" end_pos="484"></phone>
+							<phone beg_pos="484" content="ey" end_pos="484"></phone>
+							<phone beg_pos="484" content="z" end_pos="484"></phone>
+						</syll>
+					</word>
+					<word beg_pos="484" content="very" dp_message="16" end_pos="484" global_index="6" index="3" property="0" total_score="0.000000">
+						<syll beg_pos="484" content="v eh" end_pos="484" serr_msg="1" syll_accent="1" syll_score="0.000000">
+							<phone beg_pos="484" content="&apos;v" end_pos="484"></phone>
+							<phone beg_pos="484" content="eh" end_pos="484"></phone>
+						</syll>
+						<syll beg_pos="484" content="r ih" end_pos="484" serr_msg="1" syll_accent="0" syll_score="0.000000">
+							<phone beg_pos="484" content="r" end_pos="484"></phone>
+							<phone beg_pos="484" content="ih" end_pos="484"></phone>
+						</syll>
+					</word>
+					<word beg_pos="484" content="busy" dp_message="16" end_pos="484" global_index="7" index="4" property="0" total_score="0.000000">
+						<syll beg_pos="484" content="b ih" end_pos="484" serr_msg="1" syll_accent="1" syll_score="0.000000">
+							<phone beg_pos="484" content="&apos;b" end_pos="484"></phone>
+							<phone beg_pos="484" content="ih" end_pos="484"></phone>
+						</syll>
+						<syll beg_pos="484" content="z ih" end_pos="484" serr_msg="1" syll_accent="0" syll_score="0.000000">
+							<phone beg_pos="484" content="z" end_pos="484"></phone>
+							<phone beg_pos="484" content="ih" end_pos="484"></phone>
+						</syll>
+					</word>
+				</sentence>
+			</read_chapter>
+		</rec_paper>
+	</read_chapter>
+</xml_result>

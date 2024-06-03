@@ -1,0 +1,37 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.UserControls.LockScreen" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:uc="clr-namespace:JXP.Controls;assembly=JXP.Controls" xmlns:usercontrols="clr-namespace:JXP.PepDtp.View.UserControls">
+	<Grid>
+		<Border
+			Background="#90000000">
+			<Grid
+				Background="#00FFFFFF">
+				<Grid.RowDefinitions>
+					<RowDefinition
+						Height="*" />
+					<RowDefinition
+						Height="100" />
+					<RowDefinition
+						Height="60" />
+					<RowDefinition
+						Height="*" />
+				</Grid.RowDefinitions>
+				<TextBlock
+					Name="txtSearch"
+					Grid.Row="2"
+					Text="教材努力加载中..."
+					FontSize="30"
+					Foreground="#FFFFFFFF"
+					Height="Auto"
+					Width="Auto"
+					HorizontalAlignment="Center"
+					VerticalAlignment="Center" />
+				<uc:GifImage
+					Name="gifLoading"
+					Grid.Row="1"
+					HorizontalAlignment="Stretch"
+					Width="100"
+					Height="100" />
+			</Grid>
+		</Border>
+	</Grid>
+</UserControl>

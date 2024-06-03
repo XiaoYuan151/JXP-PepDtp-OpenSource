@@ -1,0 +1,159 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.UserControls.SettingControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+	Name="root"
+	Width="380"
+	Height="270" xmlns:usercontrols="clr-namespace:JXP.PepDtp.View.UserControls"
+	Loaded="root_Loaded">
+	<Grid
+		Background="#FFFFFFFF"
+		Margin="3,0,3,5">
+		<UIElement.Effect>
+			<DropShadowEffect
+				BlurRadius="15"
+				Direction="-90"
+				RenderingBias="Quality"
+				Opacity="0.3"
+				ShadowDepth="2" />
+		</UIElement.Effect>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="3*" />
+			<RowDefinition
+				Height="1" />
+			<RowDefinition
+				Height="1.8*" />
+			<RowDefinition
+				Height="20" />
+		</Grid.RowDefinitions>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition
+					Height="50" />
+				<RowDefinition
+					Height="*" />
+			</Grid.RowDefinitions>
+			<TextBlock
+				Text="常规"
+				FontSize="18"
+				Foreground="#FF000000"
+				Margin="20,0,0,0"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center" />
+			<StackPanel
+				Grid.Row="1"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Stretch"
+				Margin="20,0,0,0">
+				<CheckBox
+					Name="startcheckbox"
+					Style="{StaticResource ShareGroupCheckboxStyle}"
+					Margin="0,5"
+					IsChecked="{Binding AutoStartUp, ElementName=root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+					Click="CheckBox_Click">
+					<ContentControl.Content>
+						<TextBlock
+							Text="启动Windows时,启动八桂教学通"
+							Style="{StaticResource NormalTextStyle}"
+							FontSize="14" />
+					</ContentControl.Content>
+				</CheckBox>
+				<CheckBox
+					Name="autoupdate"
+					Style="{StaticResource ShareGroupCheckboxStyle}"
+					Margin="0,5"
+					IsChecked="{Binding AutoUpdateClient, ElementName=root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+					Click="autoupdate_Click">
+					<ContentControl.Content>
+						<TextBlock
+							Text="自动检查客户端更新"
+							Style="{StaticResource NormalTextStyle}"
+							FontSize="14" />
+					</ContentControl.Content>
+				</CheckBox>
+				<CheckBox
+					Name="minisize"
+					Style="{StaticResource ShareGroupCheckboxStyle}"
+					Margin="0,5"
+					IsChecked="{Binding MinisizeToPallet, ElementName=root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+					Click="minisize_Click">
+					<ContentControl.Content>
+						<TextBlock
+							Text="最小化时到系统托盘"
+							Style="{StaticResource NormalTextStyle}"
+							FontSize="14" />
+					</ContentControl.Content>
+				</CheckBox>
+				<CheckBox
+					Name="mRemindSyncRes"
+					Style="{StaticResource ShareGroupCheckboxStyle}"
+					Margin="0,5"
+					IsChecked="{Binding IsRemindSyncRes, ElementName=root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+					Click="mRemindSyncRes_Click">
+					<ContentControl.Content>
+						<TextBlock
+							Text="提醒同步资源"
+							Style="{StaticResource NormalTextStyle}"
+							FontSize="14" />
+					</ContentControl.Content>
+				</CheckBox>
+			</StackPanel>
+		</Grid>
+		<Rectangle
+			Grid.Row="1"
+			VerticalAlignment="Stretch"
+			HorizontalAlignment="Stretch"
+			Fill="#FF9C9C9C" />
+		<Grid
+			Row="2">
+			<Grid.RowDefinitions>
+				<RowDefinition
+					Height="50" />
+				<RowDefinition
+					Height="*" />
+			</Grid.RowDefinitions>
+			<TextBlock
+				Text="锁定"
+				FontSize="18"
+				Foreground="#FF000000"
+				Margin="20,0,0,0"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center" />
+			<StackPanel
+				Grid.Row="1"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Stretch"
+				Margin="20,0,0,0">
+				<CheckBox
+					Style="{StaticResource ShareGroupCheckboxStyle}"
+					Margin="0,5">
+					<ContentControl.Content>
+						<StackPanel
+							Orientation="Horizontal">
+							<TextBlock
+								Text="鼠标键盘"
+								FontSize="14"
+								Style="{StaticResource NormalTextStyle}" />
+							<xctk:IntegerUpDown
+								NumericUpDown_x0060_1.Increment="1"
+								FontSize="14"
+								UpDownBase_x0060_1.Minimum="5"
+								UpDownBase_x0060_1.Value="5" />
+							<TextBlock
+								Text="分钟内无操作,自动进入锁定状态"
+								FontSize="14"
+								Style="{StaticResource NormalTextStyle}" />
+						</StackPanel>
+					</ContentControl.Content>
+				</CheckBox>
+			</StackPanel>
+		</Grid>
+		<TextBlock
+			Name="lblVersion"
+			Grid.Row="3"
+			Margin="0,0,10,0"
+			HorizontalAlignment="Right"
+			Text="当前版本:v1.5.4"
+			Style="{StaticResource NormalTextStyle}"
+			FontSize="14" />
+	</Grid>
+</UserControl>

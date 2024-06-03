@@ -1,0 +1,349 @@
+<Window
+	x:Class="JXP.PepDtp.View.VideoIntroduceWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:JXP.PepDtp.View" xmlns:uc="clr-namespace:JXP.Controls.CustomControl;assembly=JXP.Controls"
+	Title="VideoIntroduceWindow"
+	Height="600"
+	Width="800"
+	WindowStartupLocation="CenterOwner"
+	BorderThickness="3"
+	WindowStyle="None"
+	AllowsTransparency="True"
+	ResizeMode="NoResize"
+	Background="#00FFFFFF"
+	ShowInTaskbar="False">
+	<UIElement.Effect>
+		<DropShadowEffect
+			BlurRadius="3"
+			Direction="-90"
+			Opacity="0.2"
+			ShadowDepth="5" />
+	</UIElement.Effect>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="32" />
+			<RowDefinition
+				Height="*" />
+			<RowDefinition
+				Height="60" />
+		</Grid.RowDefinitions>
+		<Border
+			Name="titleBor"
+			Grid.Row="0"
+			Background="#06a35e"
+			CornerRadius="5,5,0,0"
+			MouseLeftButtonDown="TitleBor_MouseLeftButtonDown">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="*" />
+					<ColumnDefinition
+						Width="40" />
+				</Grid.ColumnDefinitions>
+				<TextBlock
+					Style="{DynamicResource MainTopTextStyle}"
+					Grid.Column="0"
+					Text="活动介绍"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					FontSize="16"
+					Foreground="#FFFFFFFF" />
+				<Button
+					Name="btnClose"
+					Style="{StaticResource WebPreCloseButtonStyle}"
+					Margin="0"
+					Width="30"
+					Height="30"
+					Grid.Column="1"
+					FontSize="35"
+					Padding="-3,-5,0,0"
+					Content=""
+					FontFamily="{StaticResource PepFontIcon}"
+					Click="BtnClose_Click" />
+			</Grid>
+		</Border>
+		<Grid
+			Row="1"
+			Background="#FFFFFFFF">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="20" />
+				<ColumnDefinition
+					Width="*" />
+				<ColumnDefinition
+					Width="10" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition
+					Height="10" />
+				<RowDefinition
+					Height="auto" />
+				<RowDefinition
+					Height="15" />
+				<RowDefinition
+					Height="*" />
+				<RowDefinition
+					Height="10" />
+			</Grid.RowDefinitions>
+			<TextBlock
+				Grid.Row="1"
+				Grid.Column="1"
+				Text="开展2021年全区数字教材应用微视频征集活动的通知"
+				FontSize="26"
+				FontWeight="Bold"
+				HorizontalAlignment="Center"
+				Opacity="0.85"
+				FontFamily="PingFang-SC" />
+			<uc:TouchableScrollViewer
+				Grid.Column="1"
+				Grid.Row="3"
+				HorizontalScrollBarVisibility="Disabled"
+				VerticalScrollBarVisibility="Auto">
+				<StackPanel>
+					<TextBlock
+						Text="各市、县（市、区）教育局："
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						LineHeight="25" />
+					<TextBlock
+						Text="       根据《自治区教育厅关于做好义务教育国家课程数字教材规模化应用工作的通知》（桂教网信〔2020〕22号），为进一步推进我区义务教育国家课程数字教材普及应用，经研究，决定开展2021年全区数字教材应用微视频征集活动。现将有关事项通知如下："
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="     一、活动目的"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="20"
+						LineHeight="32"
+						FontWeight="Bold" />
+					<TextBlock
+						Text="       通过征集数字教材应用的微视频，遴选优秀成果、分享应用经验，提升全区义务教育阶段教师应用数字教材的积极性，初步构建广西本地数字教材应用生成性资源库。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="     二、活动时间"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="20"
+						LineHeight="32"
+						FontWeight="Bold" />
+					<TextBlock
+						Text="       作品征集时间：2021年7月15日至9月15日。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="       作品评审时间：2021年9月15日至10月15日。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="     三、组织单位"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="20"
+						LineHeight="32"
+						FontWeight="Bold" />
+					<TextBlock
+						Text="       活动由我厅主办，广西教育技术和信息化中心、广西教育研究院承办，广西出版传媒集团有限公司协办。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="     四、征集对象"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="20"
+						LineHeight="32"
+						FontWeight="Bold" />
+					<TextBlock
+						Text="       全区义务教育阶段教师及教研、电教部门相关人员。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="     五、征集范围"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="20"
+						LineHeight="32"
+						FontWeight="Bold" />
+					<TextBlock
+						Text="       （一）数字教材平台基本操作。包括&quot;八桂教学通&quot;的基本功能介绍、操作演示等。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="       （二）数字教材平台应用技巧。包括&quot;八桂教学通&quot;及各种工具的操作技巧、应用妙招、技术介绍等。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="       （三）数字教材教学实践分享。包括数字教材在学科教学中的教学片断、使用经验、应用技巧等。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="       （四）其他。包括数字教材在区域、学校的应用推广经验或与数字教材应用相关的其他内容。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="     六、作品要求"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="20"
+						LineHeight="32"
+						FontWeight="Bold" />
+					<TextBlock
+						Text="       （一）作者自主录制或制作的视频，可以是动画视频、屏幕录屏、课堂实录片段、数字故事等，呈现形式不限，作品要求原创。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="       （二）视频采用mp4文件格式，分辨率不低于720P（1280*720）、建议1920*1080，屏幕比例16:9，编码格式H.264/AVC，视频总时长3—5分钟为宜。解说如有字幕，字幕文件单独制作.srt格式，字幕文件保存时采用UTF-8编码格式。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="       （三）作品以&quot;广西中小学云课堂资源.mp4&quot;+&quot;作品简介&quot;开头，片头时长不超过10秒，相关模板请在活动页面内下载。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="       （四）作品标题要能清晰反映视频内容，作品可配有文字材料，为视频提供材料支撑。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="     七、征集流程"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="20"
+						LineHeight="32"
+						FontWeight="Bold" />
+					<TextBlock
+						Text="       （一）浏览器访问&quot;广西教育资源公共服务平台&quot;（网址：www.gxjyzy.com），下载&quot;八桂教学通&quot;，登录客户端进入&quot;2021年全区数字教材应用微视频征集活动&quot;页面。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="       （二）选择要提交的文件，输入作品名称，选择活动主题分类，确认用户个人信息，点击提交。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="       （三）教育厅组织数字教材应用专家库成员对作品进行评审，设一、二、三等奖，并颁发证书。获奖作品择优入选广西数字教材本地资源库。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="     八、其他说明"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="20"
+						LineHeight="32"
+						FontWeight="Bold" />
+					<TextBlock
+						Text="       本次活动属自愿参加，不收取任何费用，作者享有署名权，版权归组委会所有。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="       其他未尽事宜，请联系广西教育技术和信息化中心陈桂军，电话：0771-5815450；广西教育研究院姚进宏，电话：0771-5815124；技术服务电话：覃媛 0771-2848281。"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="       附件：数字教材应用微视频评分标准"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						TextWrapping="Wrap"
+						LineHeight="25" />
+					<TextBlock
+						Text="广西壮族自治区教育厅"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						Margin="0,20,20,0"
+						TextWrapping="Wrap"
+						LineHeight="25"
+						HorizontalAlignment="Right" />
+					<TextBlock
+						Text="2021年7月1日"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="16"
+						Margin="0,20,20,0"
+						TextWrapping="Wrap"
+						LineHeight="25"
+						HorizontalAlignment="Right" />
+					<TextBlock
+						Text="附件"
+						Style="{DynamicResource NormalTextStyle}"
+						VerticalAlignment="Top"
+						FontSize="20"
+						LineHeight="32"
+						FontWeight="Bold" />
+					<Image
+						Source="../Resources/Images/pingfen.png"
+						Margin="0,10,0,0" />
+				</StackPanel>
+			</uc:TouchableScrollViewer>
+		</Grid>
+		<Border
+			Grid.Row="2"
+			CornerRadius="0,0,5,5"
+			Background="#f9f9f9">
+			<Button
+				Name="btnOk"
+				Content="我要参加"
+				Width="150"
+				Height="35"
+				HorizontalAlignment="Center"
+				Style="{DynamicResource TextBookOprButtonStyleNew}"
+				Click="btnOk_Click" />
+		</Border>
+	</Grid>
+</Window>

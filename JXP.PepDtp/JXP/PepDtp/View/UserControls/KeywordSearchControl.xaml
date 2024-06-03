@@ -1,0 +1,52 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.UserControls.KeywordSearchControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:JXP.PepDtp.View.UserControls" xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+	UseLayoutRounding="True">
+	<Grid
+		MinHeight="25">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition
+				Width="*" />
+			<ColumnDefinition
+				Width="10" />
+			<ColumnDefinition
+				Width="62" />
+		</Grid.ColumnDefinitions>
+		<Border
+			CornerRadius="5"
+			Grid.Column="0"
+			MaxWidth="180"
+			MinWidth="100"
+			BorderThickness="1"
+			BorderBrush="#e3e3e3"
+			Background="#FFFFFF"
+			HorizontalAlignment="Left">
+			<Grid
+				Margin="3,0">
+				<toolkit:WatermarkTextBox
+					Name="txtKeyWord"
+					BorderThickness="0"
+					Grid.Column="1"
+					VerticalAlignment="Center"
+					VerticalContentAlignment="Center"
+					FontFamily="Microsoft YaHei,SimSun"
+					KeepWatermarkOnGotFocus="True"
+					Text="{Binding Keyword, UpdateSourceTrigger=PropertyChanged}">
+					<toolkit:WatermarkTextBox.Watermark>
+						<TextBlock
+							Text="请输入关键字"
+							Style="{DynamicResource NormalTextStyle}"
+							HorizontalAlignment="Left"
+							Foreground="#d4d4d4" />
+					</toolkit:WatermarkTextBox.Watermark>
+				</toolkit:WatermarkTextBox>
+			</Grid>
+		</Border>
+		<Button
+			Name="btnSearch"
+			Grid.Column="2"
+			Width="62"
+			Height="25"
+			Content="搜索"
+			Style="{StaticResource SearchButtonStyleNew}" />
+	</Grid>
+</UserControl>

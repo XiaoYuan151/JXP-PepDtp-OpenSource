@@ -1,0 +1,115 @@
+<Window
+	x:Class="JXP.SpeechEvaluator.View.TestWin" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:JXP.SpeechEvaluator.View" xmlns:customcontrol="clr-namespace:JXP.SpeechEvaluator.View.CustomControl"
+	Grid.IsSharedSizeScope="True"
+	Title="TestWin"
+	Height="450"
+	Width="800">
+	<FrameworkElement.Resources>
+		<ResourceDictionary />
+	</FrameworkElement.Resources>
+	<Grid
+		Background="#e7cdac">
+		<Grid
+			Background="#e7cdac">
+			<Grid.RowDefinitions>
+				<RowDefinition
+					Height="auto" />
+				<RowDefinition
+					Height="auto" />
+				<RowDefinition
+					Height="40" />
+				<RowDefinition
+					Height="40" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="auto"
+					SharedSizeGroup="UserName" />
+				<ColumnDefinition
+					Width="10" />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<StackPanel
+				HorizontalAlignment="Right"
+				Orientation="Horizontal">
+				<Image
+					Stretch="Uniform"
+					Height="14"
+					VerticalAlignment="Center"
+					Margin="0,0,10,0"
+					Source="/JXP.SpeechEvaluator;component/Resources/Img/ic_heart.png" />
+				<TextBlock
+					Text="Erik"
+					Style="{DynamicResource EvaluatorTextBlockStyle}" />
+			</StackPanel>
+			<TextBlock
+				Text=":"
+				Grid.Column="1"
+				Style="{DynamicResource EvaluatorTextBlockStyle}" />
+			<customcontrol:EvaluatorRichTextBox
+				Name="richText"
+				Grid.Column="2"
+				Style="{DynamicResource EvaluatorRichTextBoxStyle}">
+				<FlowDocument>
+					<Paragraph>
+						<Span>
+							<Run />
+						</Span> <InlineUIContainer><Border
+								Visibility="Visible"
+								Margin="4,0,0,-4"
+								Grid.Row="1"
+								Background="#f34e3f"
+								CornerRadius="4"><TextBlock
+									Text="50分"
+									Margin="4,2"
+									FontSize="10"
+									HorizontalAlignment="Center"
+									VerticalAlignment="Bottom"
+									Foreground="#FFFFFFFF" /></Border></InlineUIContainer></Paragraph>
+				</FlowDocument>
+			</customcontrol:EvaluatorRichTextBox>
+			<TextBlock
+				Grid.Row="1"
+				Text="ErikBBBBB"
+				Style="{DynamicResource EvaluatorTextBlockStyle}"
+				HorizontalAlignment="Right" />
+			<TextBlock
+				Grid.Row="1"
+				Text=":"
+				Grid.Column="1"
+				Style="{DynamicResource EvaluatorTextBlockStyle}" />
+			<customcontrol:EvaluatorRichTextBox
+				Name="richText2"
+				Grid.Row="1"
+				Grid.Column="2"
+				Style="{DynamicResource EvaluatorRichTextBoxStyle}">
+				<FlowDocument>
+					<Paragraph>
+						<Span
+							Background="#80FFFFFF"
+							Foreground="#10000000">I often watch TV, but this weekend I have a show. I'll play the pipa</Span> <InlineUIContainer><Border
+								Visibility="Visible"
+								Margin="4,0,0,-4"
+								Grid.Row="1"
+								Background="#f34e3f"
+								CornerRadius="4"><TextBlock
+									Text="50分"
+									Margin="4,2"
+									FontSize="10"
+									HorizontalAlignment="Center"
+									VerticalAlignment="Bottom"
+									Foreground="#FFFFFFFF" /></Border></InlineUIContainer></Paragraph>
+				</FlowDocument>
+			</customcontrol:EvaluatorRichTextBox>
+			<TextBlock
+				Grid.Row="2"
+				Grid.ColumnSpan="3"
+				FontSize="20"
+				FontFamily="{StaticResource TimesNewRoman}"
+				Text="I often watch TV, but this weekend I have a show. I'll play the pipa" />
+			<Button
+				Grid.Row="3"
+				Click="Button_Click" />
+		</Grid>
+	</Grid>
+</Window>

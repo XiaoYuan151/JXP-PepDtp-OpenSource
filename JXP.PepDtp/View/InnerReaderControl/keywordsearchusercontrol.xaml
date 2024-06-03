@@ -1,0 +1,60 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.InnerReaderControl.KeyworldSearchUserControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:uc="clr-namespace:JXP.Controls;assembly=JXP.Controls" xmlns:control="clr-namespace:JXP.PepDtp.View.CustomControl" xmlns:cvt="clr-namespace:JXP.WpfConverters;assembly=JXP.WpfConverters"
+	UseLayoutRounding="True"
+	FontSize="14" xmlns:innerreadercontrol="clr-namespace:JXP.PepDtp.View.InnerReaderControl">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<cvt:ObjectToVisibleConverter
+				x:Key="strToVisibility" />
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid
+		MinHeight="28">
+		<Border
+			CornerRadius="10"
+			BorderThickness="1"
+			BorderBrush="#CCCCCC"
+			Background="#FFFFFF"
+			Width="250"
+			HorizontalAlignment="Left">
+			<Grid
+				Margin="10,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="0" />
+					<ColumnDefinition
+						Width="auto" />
+					<ColumnDefinition
+						Width="2" />
+					<ColumnDefinition
+						Width="2" />
+					<ColumnDefinition
+						Width="auto" />
+				</Grid.ColumnDefinitions>
+				<control:WatermarkTextBoxWithErrorInfo
+					Name="txtKeyWord"
+					BorderThickness="0"
+					Grid.Column="1"
+					Width="200"
+					VerticalAlignment="Center"
+					VerticalContentAlignment="Center"
+					KeepWatermarkOnGotFocus="True"
+					Watermark="请输入关键字"
+					Text="{Binding Keyword, UpdateSourceTrigger=PropertyChanged}" />
+				<Border
+					Grid.Column="2"
+					BorderThickness="0,0,1,0"
+					BorderBrush="#CCCCCC" />
+				<uc:ImageButton
+					Name="btnSearch"
+					Grid.Column="4"
+					ImageSize="16"
+					Height="20"
+					Width="20"
+					NormalImage="/JXP.PepDtp;component/Resources/Images/search.png"
+					VerticalAlignment="Center"
+					HoverImage="/JXP.PepDtp;component/Resources/Images/search_hover.png" />
+			</Grid>
+		</Border>
+	</Grid>
+</UserControl>

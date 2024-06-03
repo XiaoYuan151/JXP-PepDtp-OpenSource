@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xml_result>
+	<read_chapter lan="en" type="study" version="7.0.0.1020">
+		<rec_paper>
+			<read_chapter beg_pos="0" content="It&apos;s Saturday now. Zoom, I&apos;m always very busy." end_pos="544" except_info="0" is_rejected="false" reject_type="0" score_pattern="loose" total_score="3.268343" word_count="8">
+				<sentence beg_pos="0" content="it&apos;s saturday now" end_pos="203" index="0" total_score="2.163916" word_count="3">
+					<word beg_pos="106" content="it&apos;s" dp_message="0" end_pos="134" global_index="0" index="0" total_score="3.516740">
+						<syll beg_pos="106" content="ih ts" end_pos="134" syll_score="3.410287">
+							<phone beg_pos="106" content="ih" end_pos="126" gwpp="-0.003772"></phone>
+							<phone beg_pos="126" content="ts" end_pos="134" gwpp="-3.233763"></phone>
+						</syll>
+					</word>
+					<word beg_pos="134" content="saturday" dp_message="0" end_pos="184" global_index="1" index="1" total_score="2.340189">
+						<syll beg_pos="134" content="s ae" end_pos="157" syll_score="3.241822">
+							<phone beg_pos="134" content="s" end_pos="148" gwpp="-0.073809"></phone>
+							<phone beg_pos="148" content="ae" end_pos="157" gwpp="-3.749334"></phone>
+						</syll>
+						<syll beg_pos="157" content="t ax" end_pos="170" syll_score="2.872708">
+							<phone beg_pos="157" content="t" end_pos="160" gwpp="-6.257163"></phone>
+							<phone beg_pos="160" content="ax" end_pos="170" gwpp="-0.246919"></phone>
+						</syll>
+						<syll beg_pos="170" content="d ey" end_pos="184" syll_score="3.224275">
+							<phone beg_pos="170" content="d" end_pos="180" gwpp="-0.081394"></phone>
+							<phone beg_pos="180" content="ey" end_pos="184" gwpp="-8.013612"></phone>
+						</syll>
+					</word>
+					<word beg_pos="184" content="now" dp_message="0" end_pos="203" global_index="2" index="2" total_score="3.134048">
+						<syll beg_pos="184" content="n aw" end_pos="203" syll_score="3.355138">
+							<phone beg_pos="184" content="n" end_pos="196" gwpp="-0.026164"></phone>
+							<phone beg_pos="196" content="aw" end_pos="203" gwpp="-8.050699"></phone>
+						</syll>
+					</word>
+				</sentence>
+			</read_chapter>
+		</rec_paper>
+	</read_chapter>
+</xml_result>

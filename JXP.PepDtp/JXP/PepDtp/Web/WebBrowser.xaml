@@ -1,0 +1,18 @@
+<Window
+	x:Class="JXP.PepDtp.Web.WebBrowser" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:fuc="clr-namespace:JXP.Windows;assembly=JXP.Windows" xmlns:cef="clr-namespace:Xilium.CefGlue.WindowsForms;assembly=Xilium.CefGlue.WindowsForms"
+	Title="Web Browser"
+	ShowInTaskbar="False" xmlns:web="clr-namespace:JXP.PepDtp.Web"
+	Loaded="Window_Loaded"
+	SourceInitialized="Window_SourceInitialized">
+	<Border
+		BorderBrush="#FF808080"
+		BorderThickness="1"
+		HorizontalAlignment="Stretch"
+		VerticalAlignment="Stretch">
+		<fuc:CefWindowsFormsHost
+			Name="host1">
+			<cef:CefWebBrowser
+				x:Name="cefBrowser" />
+		</fuc:CefWindowsFormsHost>
+	</Border>
+</Window>

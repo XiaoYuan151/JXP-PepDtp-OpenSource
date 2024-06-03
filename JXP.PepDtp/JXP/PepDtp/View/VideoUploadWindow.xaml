@@ -1,0 +1,574 @@
+<Window
+	x:Class="JXP.PepDtp.View.VideoUploadWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:JXP.PepDtp.View" xmlns:jxpcontrol="clr-namespace:JXP.Controls;assembly=JXP.Controls" xmlns:uc1="clr-namespace:JXP.Controls;assembly=JXP.Controls"
+	Title="VideoUploadWindow"
+	Height="560"
+	Width="820"
+	WindowStartupLocation="CenterOwner"
+	BorderThickness="3"
+	WindowStyle="None"
+	AllowsTransparency="True"
+	ResizeMode="NoResize"
+	Background="#00FFFFFF"
+	ShowInTaskbar="False">
+	<UIElement.Effect>
+		<DropShadowEffect
+			BlurRadius="3"
+			Direction="-90"
+			Opacity="0.2"
+			ShadowDepth="5" />
+	</UIElement.Effect>
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<BooleanToVisibilityConverter
+				x:Key="boolToVisibilityCvt" />
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="40" />
+			<RowDefinition
+				Height="40" />
+			<RowDefinition
+				Height="1" />
+			<RowDefinition
+				Height="*" />
+		</Grid.RowDefinitions>
+		<Border
+			Name="titleBor"
+			Grid.Row="0"
+			Background="#06a35e"
+			CornerRadius="5,5,0,0"
+			MouseLeftButtonDown="TitleBor_MouseLeftButtonDown">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="auto" />
+					<ColumnDefinition
+						Width="*" />
+					<ColumnDefinition
+						Width="40" />
+				</Grid.ColumnDefinitions>
+				<TextBlock
+					Style="{DynamicResource MainTopTextStyle}"
+					Grid.Column="0"
+					Text="&lt; 返回"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					FontSize="20"
+					Foreground="#FFFFFFFF"
+					Margin="10,0,0,0"
+					Cursor="Hand"
+					MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" />
+				<TextBlock
+					Style="{DynamicResource MainTopTextStyle}"
+					Grid.Column="1"
+					Text="我要参加"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					FontSize="20"
+					Foreground="#FFFFFFFF" />
+				<Button
+					Name="btnClose"
+					Style="{StaticResource WebPreCloseButtonStyle}"
+					Margin="0"
+					Width="30"
+					Height="30"
+					Grid.Column="2"
+					FontSize="35"
+					Padding="-3,-5,0,0"
+					Content=""
+					FontFamily="{StaticResource PepFontIcon}"
+					Click="BtnClose_Click" />
+			</Grid>
+		</Border>
+		<Grid
+			Row="1"
+			Background="#f0f0f0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="240" />
+				<ColumnDefinition
+					Width="*" />
+			</Grid.ColumnDefinitions>
+			<TextBlock
+				Style="{DynamicResource MainTopTextStyle}"
+				Text="作品要求"
+				VerticalAlignment="Center"
+				Margin="20,0,0,0"
+				FontSize="16"
+				FontWeight="Bold" />
+			<TextBlock
+				Grid.Column="1"
+				Style="{DynamicResource MainTopTextStyle}"
+				Text="上传文件"
+				VerticalAlignment="Center"
+				Margin="20,0,0,0"
+				FontSize="16"
+				FontWeight="Bold" />
+		</Grid>
+		<Rectangle
+			Grid.Row="2"
+			Fill="#DDDCDE" />
+		<Grid
+			Row="3">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="240" />
+				<ColumnDefinition
+					Width="*" />
+			</Grid.ColumnDefinitions>
+			<Border
+				Grid.Column="0"
+				Background="#f0f0f0"
+				CornerRadius="0,0,0,5">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="10" />
+						<ColumnDefinition
+							Width="*" />
+						<ColumnDefinition
+							Width="10" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="20" />
+						<RowDefinition
+							Height="*" />
+					</Grid.RowDefinitions>
+					<StackPanel
+						Grid.Column="1"
+						Grid.Row="1">
+						<TextBlock
+							Text="    （一）作者自主录制或制作的视频，可以是动画视频、屏幕录屏、课堂实录片段、数字故事等，呈现形式不限，作品要求原创。"
+							Style="{DynamicResource NormalTextStyle}"
+							VerticalAlignment="Top"
+							FontSize="14"
+							TextWrapping="Wrap"
+							LineHeight="20" />
+						<TextBlock
+							Text="    （二）视频采用mp4文件格式，分辨率不低于720P（1280*720）、建议1920*1080，屏幕比例16:9，编码格式H.264/AVC，视频总时长3—5分钟为宜。解说如有字幕，字幕文件单独制作.srt格式，字幕文件保存时采用UTF-8编码格式。"
+							Style="{DynamicResource NormalTextStyle}"
+							VerticalAlignment="Top"
+							FontSize="14"
+							TextWrapping="Wrap"
+							LineHeight="20" />
+						<TextBlock
+							Text="    （三）作品以&quot;广西中小学云课堂资源.mp4&quot;+&quot;作品封面&quot;开头，片头时长不超过10秒，相关模板请在活动页面内下载。"
+							Style="{DynamicResource NormalTextStyle}"
+							VerticalAlignment="Top"
+							FontSize="14"
+							TextWrapping="Wrap"
+							LineHeight="20" />
+						<TextBlock
+							Name="lblDownload"
+							Text="相关模板下载&gt;&gt;"
+							Foreground="#FF0000FF"
+							Cursor="Hand"
+							Style="{DynamicResource NormalTextStyle}"
+							VerticalAlignment="Top"
+							FontSize="14"
+							TextWrapping="Wrap"
+							LineHeight="20"
+							MouseLeftButtonDown="lblDownload_MouseLeftButtonDown" />
+						<TextBlock
+							Text="    （四）作品标题要能清晰反映视频内容，作品可配有文字材料，为视频提供材料支撑。"
+							Style="{DynamicResource NormalTextStyle}"
+							VerticalAlignment="Top"
+							FontSize="14"
+							TextWrapping="Wrap"
+							LineHeight="20" />
+					</StackPanel>
+				</Grid>
+			</Border>
+			<Border
+				Grid.Column="1"
+				Background="#FFFFFFFF"
+				CornerRadius="0,0,5,0">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="20" />
+						<RowDefinition
+							Height="auto" />
+						<RowDefinition
+							Height="20" />
+						<RowDefinition
+							Height="40" />
+						<RowDefinition
+							Height="20" />
+						<RowDefinition
+							Height="40" />
+						<RowDefinition
+							Height="20" />
+						<RowDefinition
+							Height="40" />
+						<RowDefinition
+							Height="20" />
+						<RowDefinition
+							Height="40" />
+						<RowDefinition
+							Height="20" />
+						<RowDefinition
+							Height="40" />
+						<RowDefinition
+							Height="20" />
+						<RowDefinition
+							Height="Auto" />
+						<RowDefinition
+							Height="*" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="25" />
+						<ColumnDefinition
+							Width="70" />
+						<ColumnDefinition
+							Width="*" />
+						<ColumnDefinition
+							Width="15" />
+						<ColumnDefinition
+							Width="90" />
+						<ColumnDefinition
+							Width="20" />
+					</Grid.ColumnDefinitions>
+					<TextBlock
+						Grid.Row="1"
+						Grid.Column="0"
+						Text="*"
+						FontSize="26"
+						Foreground="#ff0000"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Margin="8,12,0,0" />
+					<TextBlock
+						Text="作品类型:"
+						Grid.Row="1"
+						Grid.Column="1"
+						Style="{DynamicResource NormalTextStyle}" />
+					<StackPanel
+						Grid.Row="1"
+						Grid.Column="2"
+						Grid.ColumnSpan="4"
+						Orientation="Horizontal">
+						<RadioButton
+							Name="radioApply"
+							Content="应用技巧"
+							Style="{DynamicResource DefaultRadioButtonStyle}"
+							FontSize="14"
+							Foreground="#FF000000"
+							Opacity="0.9"
+							FontWeight="Light"
+							Margin="0,0,0,0"
+							IsChecked="{Binding ApplyChecked}" />
+						<RadioButton
+							Name="radioOperate"
+							Content="基本操作"
+							Style="{DynamicResource DefaultRadioButtonStyle}"
+							FontSize="14"
+							Foreground="#FF000000"
+							Opacity="0.9"
+							FontWeight="Light"
+							Margin="25,0,0,0"
+							IsChecked="{Binding OperateChecked}" />
+						<RadioButton
+							Name="radioShare"
+							Content="教学实践分享"
+							Style="{DynamicResource DefaultRadioButtonStyle}"
+							FontSize="14"
+							Foreground="#FF000000"
+							Opacity="0.9"
+							FontWeight="Light"
+							Margin="25,0,0,0"
+							IsChecked="{Binding ShareChecked}" />
+						<RadioButton
+							Name="radioOther"
+							Content="其他"
+							Style="{DynamicResource DefaultRadioButtonStyle}"
+							FontSize="14"
+							Foreground="#FF000000"
+							Opacity="0.9"
+							FontWeight="Light"
+							Margin="25,0,0,0"
+							IsChecked="{Binding OtherChecked}" />
+					</StackPanel>
+					<TextBlock
+						Grid.Row="3"
+						Grid.Column="0"
+						Text="*"
+						FontSize="26"
+						Foreground="#ff0000"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Margin="8,12,0,0" />
+					<TextBlock
+						Grid.Row="3"
+						Grid.Column="1"
+						Text="作品封面:"
+						Style="{DynamicResource NormalTextStyle}" />
+					<uc1:WatermarkTextBox
+						Grid.Row="3"
+						Grid.Column="2"
+						BorderThickness="1"
+						VerticalContentAlignment="Center"
+						KeepWatermarkOnGotFocus="True"
+						FontSize="14"
+						FontFamily="Microsoft YaHei,SimSun"
+						Foreground="#666666"
+						IsReadOnly="True"
+						Text="{Binding IntroduceFile}"
+						ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}">
+						<uc1:WatermarkTextBox.Watermark>
+							<TextBlock
+								Text="必填,JPG、JPEG文件,请左侧下载模板后,在模板上修改。"
+								FontSize="12"
+								Opacity="0.4"
+								Style="{DynamicResource NormalTextStyle}"
+								VerticalAlignment="Center" />
+						</uc1:WatermarkTextBox.Watermark>
+					</uc1:WatermarkTextBox>
+					<Button
+						Name="btnIntroduce"
+						Grid.Row="3"
+						Grid.Column="4"
+						Height="32"
+						Width="90"
+						Content="添加"
+						Style="{DynamicResource TextBookOprButtonStyleNew}"
+						Click="btnIntroduce_Click" />
+					<TextBlock
+						Grid.Row="5"
+						Grid.Column="0"
+						Text="*"
+						FontSize="26"
+						Foreground="#ff0000"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Margin="8,12,0,0" />
+					<TextBlock
+						Grid.Row="5"
+						Grid.Column="1"
+						Text="上传作品:"
+						Style="{DynamicResource NormalTextStyle}" />
+					<uc1:WatermarkTextBox
+						Grid.Row="5"
+						Grid.Column="2"
+						BorderThickness="1"
+						VerticalContentAlignment="Center"
+						KeepWatermarkOnGotFocus="True"
+						FontSize="14"
+						FontFamily="Microsoft YaHei,SimSun"
+						Foreground="#666666"
+						IsReadOnly="True"
+						Text="{Binding WorksFile}"
+						ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}">
+						<uc1:WatermarkTextBox.Watermark>
+							<TextBlock
+								Text="必填，MP4文件，请参考下方操作示例制作，不超过400M"
+								FontSize="12"
+								Opacity="0.4"
+								Style="{DynamicResource NormalTextStyle}"
+								VerticalAlignment="Center" />
+						</uc1:WatermarkTextBox.Watermark>
+					</uc1:WatermarkTextBox>
+					<Button
+						Name="btnWorks"
+						Grid.Row="5"
+						Grid.Column="4"
+						Height="32"
+						Width="90"
+						Content="添加"
+						Style="{DynamicResource TextBookOprButtonStyleNew}"
+						Click="btnWorks_Click" />
+					<TextBlock
+						Grid.Row="7"
+						Grid.Column="0"
+						Text="*"
+						FontSize="26"
+						Foreground="#ff0000"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Margin="8,12,0,0" />
+					<TextBlock
+						Grid.Row="7"
+						Grid.Column="1"
+						Text="作品名称:"
+						Style="{DynamicResource NormalTextStyle}" />
+					<uc1:WatermarkTextBox
+						Grid.Row="7"
+						Grid.Column="2"
+						BorderThickness="1"
+						VerticalContentAlignment="Center"
+						KeepWatermarkOnGotFocus="True"
+						FontSize="14"
+						FontFamily="Microsoft YaHei,SimSun"
+						Foreground="#666666"
+						Text="{Binding WorkTitle}"
+						ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}">
+						<uc1:WatermarkTextBox.Watermark>
+							<TextBlock
+								Text="作品名称将在页面显示"
+								FontSize="12"
+								Opacity="0.4"
+								Style="{DynamicResource NormalTextStyle}"
+								VerticalAlignment="Center" />
+						</uc1:WatermarkTextBox.Watermark>
+					</uc1:WatermarkTextBox>
+					<TextBlock
+						Grid.Row="9"
+						Grid.Column="1"
+						Text="作品字幕:"
+						Style="{DynamicResource NormalTextStyle}" />
+					<uc1:WatermarkTextBox
+						Grid.Row="9"
+						Grid.Column="2"
+						BorderThickness="1"
+						VerticalContentAlignment="Center"
+						KeepWatermarkOnGotFocus="True"
+						FontSize="14"
+						FontFamily="Microsoft YaHei,SimSun"
+						Foreground="#666666"
+						IsReadOnly="True"
+						Text="{Binding SubtitlesFile}"
+						ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}">
+						<uc1:WatermarkTextBox.Watermark>
+							<TextBlock
+								Text="选填,SRT文件,详见左侧作品要求。"
+								FontSize="12"
+								Opacity="0.4"
+								Style="{DynamicResource NormalTextStyle}"
+								VerticalAlignment="Center" />
+						</uc1:WatermarkTextBox.Watermark>
+					</uc1:WatermarkTextBox>
+					<Button
+						Name="btnSubtitles"
+						Grid.Row="9"
+						Grid.Column="4"
+						Height="32"
+						Width="90"
+						Content="添加"
+						Style="{DynamicResource TextBookOprButtonStyleNew}"
+						Click="btnSubtitles_Click" />
+					<TextBlock
+						Grid.Row="11"
+						Grid.Column="1"
+						Text="作品介绍:"
+						Style="{DynamicResource NormalTextStyle}" />
+					<uc1:WatermarkTextBox
+						Grid.Row="11"
+						Grid.Column="2"
+						BorderThickness="1"
+						VerticalContentAlignment="Center"
+						KeepWatermarkOnGotFocus="True"
+						FontSize="14"
+						FontFamily="Microsoft YaHei,SimSun"
+						Foreground="#666666"
+						IsReadOnly="True"
+						Text="{Binding IntroduceWorksFile}"
+						ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}">
+						<uc1:WatermarkTextBox.Watermark>
+							<TextBlock
+								Text="选填,Word或Wps文件,详见左侧作品要求。"
+								FontSize="12"
+								Opacity="0.4"
+								Style="{DynamicResource NormalTextStyle}"
+								VerticalAlignment="Center" />
+						</uc1:WatermarkTextBox.Watermark>
+					</uc1:WatermarkTextBox>
+					<Button
+						Name="btnIntroduceWorks"
+						Grid.Row="11"
+						Grid.Column="4"
+						Height="32"
+						Width="90"
+						Content="添加"
+						Style="{DynamicResource TextBookOprButtonStyleNew}"
+						Click="btnIntroduceWorks_Click" />
+					<TextBlock
+						Grid.Row="13"
+						Grid.Column="1"
+						Text="操作示例:"
+						Style="{DynamicResource NormalTextStyle}" />
+					<StackPanel
+						Grid.Row="13"
+						Orientation="Horizontal"
+						Grid.Column="2"
+						Grid.ColumnSpan="3">
+						<TextBlock
+							Name="lbl1"
+							Text="作品封面编辑示例下载"
+							Foreground="#FF0000FF"
+							Cursor="Hand"
+							Style="{DynamicResource NormalTextStyle}"
+							VerticalAlignment="Top"
+							FontSize="14"
+							LineHeight="20"
+							MouseLeftButtonDown="lbl1_MouseLeftButtonDown" />
+						<TextBlock
+							Name="lbl2"
+							Text="微视频合成示例下载"
+							Foreground="#FF0000FF"
+							Cursor="Hand"
+							Style="{DynamicResource NormalTextStyle}"
+							VerticalAlignment="Top"
+							FontSize="14"
+							LineHeight="20"
+							Margin="15,0,0,0"
+							MouseLeftButtonDown="lbl2_MouseLeftButtonDown" />
+						<TextBlock
+							Name="lbl3"
+							Text="成品示例下载"
+							Foreground="#FF0000FF"
+							Cursor="Hand"
+							Style="{DynamicResource NormalTextStyle}"
+							VerticalAlignment="Top"
+							FontSize="14"
+							LineHeight="20"
+							Margin="15,0,0,0"
+							MouseLeftButtonDown="lbl3_MouseLeftButtonDown" />
+					</StackPanel>
+					<Grid
+						Row="14"
+						Column="2">
+						<Button
+							Name="btnSubmit"
+							Content="提交"
+							Width="200"
+							Height="40"
+							VerticalAlignment="Center"
+							Style="{DynamicResource SearchButtonStyleNew}"
+							HorizontalAlignment="Center"
+							Click="btnSubmit_Click" />
+					</Grid>
+				</Grid>
+			</Border>
+			<Grid
+				Name="gridWaiting"
+				Column="1"
+				RowSpan="3"
+				Visibility="{Binding ShowWaiting, Converter={StaticResource boolToVisibilityCvt}}">
+				<Grid.RowDefinitions>
+					<RowDefinition
+						Height="*" />
+					<RowDefinition
+						Height="auto" />
+					<RowDefinition
+						Height="5" />
+					<RowDefinition
+						Height="auto" />
+					<RowDefinition
+						Height="2*" />
+				</Grid.RowDefinitions>
+				<Grid
+					Background="#FF000000"
+					Opacity="0.2"
+					RowSpan="5" />
+				<uc1:WaitingControls
+					Width="200"
+					Height="200"
+					Grid.Row="3" />
+			</Grid>
+		</Grid>
+	</Grid>
+</Window>

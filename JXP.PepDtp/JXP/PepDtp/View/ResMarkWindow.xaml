@@ -1,0 +1,14 @@
+<Window
+	x:Class="JXP.PepDtp.View.ResMarkWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="MarkWindow"
+	WindowStyle="None"
+	ShowInTaskbar="False"
+	AllowsTransparency="True"
+	Background="#00FFFFFF"
+	AllowDrop="True" xmlns:view="clr-namespace:JXP.PepDtp.View"
+	MouseLeave="Window_MouseLeave"
+	MouseMove="Window_MouseMove"
+	Drop="Window_Drop"
+	MouseDown="Window_MouseDown">
+	<Grid />
+</Window>

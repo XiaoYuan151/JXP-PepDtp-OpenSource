@@ -1,0 +1,299 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.InnerReaderControl.ResScoreControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	UseLayoutRounding="True" xmlns:innerreadercontrol="clr-namespace:JXP.PepDtp.View.InnerReaderControl"
+	Loaded="UserControl_Loaded">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<BooleanToVisibilityConverter
+				x:Key="Bool2Visibility" />
+			<BitmapImage
+				UriSource="pack://application:,,,/Resources/Images/xing_03.png"
+				x:Key="StarChecked" />
+			<BitmapImage
+				UriSource="pack://application:,,,/Resources/Images/kxing_03.png"
+				x:Key="StarUnChecked" />
+			<BitmapImage
+				UriSource="pack://application:,,,/Resources/Images/right.png"
+				x:Key="Success" />
+			<Style
+				TargetType="{x:Type CheckBox}"
+				x:Key="StarCheckBoxStyleUnChecked">
+				<Setter
+					Property="Background"
+					Value="#00FFFFFF" />
+				<Setter
+					Property="BorderThickness"
+					Value="0" />
+				<Setter
+					Property="Margin"
+					Value="1,0,1,0" />
+				<Setter
+					Property="Width"
+					Value="28" />
+				<Setter
+					Property="Height"
+					Value="27" />
+				<Setter
+					Property="UIElement.SnapsToDevicePixels"
+					Value="True" />
+				<Setter
+					Property="VerticalContentAlignment"
+					Value="Center" />
+				<Setter
+					Property="HorizontalContentAlignment"
+					Value="Center" />
+				<Setter
+					Property="Template">
+					<Setter.Value>
+						<ControlTemplate
+							TargetType="{x:Type CheckBox}">
+							<Image
+								Name="PART_IMAGE"
+								Height="{TemplateBinding Height}"
+								Width="{TemplateBinding Width}"
+								SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+								Source="{StaticResource StarUnChecked}" />
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style
+				TargetType="{x:Type CheckBox}"
+				x:Key="StarCheckBoxStyleChecked">
+				<Setter
+					Property="Background"
+					Value="#00FFFFFF" />
+				<Setter
+					Property="BorderThickness"
+					Value="0" />
+				<Setter
+					Property="Margin"
+					Value="1,0,1,0" />
+				<Setter
+					Property="Width"
+					Value="28" />
+				<Setter
+					Property="Height"
+					Value="27" />
+				<Setter
+					Property="UIElement.SnapsToDevicePixels"
+					Value="True" />
+				<Setter
+					Property="VerticalContentAlignment"
+					Value="Center" />
+				<Setter
+					Property="HorizontalContentAlignment"
+					Value="Center" />
+				<Setter
+					Property="Template">
+					<Setter.Value>
+						<ControlTemplate
+							TargetType="{x:Type CheckBox}">
+							<Image
+								Name="PART_IMAGE"
+								Height="{TemplateBinding Height}"
+								Width="{TemplateBinding Width}"
+								SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+								Source="{StaticResource StarChecked}" />
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid>
+		<Border
+			Opacity="0.2"
+			Background="#FF000000" />
+		<Grid
+			Name="dataArea"
+			Height="auto"
+			Width="250"
+			VerticalAlignment="Center">
+			<Grid.RowDefinitions>
+				<RowDefinition
+					Height="5" />
+				<RowDefinition
+					Height="*" />
+				<RowDefinition
+					Height="35" />
+			</Grid.RowDefinitions>
+			<Border
+				Grid.Row="0"
+				CornerRadius="5,5,0,0"
+				Background="#1a835a" />
+			<Grid
+				Row="1"
+				Background="#FFFFFF">
+				<Grid.RowDefinitions>
+					<RowDefinition
+						Height="16" />
+					<RowDefinition
+						Height="34" />
+					<RowDefinition
+						Height="15" />
+					<RowDefinition
+						Height="40" />
+					<RowDefinition
+						Height="13" />
+					<RowDefinition
+						Height="20" />
+					<RowDefinition
+						Height="13" />
+				</Grid.RowDefinitions>
+				<Grid
+					Row="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="10" />
+						<ColumnDefinition
+							Width="24" />
+						<ColumnDefinition
+							Width="8" />
+						<ColumnDefinition
+							Width="*" />
+					</Grid.ColumnDefinitions>
+					<Image
+						VerticalAlignment="Center"
+						Grid.Column="1"
+						Source="{Binding IcoPath}" />
+					<TextBlock
+						Grid.Column="3"
+						VerticalAlignment="Center"
+						TextTrimming="CharacterEllipsis"
+						Text="{Binding Title}"
+						ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}" />
+				</Grid>
+				<Grid
+					Row="3">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="24" />
+						<ColumnDefinition
+							Width="auto" />
+						<ColumnDefinition
+							Width="8" />
+						<ColumnDefinition
+							Width="*" />
+					</Grid.ColumnDefinitions>
+					<TextBlock
+						Grid.Column="1"
+						VerticalAlignment="Center"
+						Text="评分" />
+					<StackPanel
+						Name="panelScore"
+						Grid.Column="3"
+						Orientation="Horizontal"
+						IsEnabled="{Binding ScoreEnable}">
+						<CheckBox
+							Name="chBox1"
+							Content="1"
+							Style="{DynamicResource StarCheckBoxStyleUnChecked}"
+							MouseEnter="chBox_MouseEnter"
+							MouseLeave="chBox_MouseLeave" />
+						<CheckBox
+							Name="chBox2"
+							Content="2"
+							Style="{DynamicResource StarCheckBoxStyleUnChecked}"
+							MouseEnter="chBox_MouseEnter"
+							MouseLeave="chBox_MouseLeave" />
+						<CheckBox
+							Name="chBox3"
+							Content="3"
+							Style="{DynamicResource StarCheckBoxStyleUnChecked}"
+							MouseEnter="chBox_MouseEnter"
+							MouseLeave="chBox_MouseLeave" />
+						<CheckBox
+							Name="chBox4"
+							Content="4"
+							Style="{DynamicResource StarCheckBoxStyleUnChecked}"
+							MouseEnter="chBox_MouseEnter"
+							MouseLeave="chBox_MouseLeave" />
+						<CheckBox
+							Name="chBox5"
+							Content="5"
+							Style="{DynamicResource StarCheckBoxStyleUnChecked}"
+							MouseEnter="chBox_MouseEnter"
+							MouseLeave="chBox_MouseLeave" />
+					</StackPanel>
+				</Grid>
+				<TextBlock
+					Grid.Row="5"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					Foreground="#cccccc"
+					Text="点击星星就能打分，该打分完全是匿名滴" />
+			</Grid>
+			<Border
+				Grid.Row="3"
+				Background="#f9f9f9"
+				CornerRadius="0,0,5,5">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="*" />
+						<ColumnDefinition
+							Width="83" />
+						<ColumnDefinition
+							Width="20" />
+						<ColumnDefinition
+							Width="83" />
+						<ColumnDefinition
+							Width="*" />
+					</Grid.ColumnDefinitions>
+					<Button
+						Name="btnOK"
+						Grid.Column="1"
+						Content="确认"
+						Style="{StaticResource DefaultButtonStyle}"
+						Width="83"
+						Height="25"
+						IsEnabled="{Binding ScoreEnable}"
+						Click="btnOK_Click" />
+					<Button
+						Name="btnCancel"
+						Grid.Column="3"
+						Content="取消"
+						Style="{StaticResource DefaultButtonStyle}"
+						Width="83"
+						Height="25"
+						Click="btnCancel_Click" />
+				</Grid>
+			</Border>
+		</Grid>
+		<Border
+			Name="successArea"
+			Background="#FFFFFF"
+			CornerRadius="8"
+			Height="191"
+			Width="250"
+			VerticalAlignment="Center"
+			Visibility="{Binding ScoreSuccessVisible}">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition
+						Height="32" />
+					<RowDefinition
+						Height="*" />
+					<RowDefinition
+						Height="21" />
+					<RowDefinition
+						Height="30" />
+				</Grid.RowDefinitions>
+				<Image
+					Grid.Row="1"
+					Source="{StaticResource Success}"
+					SnapsToDevicePixels="True"
+					VerticalAlignment="Center"
+					Width="60"
+					Height="60" />
+				<TextBlock
+					Grid.Row="2"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					Foreground="#666666"
+					Text="评分成功！" />
+			</Grid>
+		</Border>
+	</Grid>
+</UserControl>

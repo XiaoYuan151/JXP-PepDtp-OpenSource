@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{399A4ED6-D0AF-4AC1-8322-0788FE8DC008}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>JXP.PepDtp</RootNamespace>
+    <AssemblyName>JXP.PepDtp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60DC8134-EBA5-43B8-BCC9-BB4BC16C2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>JXP.PepDtp.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Gma.System.MouseKeyHook">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\Gma.System.MouseKeyHook.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Cef">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Cef.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Configuration">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Controls">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Data">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.DataAnalytics">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.DataAnalytics.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.DragHelper">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.DragHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Enums">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.HttpProxy">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.HttpProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.LocalDB">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.LocalDB.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Logs">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Logs.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Models">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.NetBasisLib">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.NetBasisLib.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Networks">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Networks.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.OsInfo">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.OsInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Player">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Player.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Reader">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Reader.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Threading">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Utilities">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.WinAPI">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.WinAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Windows">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.WmTouchDevice">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.WmTouchDevice.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Windows.Shell">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="pep.Course">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\pep.Course.dll</HintPath>
+    </Reference>
+    <Reference Include="pep.Nobook">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\pep.Nobook.dll</HintPath>
+    </Reference>
+    <Reference Include="pep.sdk.books">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\pep.sdk.books.dll</HintPath>
+    </Reference>
+    <Reference Include="pep.sdk.models">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\pep.sdk.models.dll</HintPath>
+    </Reference>
+    <Reference Include="pep.sdk.reader">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\pep.sdk.reader.dll</HintPath>
+    </Reference>
+    <Reference Include="pep.sdk.utility">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\pep.sdk.utility.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Prism.Desktop.Net40">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\Prism.Desktop.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Xilium.CefGlue">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\Xilium.CefGlue.dll</HintPath>
+    </Reference>
+    <Reference Include="Xilium.CefGlue.WindowsForms">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\Xilium.CefGlue.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WpfAnimatedGif" />
+    <Reference Include="JXP.Resources" />
+    <Reference Include="JXP.WpfConverters" />
+    <Reference Include="Microsoft.Expression.Drawing" />
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="System.Windows.Interactivity" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IWshRuntimeLibrary\IWshShell.cs" />
+    <Compile Include="IWshRuntimeLibrary\IWshShell2.cs" />
+    <Compile Include="IWshRuntimeLibrary\IWshShell3.cs" />
+    <Compile Include="IWshRuntimeLibrary\IWshShortcut.cs" />
+    <Compile Include="IWshRuntimeLibrary\WshShell.cs" />
+    <Compile Include="JXP\PepData\ChaptersDataAccess.cs" />
+    <Compile Include="JXP\PepData\ConstantsDataAccess.cs" />
+    <Compile Include="JXP\PepData\ResourcesDataAccess.cs" />
+    <Compile Include="JXP\PepData\TextbooksDataAccess.cs" />
+    <Compile Include="JXP\PepDtp\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\AppStartContext.cs" />
+    <Compile Include="JXP\PepDtp\Common\AppConsts.cs" />
+    <Compile Include="JXP\PepDtp\Common\CertificateHelper.cs" />
+    <Compile Include="JXP\PepDtp\Common\DaemonServiceHelper.cs" />
+    <Compile Include="JXP\PepDtp\Common\PasswordBoxHelper.cs" />
+    <Compile Include="JXP\PepDtp\Common\ShortcutTool.cs" />
+    <Compile Include="JXP\PepDtp\Comparer\UserResourceComparer.cs" />
+    <Compile Include="JXP\PepDtp\Converters\CollectTextConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\DownloadBtnConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\EncryResLYVisibilityConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\EncryResVisibilityConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\FailVisibleConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\FileSizeConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ImageConvert.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ItemBackgroundConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\LyTextConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\MaxWidthConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\MyResForegroundConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResApprovalStatusColorMultiConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResApprovalStatusConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResApprovalStatusMultiConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResBoolToVisible.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResMulti3BoolToVisible.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResMultiBoolRevertToVisible.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResMultiBoolToVisible.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResMultiBoolToVisible1.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResPosTypeConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResScoreStarConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResScoreStarConverter1.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResTitleConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ResTitleForegroundConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\RevertBoolToVisible.cs" />
+    <Compile Include="JXP\PepDtp\Converters\RevertVisibilityConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ShowPageConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\ShowShareTimeConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\StateToVisibleConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\StringToToVisible.cs" />
+    <Compile Include="JXP\PepDtp\Converters\VisiblityToColorConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\XDConverter.cs" />
+    <Compile Include="JXP\PepDtp\Converters\XKConvertr.cs" />
+    <Compile Include="JXP\PepDtp\DataAccess\ApplyToolsDataAccess.cs" />
+    <Compile Include="JXP\PepDtp\DataStatistics\StatisticsHelper.cs" />
+    <Compile Include="JXP\PepDtp\DevToolsWebClient.cs" />
+    <Compile Include="JXP\PepDtp\Events\PepClassEventArgs.cs" />
+    <Compile Include="JXP\PepDtp\LoginFinish.cs" />
+    <Compile Include="JXP\PepDtp\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\PepClass\PepClassCallbackCommand.cs" />
+    <Compile Include="JXP\PepDtp\PepClass\PepClassParameter.cs" />
+    <Compile Include="JXP\PepDtp\PepClass\PepClassService.cs" />
+    <Compile Include="JXP\PepDtp\PepClass\View\SelectGroup7ChapterWin.xaml.cs">
+      <DependentUpon>SelectGroup7ChapterWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\PepClass\View\SelectGroupWin.xaml.cs">
+      <DependentUpon>SelectGroupWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\Properties\Resources.cs" />
+    <Compile Include="JXP\PepDtp\Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JXP\PepDtp\ViewModel\AppCenterViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\BookDataModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\DownloadParamter.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\GradeViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\LoginViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\MainMenuViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\ModifyPwdResultModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\ModifyPwdViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\MyHomeViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\MyResDataObjectProvider.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\MyResesViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\MyResSelectByWorkViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\NotifyReset.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\PageRadioModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\ReportViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\ResDataObjectProvider.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\ScoreViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\SelectGroupViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\SelectUserRes.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\SelectUserResJsonModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\SetPagingControl.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\SetPagingCount.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\ShareBookViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\SharedResDataObjectProvider.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\SharedResourceViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\ShareResViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\ShareTBResesViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\SubscibeBookViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\SystemConfigViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\VideoUploadResult.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\VideoUploadViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\XDViewModel.cs" />
+    <Compile Include="JXP\PepDtp\ViewModel\XKViewModel.cs" />
+    <Compile Include="JXP\PepDtp\View\AppCentertWindow.xaml.cs">
+      <DependentUpon>AppCentertWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\AppQRCodeWindow.xaml.cs">
+      <DependentUpon>AppQRCodeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\BindingPhone.cs" />
+    <Compile Include="JXP\PepDtp\View\BookTitleBar.xaml.cs">
+      <DependentUpon>BookTitleBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\CollectWindow.xaml.cs">
+      <DependentUpon>CollectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\CustomControl\InterImageButton.cs" />
+    <Compile Include="JXP\PepDtp\View\CustomControl\PhotoButton.cs" />
+    <Compile Include="JXP\PepDtp\View\CustomControl\PopupTopmostEx.cs" />
+    <Compile Include="JXP\PepDtp\View\CustomControl\TRadioButton.cs" />
+    <Compile Include="JXP\PepDtp\View\CustomControl\WatermarkTextBoxWithErrorInfo.cs" />
+    <Compile Include="JXP\PepDtp\View\CustomerWindow.xaml.cs">
+      <DependentUpon>CustomerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\CustomSelectFile.xaml.cs">
+      <DependentUpon>CustomSelectFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\DownloadResParamter.cs" />
+    <Compile Include="JXP\PepDtp\View\DownloadResWindow.xaml.cs">
+      <DependentUpon>DownloadResWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\ExitHandle.cs" />
+    <Compile Include="JXP\PepDtp\View\ExitTip.xaml.cs">
+      <DependentUpon>ExitTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\ExitWithoutOperationWindow.xaml.cs">
+      <DependentUpon>ExitWithoutOperationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\GroupInfoWindow.xaml.cs">
+      <DependentUpon>GroupInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\HideControl.cs" />
+    <Compile Include="JXP\PepDtp\View\InnerReaderControl\DataPagingUserControl.xaml.cs">
+      <DependentUpon>DataPagingUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\InnerReaderControl\KeyworldSearchUserControl.cs" />
+    <Compile Include="JXP\PepDtp\View\InnerReaderControl\PageIndexChannged.cs" />
+    <Compile Include="JXP\PepDtp\View\InnerReaderControl\ResScoreControl.xaml.cs">
+      <DependentUpon>ResScoreControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\LoginSuccess.cs" />
+    <Compile Include="JXP\PepDtp\View\LoginUserControl.cs" />
+    <Compile Include="JXP\PepDtp\View\MessageCenterWindow.xaml.cs">
+      <DependentUpon>MessageCenterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\MessageInfoModel.cs" />
+    <Compile Include="JXP\PepDtp\View\MessageInfoResult.cs" />
+    <Compile Include="JXP\PepDtp\View\MessageInfoWindow.xaml.cs">
+      <DependentUpon>MessageInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\ModifyPwdWindow.xaml.cs">
+      <DependentUpon>ModifyPwdWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\MyNews.cs" />
+    <Compile Include="JXP\PepDtp\View\MyResDelSelectWindow.xaml.cs">
+      <DependentUpon>MyResDelSelectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\MyResSelectByWorkWindow.xaml.cs">
+      <DependentUpon>MyResSelectByWorkWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\NotifyWebHomeWorkAddRes.cs" />
+    <Compile Include="JXP\PepDtp\View\PersonalCenterWindow.xaml.cs">
+      <DependentUpon>PersonalCenterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\PersonalData.xaml.cs">
+      <DependentUpon>PersonalData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\ResMarkWindow.xaml.cs">
+      <DependentUpon>ResMarkWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\ShareResWindow.xaml.cs">
+      <DependentUpon>ShareResWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\SystemConfigWindow.xaml.cs">
+      <DependentUpon>SystemConfigWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\TextBookInnerResWindow.xaml.cs">
+      <DependentUpon>TextBookInnerResWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\TextBookReader\OpenAppCenterWindow.cs" />
+    <Compile Include="JXP\PepDtp\View\TextBookReader\StartClass.cs" />
+    <Compile Include="JXP\PepDtp\View\TextBookReader\TextBookControllerControl.xaml.cs">
+      <DependentUpon>TextBookControllerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\TextBookReader\TextBookInnerOperator.xaml.cs">
+      <DependentUpon>TextBookInnerOperator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\TextBookReader\TextBookReader.cs" />
+    <Compile Include="JXP\PepDtp\View\TextBookReader\TextBookToolBar.xaml.cs">
+      <DependentUpon>TextBookToolBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\TutorialWindow.xaml.cs">
+      <DependentUpon>TutorialWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UpdateLoginData.cs" />
+    <Compile Include="JXP\PepDtp\View\UserControls\AppCenterControl.xaml.cs">
+      <DependentUpon>AppCenterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\CommunicationWaitingControl.xaml.cs">
+      <DependentUpon>CommunicationWaitingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\DigitalTextbookControl.xaml.cs">
+      <DependentUpon>DigitalTextbookControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\GetResultCount.cs" />
+    <Compile Include="JXP\PepDtp\View\UserControls\KeywordSearchControl.xaml.cs">
+      <DependentUpon>KeywordSearchControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\LockScreen.xaml.cs">
+      <DependentUpon>LockScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\MenuItemMouseLeftButtonDown.cs" />
+    <Compile Include="JXP\PepDtp\View\UserControls\MyHomeControl.xaml.cs">
+      <DependentUpon>MyHomeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\MyResControl.xaml.cs">
+      <DependentUpon>MyResControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\OpenShareBook.cs" />
+    <Compile Include="JXP\PepDtp\View\UserControls\ResManageControl.xaml.cs">
+      <DependentUpon>ResManageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\SchoolResControl.xaml.cs">
+      <DependentUpon>SchoolResControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\SettingControl.xaml.cs">
+      <DependentUpon>SettingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\ShareBookControl.xaml.cs">
+      <DependentUpon>ShareBookControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\ShareBookResesControl.xaml.cs">
+      <DependentUpon>ShareBookResesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\TeacherTitle.xaml.cs">
+      <DependentUpon>TeacherTitle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\UserControls\userInfo.cs" />
+    <Compile Include="JXP\PepDtp\View\UserControls\UserInfoResult.cs" />
+    <Compile Include="JXP\PepDtp\View\ValueChangedEventArgs.cs" />
+    <Compile Include="JXP\PepDtp\View\VideoIntroduceWindow.xaml.cs">
+      <DependentUpon>VideoIntroduceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\VideoUploadResultWindow.xaml.cs">
+      <DependentUpon>VideoUploadResultWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\VideoUploadWindow.xaml.cs">
+      <DependentUpon>VideoUploadWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\View\WebResPreviewWin.xaml.cs">
+      <DependentUpon>WebResPreviewWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\PepDtp\Web\CSharpJSEvents.cs" />
+    <Compile Include="JXP\PepDtp\Web\DevToolsWebClient.cs" />
+    <Compile Include="JXP\PepDtp\Web\TeacherRenderProcessHandler.cs" />
+    <Compile Include="JXP\PepDtp\Web\UrlNavigateError.cs" />
+    <Compile Include="JXP\PepDtp\Web\WebBrowser.xaml.cs">
+      <DependentUpon>WebBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JXP\Utilities\EncryptorHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JXP\PepDtp\Properties\Resources.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JXP.SpeechEvaluator\JXP.SpeechEvaluator.csproj">
+      <Project>{399a4ed6-d0af-4ac1-8322-0788fe8dc00a}</Project>
+      <Name>JXP.SpeechEvaluator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="JXP\PepDtp\Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="JXP\PepDtp\App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="JXP\PepDtp\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\PepClass\View\SelectGroup7ChapterWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\PepClass\View\SelectGroupWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\AppCentertWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\AppQRCodeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\BookTitleBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\CollectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\CustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\CustomSelectFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\DownloadResWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\ExitTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\ExitWithoutOperationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\GroupInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\InnerReaderControl\DataPagingUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\InnerReaderControl\ResScoreControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\MessageCenterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\MessageInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\ModifyPwdWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\MyResDelSelectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\MyResSelectByWorkWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\PersonalCenterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\PersonalData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\ResMarkWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\ShareResWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\SystemConfigWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\TextBookInnerResWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\TextBookReader\TextBookControllerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\TextBookReader\TextBookInnerOperator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\TextBookReader\TextBookToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\TutorialWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\AppCenterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\CommunicationWaitingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\DigitalTextbookControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\KeywordSearchControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\LockScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\MyHomeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\MyResControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\ResManageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\SchoolResControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\SettingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\ShareBookControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\ShareBookResesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\UserControls\TeacherTitle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\VideoIntroduceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\VideoUploadResultWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\VideoUploadWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\View\WebResPreviewWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JXP\PepDtp\Web\WebBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InnerReaderControl\keywordsearchusercontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\loginwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\mynews.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DataAccess\sqliteorm.txt" />
+    <Resource Include="dataaccess\upgradesql\taskresult1_2_x.sql" />
+    <Resource Include="dataaccess\upgradesql\userresources1_2_x.sql" />
+    <Resource Include="logo.ico" />
+    <Resource Include="resources\images\all_share.png" />
+    <Resource Include="resources\images\app_qrcode.png" />
+    <Resource Include="resources\images\arrow_left.png" />
+    <Resource Include="resources\images\arrow_left_hover.png" />
+    <Resource Include="resources\images\arrow_right.png" />
+    <Resource Include="resources\images\arrow_right_hover.png" />
+    <Resource Include="resources\images\audioback.png" />
+    <Resource Include="resources\images\audio_background.png" />
+    <Resource Include="resources\images\bk_bg.png" />
+    <Resource Include="resources\images\bk_grid_bg.png" />
+    <Resource Include="resources\images\book.png" />
+    <Resource Include="resources\images\bookmark_mouse_over.png" />
+    <Resource Include="resources\images\bookmark_normal.png" />
+    <Resource Include="resources\images\book_menu.png" />
+    <Resource Include="resources\images\book_menu_hover.png" />
+    <Resource Include="resources\images\book_shadow.png" />
+    <Resource Include="resources\images\cancel.png" />
+    <Resource Include="resources\images\cancel2.png" />
+    <Resource Include="resources\images\capture_mouse_over.png" />
+    <Resource Include="resources\images\capture_normal.png" />
+    <Resource Include="resources\images\close.png" />
+    <Resource Include="resources\images\close_big_hover.png" />
+    <Resource Include="resources\images\close_big_normal.png" />
+    <Resource Include="resources\images\close_gray.png" />
+    <Resource Include="resources\images\close_gray_1.png" />
+    <Resource Include="resources\images\close_gray_hover.png" />
+    <Resource Include="resources\images\close_h5.png" />
+    <Resource Include="resources\images\close_h5_hover.png" />
+    <Resource Include="resources\images\close_hover.png" />
+    <Resource Include="resources\images\close_ircular.png" />
+    <Resource Include="resources\images\close_ircular_hover.png" />
+    <Resource Include="resources\images\close_pic.png" />
+    <Resource Include="resources\images\close_pic_hover.png" />
+    <Resource Include="resources\images\close_white.png" />
+    <Resource Include="resources\images\continue.png" />
+    <Resource Include="resources\images\createcourse.png" />
+    <Resource Include="resources\images\createcourse1.png" />
+    <Resource Include="resources\images\curve.png" />
+    <Resource Include="resources\images\curve_select.png" />
+    <Resource Include="resources\images\customer_service.png" />
+    <Resource Include="resources\images\customer_service2.png" />
+    <Resource Include="resources\images\customer_service3.png" />
+    <Resource Include="resources\images\customer_service_back.png" />
+    <Resource Include="resources\images\default_photo.png" />
+    <Resource Include="resources\images\del.png" />
+    <Resource Include="resources\images\del_hover.png" />
+    <Resource Include="resources\images\double_page.png" />
+    <Resource Include="resources\images\double_page_hover.png" />
+    <Resource Include="resources\images\download.png" />
+    <Resource Include="resources\images\download_tray.png" />
+    <Resource Include="resources\images\download_tray_hover.png" />
+    <Resource Include="resources\images\edit.png" />
+    <Resource Include="resources\images\edit_hover.png" />
+    <Resource Include="resources\images\ellipse.png" />
+    <Resource Include="resources\images\enlarge.png" />
+    <Resource Include="resources\images\eraser_mouse_over.png" />
+    <Resource Include="resources\images\eraser_normal.png" />
+    <Resource Include="resources\images\finish.png" />
+    <Resource Include="resources\images\first_page.png" />
+    <Resource Include="resources\images\first_page_hover.png" />
+    <Resource Include="resources\images\full_screen.png" />
+    <Resource Include="resources\images\full_screen_hover.png" />
+    <Resource Include="resources\images\go_back.png" />
+    <Resource Include="resources\images\go_back_hover.png" />
+    <Resource Include="resources\images\handsup.png" />
+    <Resource Include="resources\images\hide_later.png" />
+    <Resource Include="resources\images\highlight_mouse_over.png" />
+    <Resource Include="resources\images\highlight_normal.png" />
+    <Resource Include="resources\images\home_add_book.png" />
+    <Resource Include="resources\images\home_no_book.jpg" />
+    <Resource Include="resources\images\icon_tubiao1.png" />
+    <Resource Include="resources\images\icon_type.png" />
+    <Resource Include="resources\images\kxing_03.png" />
+    <Resource Include="resources\images\last_page.png" />
+    <Resource Include="resources\images\last_page_hover.png" />
+    <Resource Include="resources\images\leftrotate.png" />
+    <Resource Include="resources\images\leftrotate_hover.png" />
+    <Resource Include="resources\images\light.png" />
+    <Resource Include="resources\images\light_close.png" />
+    <Resource Include="resources\images\light_close_hover.png" />
+    <Resource Include="resources\images\light_open.png" />
+    <Resource Include="resources\images\light_open_hover.png" />
+    <Resource Include="resources\images\line.png" />
+    <Resource Include="resources\images\line_select.png" />
+    <Resource Include="resources\images\list_mouse_over.png" />
+    <Resource Include="resources\images\list_normal.png" />
+    <Resource Include="resources\images\loading.gif" />
+    <Resource Include="resources\images\local_setting.png" />
+    <Resource Include="resources\images\local_setting_hover.png" />
+    <Resource Include="resources\images\lock.png" />
+    <Resource Include="resources\images\login_background.png" />
+    <Resource Include="resources\images\login_logo.png" />
+    <Resource Include="resources\images\login_title_background.png" />
+    <Resource Include="resources\images\logo.ico" />
+    <Resource Include="resources\images\logo.png" />
+    <Resource Include="resources\images\maximized.png" />
+    <Resource Include="resources\images\maximized_hover.png" />
+    <Resource Include="resources\images\max_window.png" />
+    <Resource Include="resources\images\max_window_hover.png" />
+    <Resource Include="resources\images\menu_bg.png" />
+    <Resource Include="resources\images\minimized.png" />
+    <Resource Include="resources\images\minimized_hover.png" />
+    <Resource Include="resources\images\mute_volume.png" />
+    <Resource Include="resources\images\mute_volume_hover.png" />
+    <Resource Include="resources\images\my_central.png" />
+    <Resource Include="resources\images\my_central_hover.png" />
+    <Resource Include="resources\images\newres.png" />
+    <Resource Include="resources\images\new_resource.png" />
+    <Resource Include="resources\images\new_resource_hover.png" />
+    <Resource Include="resources\images\next_page.png" />
+    <Resource Include="resources\images\next_page_hover.png" />
+    <Resource Include="resources\images\next_page_num.png" />
+    <Resource Include="resources\images\next_page_num_hover.png" />
+    <Resource Include="resources\images\next_pic.png" />
+    <Resource Include="resources\images\next_pic_hover.png" />
+    <Resource Include="resources\images\normal_screen.png" />
+    <Resource Include="resources\images\normal_screen_hover.png" />
+    <Resource Include="resources\images\no_course.png" />
+    <Resource Include="resources\images\pause.png" />
+    <Resource Include="resources\images\pause_hover.png" />
+    <Resource Include="resources\images\pencil_mouse_over.png" />
+    <Resource Include="resources\images\pencil_normal.png" />
+    <Resource Include="resources\images\personal.png" />
+    <Resource Include="resources\images\phone.png" />
+    <Resource Include="resources\images\pingfen.png" />
+    <Resource Include="resources\images\play.png" />
+    <Resource Include="resources\images\play_hover.png" />
+    <Resource Include="resources\images\popinfo3.png" />
+    <Resource Include="resources\images\popupbg.png" />
+    <Resource Include="resources\images\power.png" />
+    <Resource Include="resources\images\prev_pic.png" />
+    <Resource Include="resources\images\prev_pic_hover.png" />
+    <Resource Include="resources\images\prev_step.png" />
+    <Resource Include="resources\images\pre_page.png" />
+    <Resource Include="resources\images\pre_page_hover.png" />
+    <Resource Include="resources\images\pushpin_mouse_over.png" />
+    <Resource Include="resources\images\pushpin_normal.png" />
+    <Resource Include="resources\images\qr_confrim.png" />
+    <Resource Include="resources\images\qr_error.png" />
+    <Resource Include="resources\images\ratio.png" />
+    <Resource Include="resources\images\ratio_hover.png" />
+    <Resource Include="resources\images\refresh.png" />
+    <Resource Include="resources\images\refresh1.png" />
+    <Resource Include="resources\images\refresh_hover.png" />
+    <Resource Include="resources\images\res1.png" />
+    <Resource Include="resources\images\res2.png" />
+    <Resource Include="resources\images\res3.png" />
+    <Resource Include="resources\images\res4.png" />
+    <Resource Include="resources\images\res5.png" />
+    <Resource Include="resources\images\res6.png" />
+    <Resource Include="resources\images\res7.png" />
+    <Resource Include="resources\images\resclose.png" />
+    <Resource Include="resources\images\right.png" />
+    <Resource Include="resources\images\rightrotate.png" />
+    <Resource Include="resources\images\rightrotate_hover.png" />
+    <Resource Include="resources\images\rubbish_mouse_over.png" />
+    <Resource Include="resources\images\rubbish_normal.png" />
+    <Resource Include="resources\images\scan.png" />
+    <Resource Include="resources\images\school_share.png" />
+    <Resource Include="resources\images\search.png" />
+    <Resource Include="resources\images\search_hover.png" />
+    <Resource Include="resources\images\setbookpop.png" />
+    <Resource Include="resources\images\share.png" />
+    <Resource Include="resources\images\share_hover.png" />
+    <Resource Include="resources\images\single_page.png" />
+    <Resource Include="resources\images\single_page_hover.png" />
+    <Resource Include="resources\images\skip.png" />
+    <Resource Include="resources\images\sk_bg.png" />
+    <Resource Include="resources\images\sk_bg_enable.png" />
+    <Resource Include="resources\images\spotlight_mouse_over.png" />
+    <Resource Include="resources\images\spotlight_normal.png" />
+    <Resource Include="resources\images\start.png" />
+    <Resource Include="resources\images\success.png" />
+    <Resource Include="resources\images\syncpop.png" />
+    <Resource Include="resources\images\thumb_error.png" />
+    <Resource Include="resources\images\thumb_loading.png" />
+    <Resource Include="resources\images\tool.png" />
+    <Resource Include="resources\images\tool_hover.png" />
+    <Resource Include="resources\images\triangle.png" />
+    <Resource Include="resources\images\tutorials_01.jpg" />
+    <Resource Include="resources\images\tutorials_02.jpg" />
+    <Resource Include="resources\images\tutorials_03.jpg" />
+    <Resource Include="resources\images\tutorials_04.jpg" />
+    <Resource Include="resources\images\tutorials_05.jpg" />
+    <Resource Include="resources\images\tutorials_06.jpg" />
+    <Resource Include="resources\images\upload.png" />
+    <Resource Include="resources\images\user_default_photo.png" />
+    <Resource Include="resources\images\volume.png" />
+    <Resource Include="resources\images\volume_hover.png" />
+    <Resource Include="resources\images\xing_03.png" />
+    <Resource Include="resources\images\zoom_in.png" />
+    <Resource Include="resources\images\zoom_in_hover.png" />
+    <Resource Include="resources\images\zoom_out.png" />
+    <Resource Include="resources\images\zoom_out_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="splashscreen.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

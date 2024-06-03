@@ -1,0 +1,256 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.TextBookReader.TextBookToolBar" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:uc="clr-namespace:JXP.Controls;assembly=JXP.Controls" xmlns:uc1="clr-namespace:JXP.PepDtp.View.UserControls" xmlns:ucbtn="clr-namespace:JXP.Controls.Buttons;assembly=JXP.Controls" xmlns:uctbtn="clr-namespace:JXP.Controls.ToggleButtons;assembly=JXP.Controls"
+	Name="root"
+	HorizontalAlignment="Stretch"
+	Background="#00FFFFFF"
+	Height="58" xmlns:textbookreader="clr-namespace:JXP.PepDtp.View.TextBookReader">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<Style
+				TargetType="{x:Type Border}"
+				x:Key="{x:Type Border}">
+				<Setter
+					Property="HorizontalAlignment"
+					Value="Stretch" />
+				<Setter
+					Property="VerticalAlignment"
+					Value="Stretch" />
+				<Setter
+					Property="Background"
+					Value="#7F7F7F" />
+			</Style>
+			<Style
+				TargetType="{x:Type Image}"
+				x:Key="{x:Type Image}">
+				<Setter
+					Property="HorizontalAlignment"
+					Value="Center" />
+				<Setter
+					Property="VerticalAlignment"
+					Value="Center" />
+			</Style>
+			<Style
+				TargetType="{x:Type Line}"
+				x:Key="{x:Type Line}">
+				<Setter
+					Property="Line.X1"
+					Value="0" />
+				<Setter
+					Property="Line.X2"
+					Value="0" />
+				<Setter
+					Property="Line.Y1"
+					Value="8" />
+				<Setter
+					Property="Line.Y2"
+					Value="28" />
+				<Setter
+					Property="Stroke"
+					Value="#847669" />
+			</Style>
+			<Style
+				TargetType="{x:Type ucbtn:IconVerticalTextButton}"
+				x:Key="vertialBtn">
+				<Setter
+					Property="UIElement.Opacity"
+					Value="0.7" />
+				<Setter
+					Property="ucbtn:IconVerticalTextButton.NormalForegroundColor"
+					Value="#ffffff" />
+				<Setter
+					Property="ucbtn:IconVerticalTextButton.MouseOverForegroundColor"
+					Value="#ffffff" />
+				<Setter
+					Property="ucbtn:IconVerticalTextButton.MouseOverBackgroundColor"
+					Value="Transparent" />
+				<Setter
+					Property="Width"
+					Value="70" />
+				<Style.Triggers>
+					<Trigger
+						Property="UIElement.IsMouseOver"
+						Value="True">
+						<Setter
+							Property="UIElement.Opacity"
+							Value="1" />
+					</Trigger>
+					<Trigger
+						Property="IsPressed"
+						Value="True">
+						<Setter
+							Property="UIElement.Opacity"
+							Value="1" />
+					</Trigger>
+				</Style.Triggers>
+			</Style>
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid>
+		<Grid>
+			<Border
+				CornerRadius="5"
+				Background="#7F7F7F"
+				HorizontalAlignment="Center">
+				<StackPanel
+					Orientation="Horizontal">
+					<ucbtn:IconVerticalTextButton
+						Name="imgBtnSwitch"
+						Style="{DynamicResource vertialBtn}"
+						IconText=""
+						Content="开关"
+						Padding="0,5,0,0"
+						Click="imgBtnSwitch_Click" />
+					<ucbtn:IconVerticalTextButton
+						Name="imgBtnSync"
+						Style="{DynamicResource vertialBtn}"
+						IconText=""
+						Content="同步"
+						Padding="0,5,0,0"
+						Click="imgBtnSync_Click" />
+					<ucbtn:IconVerticalTextButton
+						Name="imgBtnSyncList"
+						Style="{DynamicResource vertialBtn}"
+						IconTextFontSize="30"
+						IconText=""
+						Content="下载"
+						Padding="0,5,0,0"
+						Click="imgBtnSyncList_Click" />
+					<ucbtn:IconVerticalTextButton
+						Name="imgBtnNewResource"
+						Style="{DynamicResource vertialBtn}"
+						IconTextFontSize="38"
+						IconText=""
+						Content="资源新建"
+						Padding="0,2,0,0"
+						Margin="0,-2,0,0"
+						Click="imgBtnNewResource_Click" />
+					<ucbtn:IconVerticalTextButton
+						Name="imgBtnZoominPop"
+						Style="{DynamicResource vertialBtn}"
+						IconText=""
+						Content="放大"
+						Padding="0,5,0,0"
+						Click="imgBtnZoominPop_Click" />
+					<ucbtn:IconVerticalTextButton
+						Name="imgBtnRervert"
+						Style="{DynamicResource vertialBtn}"
+						IconText=""
+						Content="还原"
+						Padding="0,5,0,0"
+						Click="imgBtnRervert_Click" />
+					<ucbtn:IconVerticalTextButton
+						Name="imgBtnDoublePage"
+						Style="{DynamicResource vertialBtn}"
+						IconText=""
+						Content="单双页"
+						Padding="0,5,0,0"
+						Click="imgBtnDoublePage_Click" />
+					<ucbtn:IconVerticalTextButton
+						Name="imgBtnMyCenter"
+						Style="{DynamicResource vertialBtn}"
+						IconText=""
+						Content="资源"
+						Padding="0,5,0,0"
+						Width="60"
+						Click="imgBtnMyCenter_Click" />
+					<ucbtn:IconVerticalTextButton
+						Name="imgBtnBookMenu"
+						Style="{DynamicResource vertialBtn}"
+						Margin="0,-6 ,0,0"
+						IconTextFontSize="32"
+						IconText=""
+						Content="目录"
+						Padding="0,9,0,0"
+						Click="imgBtnBookMenu_Click" />
+				</StackPanel>
+			</Border>
+			<Popup
+				Name="switchPopup"
+				Placement="Top"
+				PopupAnimation="Fade"
+				StaysOpen="False"
+				HorizontalOffset="0"
+				AllowsTransparency="True"
+				VerticalOffset="3"
+				PlacementTarget="{Binding ElementName=imgBtnSwitch}"
+				Closed="switchPopup_Closed">
+				<Border
+					Background="#7F7F7F"
+					Width="70"
+					CornerRadius="5,5,0,0">
+					<StackPanel>
+						<CheckBox
+							Name="cbHotZone"
+							Style="{DynamicResource SliderCheckBox1}"
+							Content="热区开关"
+							Foreground="#ffffff"
+							Padding="0,3,0,0"
+							Margin="0,5,0,0"
+							Click="imgBtnHotSwitch_Click" />
+						<CheckBox
+							Name="cbRes"
+							Style="{DynamicResource SliderCheckBox1}"
+							Content="资源开关"
+							Foreground="#ffffff"
+							Padding="0,3,0,0"
+							Margin="0,5,0,5"
+							IsChecked="True"
+							Click="imgBtnResSwitch_Click" />
+					</StackPanel>
+				</Border>
+			</Popup>
+			<Popup
+				Name="bookZoomPop"
+				Placement="Top"
+				PopupAnimation="Fade"
+				StaysOpen="False"
+				AllowsTransparency="True"
+				VerticalOffset="5"
+				HorizontalOffset="-100"
+				Width="400"
+				Height="50"
+				PlacementTarget="{Binding ElementName=imgBtnZoominPop}">
+				<Border
+					Background="#7F7F7F"
+					CornerRadius="5,5,5,5">
+					<StackPanel
+						Orientation="Horizontal"
+						HorizontalAlignment="Center">
+						<ucbtn:IconVerticalTextButton
+							Name="imgBtnZoomout"
+							Style="{DynamicResource vertialBtn}"
+							IconText=""
+							ToolTip="缩小"
+							Click="imgBtnZoomout_Click" />
+						<Slider
+							Name="zoomSlider"
+							Width="200"
+							Style="{StaticResource SliderCustomStyle}"
+							VerticalAlignment="Center"
+							Cursor="Hand"
+							IsSnapToTickEnabled="False"
+							IsMoveToPointEnabled="True"
+							TickFrequency="0.25"
+							Minimum="{Binding ZoomMinimum, ElementName=root}"
+							Maximum="{Binding ZoomMaximum, ElementName=root}"
+							Value="{Binding ZoomValue, ElementName=root}"
+							ValueChanged="zoomSlider_ValueChanged" />
+						<ucbtn:IconVerticalTextButton
+							Name="imgBtnZoomin"
+							Style="{DynamicResource vertialBtn}"
+							IconText=""
+							ToolTip="放大"
+							Click="imgBtnZoomin_Click" />
+						<ucbtn:IconVerticalTextButton
+							Name="imgBtnZoomClose"
+							Style="{DynamicResource vertialBtn}"
+							Margin="-10,0,0,0"
+							IconText=""
+							ToolTip="关闭"
+							Click="imgBtnZoomClose_Click" />
+					</StackPanel>
+				</Border>
+			</Popup>
+		</Grid>
+	</Grid>
+</UserControl>

@@ -1,0 +1,62 @@
+<Window
+	x:Class="JXP.SpeechEvaluator.SpeechEvaluatorWin" xmlns:View="clr-namespace:JXP.SpeechEvaluator.View" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:JXP.SpeechEvaluator"
+	WindowStartupLocation="CenterScreen"
+	UseLayoutRounding="True"
+	AllowsTransparency="True"
+	WindowStyle="None"
+	Background="#00FFFFFF"
+	BorderThickness="20"
+	Title="语音测评"
+	Height="700"
+	Width="940">
+	<UIElement.Effect>
+		<DropShadowEffect
+			BlurRadius="10"
+			Direction="-90"
+			RenderingBias="Performance"
+			ShadowDepth="3"
+			Color="LightGray" />
+	</UIElement.Effect>
+	<Grid>
+		<Grid
+			Name="contentArea">
+			<Grid.RowDefinitions>
+				<RowDefinition
+					Height="auto" />
+				<RowDefinition
+					Height="*" />
+			</Grid.RowDefinitions>
+			<Grid
+				Name="pageRoot"
+				Row="1">
+				<View:SelectionPage
+					Name="selectionPage"
+					Visibility="Collapsed" />
+				<View:GenDuPage
+					Name="genduPage"
+					Visibility="Collapsed" />
+				<View:ResultPage
+					Name="resultPage"
+					Visibility="Collapsed" />
+				<View:ZiDuPage
+					Name="ziduPage"
+					Visibility="Collapsed" />
+				<View:DuiHuaPage
+					Name="duihuaPage"
+					Visibility="Collapsed" />
+				<View:BeiSongTipsPage
+					Name="beisongtipsPage"
+					Visibility="Collapsed" />
+				<View:BeiSongNoTipsPage
+					Name="beisongNotipsPage"
+					Visibility="Collapsed" />
+				<View:IndexPage
+					Name="indexPage"
+					Visibility="Collapsed" />
+				<View:IndexPage2
+					Name="indexPage2"
+					Visibility="Collapsed" />
+			</Grid>
+		</Grid>
+	</Grid>
+</Window>

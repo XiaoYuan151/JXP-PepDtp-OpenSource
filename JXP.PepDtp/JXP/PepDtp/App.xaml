@@ -1,0 +1,23 @@
+<Application
+	x:Class="JXP.PepDtp.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Web="clr-namespace:JXP.PepDtp.Web" xmlns:pepdtp="clr-namespace:JXP.PepDtp">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary
+					Source="pack://application:,,,/JXP.Resources;component/GXStyles/Index.xaml" />
+				<ResourceDictionary
+					Source="pack://application:,,,/pep.Nobook;component/Styles/NobookStyle.xaml" />
+				<ResourceDictionary
+					Source="pack://application:,,,/JXP.LedDigital;component/Themes/Generic.xaml" />
+				<ResourceDictionary
+					Source="pack://application:,,,/JXP.SpeechEvaluator;component/Resources/Styles/EvaluatorStyle.xaml" />
+				<ResourceDictionary
+					Source="pack://application:,,,/pep.sdk.reader;component/Styles/Index.xaml" />
+				<ResourceDictionary
+					Source="pack://application:,,,/JXP.Controls;component/Styles/Index.xaml" />
+				<ResourceDictionary
+					Source="pack://application:,,,/JXP.Windows;component/BlackBoardIsGreen/Styles/Index.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

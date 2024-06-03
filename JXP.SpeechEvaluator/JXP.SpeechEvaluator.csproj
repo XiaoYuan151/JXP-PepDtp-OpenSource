@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{399A4ED6-D0AF-4AC1-8322-0788FE8DC00A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>JXP.SpeechEvaluator</RootNamespace>
+    <AssemblyName>JXP.SpeechEvaluator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60DC8134-EBA5-43B8-BCC9-BB4BC16C2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>JXP.SpeechEvaluator.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JXP.Logs">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Logs.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Threading">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="JXP.Windows">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\JXP.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Prism.Desktop.Net40">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\Prism.Desktop.Net40.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\..\..\..\..\..\jxp\PepDtp_gx\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="JXP.Controls" />
+    <Reference Include="mscorlib" />
+    <Reference Include="WpfAnimatedGif" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EvaluatorStartParam.cs" />
+    <Compile Include="Model\BookItem.cs" />
+    <Compile Include="Model\Http\BookData.cs" />
+    <Compile Include="Model\Http\ChapterData.cs" />
+    <Compile Include="Model\Http\IndexJson.cs" />
+    <Compile Include="Model\Http\IndexList.cs" />
+    <Compile Include="Model\Http\IndexList2.cs" />
+    <Compile Include="Model\Http\VoiceRes.cs" />
+    <Compile Include="Model\Paragraph.cs" />
+    <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\RoleAlignment.cs" />
+    <Compile Include="Model\Sentence.cs" />
+    <Compile Include="Model\Speech.cs" />
+    <Compile Include="Model\SpeechTestType.cs" />
+    <Compile Include="Model\Xunfei\Phone.cs" />
+    <Compile Include="Model\Xunfei\ReadChapter.cs" />
+    <Compile Include="Model\Xunfei\ReadSentence.cs" />
+    <Compile Include="Model\Xunfei\RecPaper.cs" />
+    <Compile Include="Model\Xunfei\Syll.cs" />
+    <Compile Include="Model\Xunfei\Word.cs" />
+    <Compile Include="Model\Xunfei\XmlResult.cs" />
+    <Compile Include="Model\Xunfei\XSentence.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SpeechEvaluatorWin.xaml.cs">
+      <DependentUpon>SpeechEvaluatorWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ActionUtility.cs" />
+    <Compile Include="Utility\AudioPlayer.cs" />
+    <Compile Include="Utility\Constants.cs" />
+    <Compile Include="Utility\Download\DownloadManager.cs" />
+    <Compile Include="Utility\EvaluatorContext.cs" />
+    <Compile Include="Utility\LimitedPriorityQueue.cs" />
+    <Compile Include="Utility\PaginatedObservableCollection.cs" />
+    <Compile Include="Utility\UrlUtility.cs" />
+    <Compile Include="Utility\XfSpeechEngine\AudioSample.cs" />
+    <Compile Include="Utility\XfSpeechEngine\CustomWaveInEvent.cs" />
+    <Compile Include="Utility\XfSpeechEngine\DataSample.cs" />
+    <Compile Include="Utility\XfSpeechEngine\EpStatus.cs" />
+    <Compile Include="Utility\XfSpeechEngine\ErrorCode.cs" />
+    <Compile Include="Utility\XfSpeechEngine\ISEDLL.cs" />
+    <Compile Include="Utility\XfSpeechEngine\ISEResultReader.cs" />
+    <Compile Include="Utility\XfSpeechEngine\ISEServerAgent.cs" />
+    <Compile Include="Utility\XfSpeechEngine\RecStatus.cs" />
+    <Compile Include="Utility\XfSpeechEngine\UnmanagedManager.cs" />
+    <Compile Include="Utility\XfSpeechEngine\XfEngineHelper.cs" />
+    <Compile Include="Utility\XfSpeechEngine\XfEngineHelper2.cs" />
+    <Compile Include="Utility\XfSpeechEngine\XfEngineSession.cs" />
+    <Compile Include="Utility\XfSpeechEngine\XfParas\XfEngineCompletedEventArgs.cs" />
+    <Compile Include="Utility\XfSpeechEngine\XfParas\XfEngineResultFlag.cs" />
+    <Compile Include="Utility\XfSpeechEngine\XfParas\XfEngineSessionParas.cs" />
+    <Compile Include="Utility\XfSpeechEngine\XfParas\XfEngineSettings.cs" />
+    <Compile Include="ViewModel\BeiSongPageVM.cs" />
+    <Compile Include="ViewModel\DuiHuaPageVM.cs" />
+    <Compile Include="ViewModel\GenDuZiDuPageVM.cs" />
+    <Compile Include="ViewModel\IndexPageVM.cs" />
+    <Compile Include="ViewModel\IndexPageVM2.cs" />
+    <Compile Include="ViewModel\ResultPageVM.cs" />
+    <Compile Include="ViewModel\SelectionPageItemVM.cs" />
+    <Compile Include="ViewModel\SelectionPageVM.cs" />
+    <Compile Include="View\Behavior\LineHeightBehavior.cs" />
+    <Compile Include="View\Behavior\PreventDeSelectLastItemBehavior.cs" />
+    <Compile Include="View\Behavior\ScrollIntoViewBehavior.cs" />
+    <Compile Include="View\BeiSongNoTipsPage.xaml.cs">
+      <DependentUpon>BeiSongNoTipsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BeiSongTipsPage.xaml.cs">
+      <DependentUpon>BeiSongTipsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Converter\ColonVisibilityConverter.cs" />
+    <Compile Include="View\Converter\ImageConverter.cs" />
+    <Compile Include="View\CustomControl\EvaluatorButton.cs" />
+    <Compile Include="View\CustomControl\EvaluatorButtonState.cs" />
+    <Compile Include="View\CustomControl\EvaluatorRichTextBox.cs" />
+    <Compile Include="View\DuiHuaPage.xaml.cs">
+      <DependentUpon>DuiHuaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GenDuPage.xaml.cs">
+      <DependentUpon>GenDuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IndexPage.xaml.cs">
+      <DependentUpon>IndexPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IndexPage2.xaml.cs">
+      <DependentUpon>IndexPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Navigation\INavigationPage.cs" />
+    <Compile Include="View\Navigation\NavigationDirection.cs" />
+    <Compile Include="View\Navigation\NavigationParas.cs" />
+    <Compile Include="View\Navigation\NaviParas\BeiSongPageParas.cs" />
+    <Compile Include="View\Navigation\NaviParas\DuiHuaPageParas.cs" />
+    <Compile Include="View\Navigation\NaviParas\GenDuPageParas.cs" />
+    <Compile Include="View\Navigation\NaviParas\IndexPageParas.cs" />
+    <Compile Include="View\Navigation\NaviParas\ResultPageParas.cs" />
+    <Compile Include="View\Navigation\NaviParas\SelectionPageParas.cs" />
+    <Compile Include="View\Navigation\NaviParas\SelectionPageType.cs" />
+    <Compile Include="View\Navigation\NaviParas\ZiDuPageParas.cs" />
+    <Compile Include="View\Navigation\PageNavigation.cs" />
+    <Compile Include="View\Navigation\PageType.cs" />
+    <Compile Include="View\PageTitle.xaml.cs">
+      <DependentUpon>PageTitle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ResultPage.xaml.cs">
+      <DependentUpon>ResultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectionPage.xaml.cs">
+      <DependentUpon>SelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Selector\DuiHuaSentenceTemplateSelector.cs" />
+    <Compile Include="View\TestWin.xaml.cs">
+      <DependentUpon>TestWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XfEngineTestView.xaml.cs">
+      <DependentUpon>XfEngineTestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ZiDuPage.xaml.cs">
+      <DependentUpon>ZiDuPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="resources\styles\evaluatorstyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpeechEvaluatorWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BeiSongNoTipsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BeiSongTipsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DuiHuaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GenDuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IndexPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IndexPage2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageTitle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ResultPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SelectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TestWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XfEngineTestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ZiDuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Model\readme.txt" />
+    <Resource Include="Model\Xunfei\xmlfile1.xml" />
+    <Resource Include="Model\Xunfei\xmlfile2.xml" />
+    <Resource Include="resources\fonts\times.ttf" />
+    <Resource Include="resources\fonts\timesbd.ttf" />
+    <Resource Include="resources\fonts\timesbi.ttf" />
+    <Resource Include="resources\fonts\timesi.ttf" />
+    <Resource Include="resources\img\app.ico" />
+    <Resource Include="resources\img\ic_back.png" />
+    <Resource Include="resources\img\ic_beisong.gif" />
+    <Resource Include="resources\img\ic_beisong.png" />
+    <Resource Include="resources\img\ic_beisong_disable.png" />
+    <Resource Include="resources\img\ic_close.png" />
+    <Resource Include="resources\img\ic_duihua.gif" />
+    <Resource Include="resources\img\ic_duihua.png" />
+    <Resource Include="resources\img\ic_duihua_bg.png" />
+    <Resource Include="resources\img\ic_duihua_disable.png" />
+    <Resource Include="resources\img\ic_eva_close.png" />
+    <Resource Include="resources\img\ic_eva_open.png" />
+    <Resource Include="resources\img\ic_gendu.gif" />
+    <Resource Include="resources\img\ic_gendu.png" />
+    <Resource Include="resources\img\ic_gendu_disable.png" />
+    <Resource Include="resources\img\ic_heart.png" />
+    <Resource Include="resources\img\ic_leftpage.png" />
+    <Resource Include="resources\img\ic_line_score_bg.png" />
+    <Resource Include="resources\img\ic_logo.png" />
+    <Resource Include="resources\img\ic_luyin.gif" />
+    <Resource Include="resources\img\ic_luyin.png" />
+    <Resource Include="resources\img\ic_luyin_disable.png" />
+    <Resource Include="resources\img\ic_no_image_bg.png" />
+    <Resource Include="resources\img\ic_no_tips.gif" />
+    <Resource Include="resources\img\ic_no_tips.png" />
+    <Resource Include="resources\img\ic_no_tips_bottom.gif" />
+    <Resource Include="resources\img\ic_no_tips_btn.png" />
+    <Resource Include="resources\img\ic_no_tips_center.png" />
+    <Resource Include="resources\img\ic_para_selected.png" />
+    <Resource Include="resources\img\ic_read_btn.png" />
+    <Resource Include="resources\img\ic_result_score.png" />
+    <Resource Include="resources\img\ic_rightpage.png" />
+    <Resource Include="resources\img\ic_score_bg.png" />
+    <Resource Include="resources\img\ic_shifanyin.gif" />
+    <Resource Include="resources\img\ic_shifanyin.png" />
+    <Resource Include="resources\img\ic_shifanyin_disable.png" />
+    <Resource Include="resources\img\ic_tips_btn.png" />
+    <Resource Include="resources\img\ic_white_corner_bg.png" />
+    <Resource Include="resources\img\ic_zidu.gif" />
+    <Resource Include="resources\img\ic_zidu.png" />
+    <Resource Include="resources\img\ic_zidu_disable.png" />
+    <Resource Include="resources\img\loading.png" />
+    <Resource Include="resources\img\para_top_bg.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

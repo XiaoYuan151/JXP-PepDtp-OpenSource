@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{399A4ED6-D0AF-4AC1-8322-0788FE8DC00C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Pep.WindowsService</RootNamespace>
+    <AssemblyName>Pep.WindowsService</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <StartupObject>Pep.WindowsService.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceProcess" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DaemonService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\AnalyticsBasicData.cs" />
+    <Compile Include="Data\AnalyticsConnectData.cs" />
+    <Compile Include="Data\SmartTeachingClient.cs" />
+    <Compile Include="Data\States.cs" />
+    <Compile Include="DebugLog.cs" />
+    <Compile Include="Extensions\PipeClientsExtensions.cs" />
+    <Compile Include="JXP\DataAnalytics\Activity\BaseActivity.cs" />
+    <Compile Include="JXP\DataAnalytics\Activity\EventActivity.cs" />
+    <Compile Include="JXP\DataAnalytics\Activity\FullActivity.cs" />
+    <Compile Include="JXP\DataAnalytics\Bootstrap\TrackerFactory.cs" />
+    <Compile Include="JXP\DataAnalytics\Bootstrap\TrackerManager.cs" />
+    <Compile Include="JXP\DataAnalytics\Bootstrap\TrackerUtils.cs" />
+    <Compile Include="JXP\DataAnalytics\Debugging\DebugTracer.cs" />
+    <Compile Include="JXP\DataAnalytics\Exceptions\TrackerException.cs" />
+    <Compile Include="JXP\DataAnalytics\Network\DefaultNetProvider.cs" />
+    <Compile Include="JXP\DataAnalytics\Network\EmptyNetProvider.cs" />
+    <Compile Include="JXP\DataAnalytics\Network\HttpWebRequestHelper.cs" />
+    <Compile Include="JXP\DataAnalytics\Network\INetProvider.cs" />
+    <Compile Include="JXP\DataAnalytics\Network\Model\BaseModel.cs" />
+    <Compile Include="JXP\DataAnalytics\Network\Model\EndPointInfo.cs" />
+    <Compile Include="JXP\DataAnalytics\Network\Model\EndPointModel.cs" />
+    <Compile Include="JXP\DataAnalytics\Network\Model\TokenInfo.cs" />
+    <Compile Include="JXP\DataAnalytics\Network\Model\TokenModel.cs" />
+    <Compile Include="JXP\DataAnalytics\Platform\DefaultEnvironmentProvider.cs" />
+    <Compile Include="JXP\DataAnalytics\Platform\DefaultProductInfoProvider.cs" />
+    <Compile Include="JXP\DataAnalytics\Platform\IEnvironmentProvider.cs" />
+    <Compile Include="JXP\DataAnalytics\Platform\IProductInfoProvider.cs" />
+    <Compile Include="JXP\DataAnalytics\Tracker\DefaultScanner.cs" />
+    <Compile Include="JXP\DataAnalytics\Tracker\DefaultTracker.cs" />
+    <Compile Include="JXP\DataAnalytics\Tracker\DefaultTrackerConfig.cs" />
+    <Compile Include="JXP\DataAnalytics\Tracker\EmptyScanner.cs" />
+    <Compile Include="JXP\DataAnalytics\Tracker\EmptyTracker.cs" />
+    <Compile Include="JXP\DataAnalytics\Tracker\IScanner.cs" />
+    <Compile Include="JXP\DataAnalytics\Tracker\ITracker.cs" />
+    <Compile Include="JXP\DataAnalytics\Tracker\ITrackerConfig.cs" />
+    <Compile Include="JXP\DataAnalytics\Tracker\RealtimeTracker.cs" />
+    <Compile Include="JXP\DataAnalytics\Tracker\TrackerHelper.cs" />
+    <Compile Include="JXP\DataAnalytics\Utility\Base64StringHelper.cs" />
+    <Compile Include="JXP\DataAnalytics\Utility\Constants.cs" />
+    <Compile Include="JXP\DataAnalytics\Utility\DeviceIdHelper.cs" />
+    <Compile Include="JXP\DataAnalytics\Utility\HttpUtility.cs" />
+    <Compile Include="JXP\DataAnalytics\Utility\InterProcessLocker.cs" />
+    <Compile Include="JXP\DataAnalytics\Utility\NetFxVersion.cs" />
+    <Compile Include="JXP\DataAnalytics\Utility\SystemInfo.cs" />
+    <Compile Include="JXP\DataAnalytics\Utility\ThreadEx.cs" />
+    <Compile Include="JXP\DataAnalytics\Utility\UnixTimeHelper.cs" />
+    <Compile Include="JXP\Networks\PipeMessagePacket.cs" />
+    <Compile Include="JXP\OsInfo\OsExtensions.cs" />
+    <Compile Include="JXP\OsInfo\OsInfo.cs" />
+    <Compile Include="JXP\OsInfo\OsVersion.cs" />
+    <Compile Include="Log\IServiceDebug.cs" />
+    <Compile Include="NamedPipeWrapper\ConnectionEventHandler.cs" />
+    <Compile Include="NamedPipeWrapper\ConnectionExceptionEventHandler.cs" />
+    <Compile Include="NamedPipeWrapper\ConnectionFactory.cs" />
+    <Compile Include="NamedPipeWrapper\ConnectionMessageEventHandler.cs" />
+    <Compile Include="NamedPipeWrapper\IO\PipeStreamReader.cs" />
+    <Compile Include="NamedPipeWrapper\IO\PipeStreamWrapper.2.cs" />
+    <Compile Include="NamedPipeWrapper\IO\PipeStreamWrapper.cs" />
+    <Compile Include="NamedPipeWrapper\IO\PipeStreamWriter.cs" />
+    <Compile Include="NamedPipeWrapper\IO\PreMergeToMergedDeserializationBinder.cs" />
+    <Compile Include="NamedPipeWrapper\NamedPipeClient.2.cs" />
+    <Compile Include="NamedPipeWrapper\NamedPipeClient.cs" />
+    <Compile Include="NamedPipeWrapper\NamedPipeConnection.cs" />
+    <Compile Include="NamedPipeWrapper\NamedPipeServer.cs" />
+    <Compile Include="NamedPipeWrapper\PipeClientFactory.cs" />
+    <Compile Include="NamedPipeWrapper\PipeExceptionEventHandler.cs" />
+    <Compile Include="NamedPipeWrapper\PipeServerFactory.cs" />
+    <Compile Include="NamedPipeWrapper\Server.cs" />
+    <Compile Include="NamedPipeWrapper\Threading\Worker.cs" />
+    <Compile Include="NamedPipeWrapper\Threading\WorkerExceptionEventHandler.cs" />
+    <Compile Include="NamedPipeWrapper\Threading\WorkerSucceededEventHandler.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectInstaller.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmartEventLog.cs" />
+    <Compile Include="Utils\ConstValues.cs" />
+    <Compile Include="Utils\JsonConvert.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DaemonService.resources" />
+    <EmbeddedResource Include="ProjectInstaller.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

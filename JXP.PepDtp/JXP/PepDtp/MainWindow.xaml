@@ -1,0 +1,226 @@
+<Window
+	x:Class="JXP.PepDtp.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:uc="clr-namespace:JXP.PepDtp.View.UserControls" xmlns:fuc="clr-namespace:JXP.Controls;assembly=JXP.Controls" xmlns:fuw="clr-namespace:JXP.Windows;assembly=JXP.Windows" xmlns:cef="clr-namespace:Xilium.CefGlue.WindowsForms;assembly=Xilium.CefGlue.WindowsForms" xmlns:book="clr-namespace:pep.sdk.books.View;assembly=pep.sdk.books" xmlns:views="clr-namespace:pep.Nobook.Views;assembly=pep.Nobook" xmlns:ucCourse="clr-namespace:pep.Course.Views.Usercontrols;assembly=pep.Course" xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell" xmlns:local="clr-namespace:JXP.PepDtp.View" xmlns:standard="clr-namespace:pep.Nobook.Views.Standard;assembly=pep.Nobook"
+	Title="八桂教学通客户端"
+	WindowStyle="None"
+	ResizeMode="NoResize"
+	AllowsTransparency="False"
+	Icon="/Resources/Images/logo.ico"
+	BorderThickness="0"
+	WindowState="Normal" xmlns:pepdtp="clr-namespace:JXP.PepDtp"
+	Loaded="Window_Loaded"
+	SourceInitialized="Window_SourceInitialized">
+	<shell:WindowChrome.WindowChrome>
+		<shell:WindowChrome
+			GlassFrameThickness="0"
+			ResizeBorderThickness="0"
+			CaptionHeight="0"
+			CornerRadius="0" />
+	</shell:WindowChrome.WindowChrome>
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<ImageBrush
+				ImageSource="/Resources/Images/popupbg.png"
+				x:Key="popupbgIBrush" />
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid
+		Name="baseGrid">
+		<Grid
+			Name="maingrid"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch"
+			Background="{StaticResource MainBackgroundSolidColorBrush}">
+			<Grid.RowDefinitions>
+				<RowDefinition
+					Height="60" />
+				<RowDefinition
+					Height="*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Name="menueCol"
+					Width="200" />
+				<ColumnDefinition
+					Width="*" />
+			</Grid.ColumnDefinitions>
+			<uc:TeacherTitle
+				Name="ucTeacherTitle"
+				Grid.Row="0"
+				Grid.Column="0"
+				Grid.ColumnSpan="2" />
+			<TextBlock
+				Name="txtTargetTip"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Top"
+				Grid.Row="1"
+				Grid.Column="0"
+				Grid.ColumnSpan="2" />
+			<uc:MainMenu
+				Name="ucMainMenu"
+				Grid.Column="0"
+				Grid.Row="0"
+				Grid.RowSpan="2" />
+			<Grid
+				Name="centerGrid"
+				Row="1"
+				ColumnSpan="2" />
+			<uc:DigitalTextbookControl
+				Name="ucSzjc"
+				Grid.Column="1"
+				Grid.Row="1"
+				Visibility="Collapsed" />
+			<uc:ResManageControl
+				Name="ucResManage"
+				Grid.Column="1"
+				Grid.Row="1"
+				Visibility="Collapsed" />
+			<uc:MyHomeControl
+				Name="ucMyHome"
+				Grid.Column="1"
+				Grid.Row="1"
+				Visibility="Collapsed" />
+			<ucCourse:CourseUserControl
+				Name="ucTeachingCourse"
+				Grid.Column="1"
+				Grid.Row="1"
+				Visibility="Collapsed" />
+			<ContentControl
+				Name="contentAppCenter"
+				Grid.Column="1"
+				Grid.Row="1"
+				Visibility="Collapsed">
+				<uc:AppCenterControl
+					Name="ucAppCenter" />
+			</ContentControl>
+			<ContentControl
+				Name="controlBrower"
+				Grid.Column="1"
+				Grid.Row="1"
+				Visibility="Collapsed">
+				<fuw:CefWindowsFormsHost
+					Name="wfhMainBrowser">
+					<cef:CefWebBrowser
+						x:Name="cefBrowser" />
+				</fuw:CefWindowsFormsHost>
+			</ContentControl>
+			<local:LoginUserControl
+				Name="ucLogin"
+				Grid.Column="0"
+				Grid.ColumnSpan="2"
+				Grid.Row="0"
+				Grid.RowSpan="2"
+				Visibility="Hidden" />
+			<Popup
+				Name="namePopup"
+				Placement="Top"
+				PopupAnimation="Fade"
+				StaysOpen="False"
+				AllowsTransparency="True"
+				HorizontalOffset="-10"
+				VerticalOffset="-1">
+				<Grid
+					Width="160"
+					Background="{StaticResource popupbgIBrush}"
+					Height="180">
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="10" />
+						<RowDefinition
+							Height="*" />
+					</Grid.RowDefinitions>
+					<Grid
+						Row="1"
+						Width="150">
+						<StackPanel>
+							<Button
+								Name="btnPersonal"
+								Style="{StaticResource popupBtn}"
+								BorderThickness="0"
+								Width="150"
+								Click="btnPersonal_Click">
+								<StackPanel
+									Orientation="Horizontal">
+									<TextBlock
+										Text=""
+										FontFamily="{StaticResource PepFontIcon}"
+										FontSize="22"
+										Margin="20,0,0,0" />
+									<TextBlock
+										Text="个人中心"
+										Style="{StaticResource NormalTextStyle}"
+										Margin="10,0,0,0" />
+								</StackPanel>
+							</Button>
+							<Rectangle
+								Fill="#66EAEAEA"
+								Height="1" />
+							<Button
+								Name="btnGroupInfo"
+								Style="{StaticResource popupBtn}"
+								BorderThickness="0"
+								Width="150"
+								Click="btnGroupInfo_Click">
+								<StackPanel
+									Orientation="Horizontal">
+									<TextBlock
+										Text=""
+										FontFamily="{StaticResource PepFontIcon}"
+										FontSize="22"
+										Margin="20,0,0,0" />
+									<TextBlock
+										Text="群组信息"
+										Style="{StaticResource NormalTextStyle}"
+										Margin="10,0,0,0" />
+								</StackPanel>
+							</Button>
+							<Rectangle
+								Fill="#66EAEAEA"
+								Height="1" />
+							<Button
+								Name="btnSwitchAccount"
+								Style="{StaticResource popupBtn}"
+								BorderThickness="0"
+								Width="150"
+								Click="btnSwitchAccount_Click">
+								<StackPanel
+									Orientation="Horizontal">
+									<TextBlock
+										Text=""
+										FontFamily="{StaticResource PepFontIcon}"
+										FontSize="24"
+										Margin="20,0,0,0" />
+									<TextBlock
+										Text="切换账号"
+										Style="{StaticResource NormalTextStyle}"
+										Margin="10,0,0,0" />
+								</StackPanel>
+							</Button>
+							<Rectangle
+								Fill="#66EAEAEA"
+								Height="1" />
+							<Button
+								Name="btnExit"
+								Style="{StaticResource popupBtn}"
+								BorderThickness="0"
+								Width="150"
+								Click="btnExit_Click">
+								<StackPanel
+									Orientation="Horizontal">
+									<TextBlock
+										Text=""
+										FontFamily="{StaticResource PepFontIcon}"
+										FontSize="24"
+										Margin="20,0,0,0" />
+									<TextBlock
+										Text="退      出"
+										Style="{StaticResource NormalTextStyle}"
+										Margin="10,0,0,0" />
+								</StackPanel>
+							</Button>
+						</StackPanel>
+					</Grid>
+				</Grid>
+			</Popup>
+		</Grid>
+	</Grid>
+</Window>

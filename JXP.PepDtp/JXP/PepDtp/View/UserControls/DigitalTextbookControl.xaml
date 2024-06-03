@@ -1,0 +1,97 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.UserControls.DigitalTextbookControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:JXP.PepDtp.View.UserControls" xmlns:book="clr-namespace:pep.sdk.books.View;assembly=pep.sdk.books" xmlns:books="clr-namespace:pep.sdk.books.View.DtpUserControls;assembly=pep.sdk.books" xmlns:cvt="clr-namespace:JXP.WpfConverters;assembly=JXP.WpfConverters"
+	Name="root">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<BooleanToVisibilityConverter
+				x:Key="objToVisible" />
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="51" />
+			<RowDefinition
+				Height="*" />
+		</Grid.RowDefinitions>
+		<Grid
+			Name="topgrid"
+			Height="0"
+			VerticalAlignment="Top" />
+		<Grid
+			Row="0"
+			Background="#F9F9F9">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="158" />
+				<ColumnDefinition
+					Width="2" />
+				<ColumnDefinition
+					Width="158" />
+				<ColumnDefinition
+					Width="2" />
+				<ColumnDefinition
+					Width="158" />
+				<ColumnDefinition
+					Width="*" />
+			</Grid.ColumnDefinitions>
+			<Rectangle
+				Height="3"
+				VerticalAlignment="Bottom"
+				Fill="#ededed"
+				Grid.Column="0"
+				Grid.ColumnSpan="6" />
+			<RadioButton
+				Name="radioMyTextBook"
+				Grid.Column="0"
+				GroupName="title1"
+				Style="{DynamicResource UnderlineRadioBtnStyleNew}"
+				Content="我的书架"
+				Width="158"
+				FontSize="22"
+				IsChecked="{Binding MyBookChecked, ElementName=root}"
+				Click="radio_Click" />
+			<Rectangle
+				Grid.Column="1"
+				Fill="#AEAEAE"
+				Width="2"
+				Height="24"
+				VerticalAlignment="Center" />
+			<RadioButton
+				Name="radioBookCenter"
+				GroupName="title1"
+				Grid.Column="2"
+				Style="{DynamicResource UnderlineRadioBtnStyleNew}"
+				Content="教材中心"
+				Width="158"
+				FontSize="22"
+				IsChecked="{Binding BookCenterChecked, ElementName=root}"
+				Click="radio_Click" />
+			<RadioButton
+				Name="radioShareBook"
+				GroupName="title1"
+				Grid.Column="4"
+				Style="{DynamicResource UnderlineRadioButtonStyleNew}"
+				Content="共享教材"
+				Width="158"
+				FontSize="18"
+				Visibility="Collapsed"
+				IsChecked="{Binding ShareBookChecked, ElementName=root}"
+				Click="radio_Click" />
+		</Grid>
+		<books:MyTextBooksDtpControl
+			Name="ucMyBook"
+			Grid.Row="1"
+			IsMyBookTitleVisible="False"
+			IsMyBookCountVisible="True"
+			IsShowAuthorizeData="True"
+			CacheRes="True"
+			Visibility="{Binding ElementName=radioMyTextBook, Path=IsChecked, Converter={StaticResource objToVisible}}" />
+		<books:BookCenterDtpControl
+			Name="ucBookCenter"
+			Grid.Row="1"
+			IsShowAuthorizeData="True"
+			UseJoinInLogic="True"
+			Visibility="{Binding ElementName=radioBookCenter, Path=IsChecked, Converter={StaticResource objToVisible}}" />
+	</Grid>
+</UserControl>

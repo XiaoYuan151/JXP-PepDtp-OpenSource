@@ -1,0 +1,373 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.TextBookReader.TextBookInnerOperator" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ucRationButton="clr-namespace:JXP.Controls.RadioButtons;assembly=JXP.Controls" xmlns:uc="clr-namespace:JXP.Controls.UserControls;assembly=JXP.Controls" xmlns:customuc="clr-namespace:JXP.Controls;assembly=JXP.Controls" xmlns:converters="clr-namespace:JXP.PepDtp.Converters" xmlns:views="clr-namespace:pep.Nobook.Views;assembly=pep.Nobook" xmlns:windows="clr-namespace:pep.Nobook.Windows;assembly=pep.Nobook" xmlns:uc1="clr-namespace:pep.Course.Views.Usercontrols;assembly=pep.Course"
+	Height="Auto"
+	Width="60"
+	MinHeight="100" xmlns:textbookreader="clr-namespace:JXP.PepDtp.View.TextBookReader">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="40" />
+			<RowDefinition
+				Height="*" />
+			<RowDefinition
+				Height="60" />
+		</Grid.RowDefinitions>
+		<Border
+			Name="borCollapse"
+			CornerRadius="5,5,0,0"
+			Grid.Row="0"
+			Background="#d0d0d0"
+			BorderThickness="1,1,1,0"
+			BorderBrush="#A3A3A3">
+			<customuc:IconButton
+				Name="btnCollapse"
+				FontFamily="{StaticResource PepFontIcon}"
+				FontSize="30"
+				Content=""
+				ForegroundColor="White"
+				MouseOverColor="#574b2a"
+				RenderTransformOrigin="0.5,0.5"
+				Click="btnCollapse_Click">
+				<UIElement.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform />
+						<SkewTransform />
+						<RotateTransform
+							Angle="90" />
+						<TranslateTransform />
+					</TransformGroup>
+				</UIElement.RenderTransform>
+			</customuc:IconButton>
+		</Border>
+		<Border
+			Name="borExpand"
+			CornerRadius="5,5,0,0"
+			Grid.Row="0"
+			Background="#d0d0d0"
+			Visibility="Collapsed"
+			BorderThickness="1,1,1,0"
+			BorderBrush="#A3A3A3">
+			<customuc:IconButton
+				Name="btnExpand"
+				FontFamily="{StaticResource PepFontIcon}"
+				FontSize="30"
+				Content=""
+				ForegroundColor="White"
+				MouseOverColor="#574b2a"
+				RenderTransformOrigin="0.5,0.5"
+				Click="btnExpand_Click">
+				<UIElement.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform />
+						<SkewTransform />
+						<RotateTransform
+							Angle="270" />
+						<TranslateTransform />
+					</TransformGroup>
+				</UIElement.RenderTransform>
+			</customuc:IconButton>
+		</Border>
+		<Border
+			Name="borOption"
+			Grid.Row="1"
+			BorderThickness="1,0,1,0"
+			BorderBrush="#A3A3A3">
+			<ScrollViewer
+				Name="scrollView"
+				HorizontalScrollBarVisibility="Disabled"
+				VerticalScrollBarVisibility="Auto">
+				<StackPanel>
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioPaintBrush"
+						Content="画笔"
+						IconText=""
+						IconTextFontSize="28"
+						CheckedForegroundColor="#FFFFFF"
+						CheckedBackgroundColor="{DynamicResource ThemeColor}"
+						Click="radioPaintBrush_Click" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioNote"
+						Content="笔记"
+						IconText=""
+						IconTextFontSize="25"
+						CheckedForegroundColor="#FFFFFF"
+						CheckedBackgroundColor="{DynamicResource ThemeColor}"
+						Click="radioNote_Click" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioScreenshot"
+						Content="截图"
+						IconText=""
+						IconTextFontSize="25"
+						CheckedForegroundColor="#FFFFFF"
+						CheckedBackgroundColor="{DynamicResource ThemeColor}"
+						Click="radioScreenshot_Click" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioBookMark"
+						Content="书签"
+						IconText=""
+						IconTextFontSize="25"
+						CheckedForegroundColor="#FFFFFF"
+						CheckedBackgroundColor="{DynamicResource ThemeColor}"
+						Click="radioBookMark_Click" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioSpotlight"
+						Content="聚光灯"
+						IconText=""
+						IconTextFontSize="25"
+						CheckedForegroundColor="#FFFFFF"
+						CheckedBackgroundColor="{DynamicResource ThemeColor}"
+						Click="radioSpotlight_Click" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioTool"
+						Content="学科工具"
+						IconText=""
+						IconTextFontSize="25"
+						CheckedForegroundColor="#FFFFFF"
+						CheckedBackgroundColor="{DynamicResource ThemeColor}"
+						Click="radioTool_Click" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioMore"
+						Content="更多"
+						IconText=""
+						IconTextFontSize="25"
+						CheckedForegroundColor="#FFFFFF"
+						CheckedBackgroundColor="{DynamicResource ThemeColor}"
+						Click="radioMore_Click" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioClass"
+						Content="课堂"
+						IconText=""
+						IconTextFontSize="25"
+						CheckedForegroundColor="#FFFFFF"
+						CheckedBackgroundColor="{DynamicResource ThemeColor}"
+						Visibility="Collapsed"
+						Click="radioClass_Click" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="coursewareRadioClass"
+						Content="课件"
+						IconText=""
+						IconTextFontSize="25"
+						CheckedForegroundColor="#FFFFFF"
+						CheckedBackgroundColor="{DynamicResource ThemeColor}"
+						Click="CoursewareRadioClass_OnClick" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="toCoursewareRadioClass"
+						Content="至课件"
+						IconText=""
+						IconTextFontSize="25"
+						CheckedForegroundColor="#FFFFFF"
+						CheckedBackgroundColor="{DynamicResource ThemeColor}"
+						Visibility="{Binding ElementName=coursewareRadioClass, Path=Visibility, Converter={x:Static converters:RevertVisibilityConverter.Instance}}"
+						Click="ToCoursewareRadioClass_OnClick" />
+				</StackPanel>
+			</ScrollViewer>
+		</Border>
+		<Border
+			Name="borLogo"
+			Grid.Row="2"
+			CornerRadius="0,0,5,5"
+			Background="#FFFFFF"
+			BorderThickness="1,0,1,1"
+			BorderBrush="#A3A3A3"
+			Cursor="Hand"
+			MouseLeftButtonDown="borLogo_MouseLeftButtonDown">
+			<Image
+				Name="imgLogo"
+				Width="40"
+				Height="40"
+				Source="../../Resources/Images/logo.png"
+				Margin="4,0,0,0" />
+		</Border>
+		<customuc:PopupTopmostEx
+			Name="penSelectPop"
+			PopupAnimation="Fade"
+			StaysOpen="False"
+			Placement="Left"
+			AllowsTransparency="True"
+			Width="305"
+			Height="Auto"
+			HorizontalOffset="-5"
+			PlacementTarget="{Binding ElementName=radioPaintBrush}">
+			<uc:PaintBrushInfoControl
+				Name="ucPaintBrushInfo"
+				MouseLeave="ucPaintBrushInfo_MouseLeave" />
+		</customuc:PopupTopmostEx>
+		<customuc:PopupTopmostEx
+			Name="notePop"
+			PopupAnimation="Fade"
+			StaysOpen="False"
+			Placement="Left"
+			AllowsTransparency="True"
+			Width="Auto"
+			Height="Auto"
+			HorizontalOffset="-5"
+			PlacementTarget="{Binding ElementName=radioNote}">
+			<Border
+				CornerRadius="5"
+				Background="#FFFFFF"
+				BorderThickness="1"
+				BorderBrush="#A3A3A3">
+				<StackPanel>
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioNoteInput"
+						Content="输入"
+						IconText=""
+						IconTextFontSize="25"
+						RadioButtonCornerRadius="5"
+						CheckedBorderBrushColor="{DynamicResource ThemeColor}"
+						CheckedBackgroundColor="#EAFBF5"
+						CheckedForegroundColor="#333333"
+						BorderThickness="1"
+						Click="radioNoteInput_Click" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioNoteList"
+						Content="列表"
+						IconText=""
+						IconTextFontSize="28"
+						RadioButtonCornerRadius="5"
+						CheckedBorderBrushColor="{DynamicResource ThemeColor}"
+						CheckedBackgroundColor="#EAFBF5"
+						CheckedForegroundColor="#333333"
+						BorderThickness="1"
+						Click="radioNoteList_Click" />
+				</StackPanel>
+			</Border>
+		</customuc:PopupTopmostEx>
+		<customuc:PopupTopmostEx
+			Name="toolPop"
+			PopupAnimation="Fade"
+			StaysOpen="False"
+			Placement="Left"
+			AllowsTransparency="True"
+			Width="Auto"
+			Height="Auto"
+			MaxHeight="242"
+			HorizontalOffset="-5"
+			PlacementTarget="{Binding ElementName=radioTool}">
+			<uc:ToolsUserControlxaml
+				Name="ucTool" />
+		</customuc:PopupTopmostEx>
+		<customuc:PopupTopmostEx
+			Name="morePop"
+			PopupAnimation="Fade"
+			StaysOpen="False"
+			Placement="Left"
+			AllowsTransparency="True"
+			Width="Auto"
+			Height="Auto"
+			HorizontalOffset="-5"
+			PlacementTarget="{Binding ElementName=radioMore}">
+			<Border
+				CornerRadius="5"
+				Background="#FFFFFF"
+				BorderThickness="1"
+				BorderBrush="#A3A3A3">
+				<StackPanel>
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioBlackboard"
+						Content="黑板"
+						IconText=""
+						IconTextFontSize="28"
+						RadioButtonCornerRadius="5"
+						CheckedBorderBrushColor="{DynamicResource ThemeColor}"
+						CheckedBackgroundColor="#EAFBF5"
+						CheckedForegroundColor="#333333"
+						BorderThickness="1"
+						Click="radioBlackboard_Click" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioTimer"
+						Content="计时器"
+						IconText=""
+						IconTextFontSize="28"
+						RadioButtonCornerRadius="5"
+						CheckedBorderBrushColor="{DynamicResource ThemeColor}"
+						CheckedBackgroundColor="#EAFBF5"
+						CheckedForegroundColor="#333333"
+						BorderThickness="1"
+						Click="radioTimer_Click" />
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioScreencast"
+						Content="投屏"
+						IconText=""
+						IconTextFontSize="28"
+						RadioButtonCornerRadius="5"
+						CheckedBorderBrushColor="{DynamicResource ThemeColor}"
+						CheckedBackgroundColor="#EAFBF5"
+						CheckedForegroundColor="#333333"
+						BorderThickness="1"
+						Click="radioScreencast_Click" />
+				</StackPanel>
+			</Border>
+		</customuc:PopupTopmostEx>
+		<customuc:PopupTopmostEx
+			Name="classPop"
+			PopupAnimation="Fade"
+			StaysOpen="False"
+			Placement="Left"
+			AllowsTransparency="True"
+			Width="Auto"
+			Height="Auto"
+			HorizontalOffset="-5"
+			PlacementTarget="{Binding ElementName=radioClass}">
+			<Border
+				CornerRadius="5"
+				Background="#FFFFFF"
+				BorderThickness="1"
+				BorderBrush="#A3A3A3">
+				<StackPanel>
+					<ucRationButton:IconVerticalTextRadioButton
+						Name="radioStartClass"
+						Content="上课"
+						IconText=""
+						IconTextFontSize="28"
+						RadioButtonCornerRadius="5"
+						CheckedBorderBrushColor="{DynamicResource ThemeColor}"
+						CheckedBackgroundColor="#EAFBF5"
+						CheckedForegroundColor="#333333"
+						BorderThickness="1"
+						Click="radioStartClass_Click" />
+				</StackPanel>
+			</Border>
+		</customuc:PopupTopmostEx>
+		<customuc:PopupTopmostEx
+			Name="coursewarePop"
+			PopupAnimation="Fade"
+			StaysOpen="False"
+			Placement="Left"
+			AllowsTransparency="True"
+			Width="400"
+			Height="300"
+			HorizontalOffset="-5"
+			PlacementTarget="{Binding ElementName=coursewareRadioClass}">
+			<Border
+				CornerRadius="5"
+				Background="#FFFFFF"
+				BorderThickness="1"
+				BorderBrush="#A3A3A3">
+				<StackPanel
+					Margin="10,10,10,10">
+					<views:CourseWareTreeView
+						Name="courseWareTv"
+						Width="auto"
+						Height="280" />
+				</StackPanel>
+			</Border>
+		</customuc:PopupTopmostEx>
+		<customuc:PopupTopmostEx
+			Name="infoPop"
+			PopupAnimation="Fade"
+			StaysOpen="True"
+			Placement="Left"
+			AllowsTransparency="True"
+			Width="463"
+			Height="245"
+			HorizontalOffset="1"
+			VerticalOffset="-130"
+			PlacementTarget="{Binding ElementName=radioMore}">
+			<Image
+				Source="../../Resources/Images/popInfo3.png"
+				Width="463"
+				Height="245" />
+		</customuc:PopupTopmostEx>
+	</Grid>
+</UserControl>

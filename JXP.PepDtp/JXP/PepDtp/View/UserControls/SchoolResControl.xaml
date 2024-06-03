@@ -1,0 +1,986 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.UserControls.SchoolResControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:JXP.PepDtp.View.UserControls" xmlns:uci="clr-namespace:pep.sdk.reader.View.UserControls;assembly=pep.sdk.reader" xmlns:cvt="clr-namespace:JXP.PepDtp.Converters" xmlns:viewModel="clr-namespace:JXP.PepDtp.ViewModel" xmlns:drag="clr-namespace:JXP.DragHelper;assembly=JXP.DragHelper" xmlns:jxpuc="clr-namespace:JXP.Controls.Controls;assembly=JXP.Controls" xmlns:uc="clr-namespace:JXP.Controls;assembly=JXP.Controls" xmlns:controlAttach="clr-namespace:JXP.Resources;assembly=JXP.Resources" xmlns:cvt1="clr-namespace:JXP.WpfConverters;assembly=JXP.WpfConverters" xmlns:userControls="clr-namespace:pep.sdk.books.UserControls;assembly=pep.sdk.books" xmlns:uc2="clr-namespace:JXP.Controls.CustomControl;assembly=JXP.Controls"
+	Name="root">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<cvt:ItemBackgroundConverter
+				x:Key="itemBackgroundCvt" />
+			<cvt:ResBoolToVisible
+				x:Key="boolToVisCvt" />
+			<cvt:RevertBoolToVisible
+				x:Key="RevertBoolToVisCvt" />
+			<cvt:ResMultiBoolRevertToVisible
+				x:Key="RevertMultiBoolToVisCvt" />
+			<cvt:RevertVisibilityConverter
+				x:Key="revertCvt" />
+			<cvt:ResPosTypeConverter
+				x:Key="mResPosTypeConverter" />
+			<viewModel:SharedResDataObjectProvider
+				x:Key="DataObjectProvider" />
+			<cvt:ResScoreStarConverter
+				x:Key="ResScoreStarConverter" />
+			<cvt:ResScoreStarConverter1
+				x:Key="ResScoreStarConverter1" />
+			<cvt:DownloadBtnConverter
+				x:Key="btnVisibleCvt" />
+			<cvt:ResMultiBoolToVisible
+				x:Key="multiBoolToVisCvt" />
+			<cvt:ResMulti3BoolToVisible
+				x:Key="multi3BoolToVisCvt" />
+			<cvt:MaxWidthConverter
+				x:Key="maxwidthCvt" />
+			<cvt:LyTextConverter
+				x:Key="multiLyTxtCvt" />
+			<cvt:ResTitleConverter
+				x:Key="resTitleCvt" />
+			<cvt:StringToToVisible
+				x:Key="strToVisCvt" />
+			<cvt:ShowPageConverter
+				x:Key="showPageCvt" />
+			<cvt:ShowShareTimeConverter
+				x:Key="showShareTimeCvt" />
+			<cvt:CollectTextConverter
+				x:Key="collectCvt" />
+			<cvt:ResTitleForegroundConverter
+				x:Key="resTitleForgroundCvt" />
+			<cvt1:PinyinFontFamilyConverter
+				NormalFontFamily="{StaticResource NormalFont}"
+				PinyinFontFamily="{StaticResource Pinyin}"
+				x:Key="PinyinFontFamilyCvt" />
+			<DataTemplate
+				x:Key="TextDataTemplate">
+				<Grid
+					Height="120">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="20" />
+						<ColumnDefinition
+							Width="170" />
+						<ColumnDefinition
+							Width="15" />
+						<ColumnDefinition
+							Width="*" />
+						<ColumnDefinition
+							Width="auto" />
+						<ColumnDefinition
+							Width="20" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="*" />
+						<RowDefinition
+							Height="1" />
+					</Grid.RowDefinitions>
+					<Grid
+						Column="1"
+						Row="0">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="10" />
+							<RowDefinition
+								Height="28" />
+							<RowDefinition
+								Height="*" />
+							<RowDefinition
+								Height="10" />
+						</Grid.RowDefinitions>
+						<!--Unknown connection ID: 2-->
+						<Image
+							Grid.Row="1"
+							Grid.RowSpan="2"
+							Stretch="Fill"
+							VerticalAlignment="Center"
+							Cursor="Hand"
+							drag:DragSource.AllowedEffects="Move"
+							drag:DragSource.AllowedInitiators="MouseLeftButton"
+							drag:DragSource.DataProvider="{DynamicResource DataObjectProvider}"
+							Source="{Binding ThumbUrl, IsAsync=True}"
+							drag:DragSource.AllowDrag="{Binding IsDrag, ElementName=root}"
+							drag:DragSource.VisualFeedbackOffset="{Binding (drag:DragSource.ContactPosition), RelativeSource={RelativeSource Self}}"
+							drag:DragSource.Data="{Binding}" />
+						<Grid
+							Row="1">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition
+									Width="5" />
+								<ColumnDefinition
+									Width="5" />
+								<ColumnDefinition
+									Width="auto" />
+								<ColumnDefinition
+									Width="5" />
+								<ColumnDefinition
+									Width="*" />
+							</Grid.ColumnDefinitions>
+							<Border
+								Grid.Column="1"
+								Grid.ColumnSpan="3"
+								CornerRadius="5"
+								Background="#473926"
+								Opacity="0.5"
+								Margin="0,5,0,3" />
+							<StackPanel
+								Grid.Column="2"
+								Orientation="Horizontal"
+								HorizontalAlignment="Left"
+								VerticalAlignment="Center">
+								<TextBlock
+									Style="{DynamicResource NormalTextStyle}"
+									Foreground="#f6fbfb"
+									FontSize="12"
+									Text="{Binding ZyLxZhptName}" />
+								<StackPanel
+									Orientation="Horizontal"
+									HorizontalAlignment="Center">
+									<UIElement.Visibility>
+										<MultiBinding
+											Converter="{StaticResource showPageCvt}">
+											<Binding
+												Path="FileFormat" />
+											<Binding
+												Path="H5PageNum" />
+										</MultiBinding>
+									</UIElement.Visibility>
+									<TextBlock
+										Text="/"
+										Foreground="#f6fbfb"
+										FontSize="12"
+										Style="{DynamicResource NormalTextStyle}"
+										Margin="2,0,0,0" />
+									<TextBlock
+										Foreground="#f6fbfb"
+										Style="{DynamicResource NormalTextStyle}"
+										FontSize="12"
+										Margin="2,0,0,0"
+										Text="{Binding H5PageNum}" />
+									<TextBlock
+										Text="页"
+										Foreground="#f6fbfb"
+										Style="{DynamicResource NormalTextStyle}"
+										FontSize="12"
+										Margin="0,0,0,0" />
+								</StackPanel>
+							</StackPanel>
+						</Grid>
+					</Grid>
+					<Grid
+						Name="gridContent"
+						Column="3"
+						Row="0"
+						Margin="0,5,0,5">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="*" />
+							<RowDefinition
+								Height="25" />
+							<RowDefinition
+								Height="25" />
+							<RowDefinition
+								Height="10" />
+						</Grid.RowDefinitions>
+						<!--Unknown connection ID: 3-->
+						<TextBlock
+							Name="lblTitle"
+							Grid.Row="0"
+							FontSize="18"
+							Cursor="Hand"
+							Margin="0,10,0,0"
+							TextTrimming="CharacterEllipsis"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Center"
+							drag:DragSource.AllowedEffects="Move"
+							drag:DragSource.AllowedInitiators="MouseLeftButton"
+							drag:DragSource.DataProvider="{DynamicResource DataObjectProvider}"
+							FontFamily="{Binding IsUsePinyinFont, Converter={StaticResource PinyinFontFamilyCvt}}"
+							drag:DragSource.AllowDrag="{Binding IsDrag, ElementName=root}"
+							drag:DragSource.VisualFeedbackOffset="{Binding (drag:DragSource.ContactPosition), RelativeSource={RelativeSource Self}}"
+							drag:DragSource.Data="{Binding}">
+							<TextBlock.Text>
+								<MultiBinding
+									Converter="{StaticResource resTitleCvt}">
+									<Binding
+										Path="ResTitle" />
+									<Binding
+										Path="DisplayInfo" />
+									<Binding
+										Path="ResFlg" />
+								</MultiBinding>
+							</TextBlock.Text>
+							<FrameworkElement.ToolTip>
+								<ToolTip
+									FontFamily="{Binding IsUsePinyinFont, Converter={StaticResource PinyinFontFamilyCvt}}">
+									<ContentControl.Content>
+										<MultiBinding
+											Converter="{StaticResource resTitleCvt}">
+											<Binding
+												Path="ResTitle" />
+											<Binding
+												Path="DisplayInfo" />
+											<Binding
+												Path="ResFlg" />
+										</MultiBinding>
+									</ContentControl.Content>
+								</ToolTip>
+							</FrameworkElement.ToolTip>
+							<FrameworkElement.Style>
+								<Style
+									TargetType="{x:Type TextBlock}">
+									<Style.Triggers>
+										<Trigger
+											Property="UIElement.IsMouseOver"
+											Value="True">
+											<Setter
+												Property="Foreground"
+												Value="{DynamicResource ThemeColor}" />
+										</Trigger>
+									</Style.Triggers>
+								</Style>
+							</FrameworkElement.Style>
+						</TextBlock>
+						<StackPanel
+							Grid.Row="1"
+							Orientation="Horizontal"
+							VerticalAlignment="Center"
+							Margin="0,0,0,0">
+							<TextBlock
+								Style="{DynamicResource NormalTextStyle}"
+								Foreground="#999999"
+								FontSize="12"
+								Margin="0,0,0,0"
+								Text="{Binding DzwjLxZhptName}" />
+							<TextBlock
+								Text="/"
+								Style="{DynamicResource NormalTextStyle}"
+								Foreground="#999999"
+								FontSize="12"
+								Margin="0,0,0,0" />
+							<TextBlock
+								Style="{DynamicResource NormalTextStyle}"
+								Foreground="#999999"
+								FontSize="12"
+								Margin="0,0,0,0"
+								Text="{Binding ShowResSize}" />
+							<TextBlock
+								Style="{DynamicResource NormalTextStyle}"
+								Foreground="#999999"
+								FontSize="12"
+								Margin="10,0,0,0"
+								Text="{Binding UseCount, StringFormat=使用数: {0}}" />
+							<TextBlock
+								Name="lblsharetime"
+								Style="{DynamicResource NormalTextStyle}"
+								Foreground="#999999"
+								FontSize="12"
+								TextTrimming="CharacterEllipsis"
+								Margin="10,0,0,0"
+								Text="{Binding ShareTime, StringFormat=分享时间: {0}}"
+								ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+								Visibility="{Binding ResFlg, Converter={StaticResource showShareTimeCvt}}"
+								MaxWidth="{Binding ElementName=gridContent, Path=ActualWidth, ConverterParameter=190, Converter={StaticResource maxwidthCvt}}" />
+						</StackPanel>
+						<StackPanel
+							Grid.Row="2"
+							Orientation="Horizontal"
+							VerticalAlignment="Center"
+							Margin="0">
+							<TextBlock
+								Name="tbLY"
+								Style="{DynamicResource NormalTextStyle}"
+								Foreground="#999999"
+								FontSize="12"
+								Margin="0,0,0,0"
+								TextTrimming="CharacterEllipsis"
+								ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+								MaxWidth="{Binding ElementName=gridContent, Path=ActualWidth, ConverterParameter=0, Converter={StaticResource maxwidthCvt}}">
+								<TextBlock.Text>
+									<MultiBinding
+										Converter="{StaticResource multiLyTxtCvt}">
+										<Binding
+											Path="ResFlg" />
+										<Binding
+											Path="PlatformShare" />
+										<Binding
+											Path="OrgId" />
+										<Binding
+											Path="ResSource" />
+									</MultiBinding>
+								</TextBlock.Text>
+							</TextBlock>
+							<TextBlock
+								Name="lblSchool"
+								Grid.Column="1"
+								Style="{DynamicResource NormalTextStyle}"
+								Margin="10,0,0,0"
+								Foreground="#999999"
+								FontSize="12"
+								TextTrimming="CharacterEllipsis"
+								Text="{Binding ResShareUnit}"
+								ToolTip="{Binding ElementName=lblSchool, Path=Text}"
+								Visibility="{Binding ResFlg, Converter={StaticResource showShareTimeCvt}}" />
+							<TextBlock
+								Style="{DynamicResource NormalTextStyle}"
+								Foreground="#999999"
+								FontSize="12"
+								Margin="10,0,0,0"
+								Text="{Binding ResAuthor}"
+								ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+								Visibility="{Binding ResFlg, Converter={StaticResource showShareTimeCvt}}" />
+						</StackPanel>
+					</Grid>
+					<StackPanel
+						Grid.Column="4"
+						Grid.Row="0"
+						Orientation="Horizontal"
+						HorizontalAlignment="Right">
+						<!--Unknown connection ID: 4-->
+						<Button
+							Name="btnPreview"
+							Style="{DynamicResource GuangXiVIconButtonStyle}"
+							Margin="0,0,0,0"
+							Visibility="{Binding ElementName=btnMore, Path=Visibility, Converter={StaticResource revertCvt}}">
+							<StackPanel
+								Orientation="Vertical">
+								<TextBlock
+									Foreground="{DynamicResource ThemeColor}"
+									Style="{DynamicResource NormalTextStyle}"
+									Text=""
+									FontSize="36"
+									HorizontalAlignment="Center"
+									Margin="0,0,0,0"
+									FontFamily="{StaticResource PepFontIcon}" />
+								<TextBlock
+									FontFamily="微软雅黑"
+									Foreground="#6d6d6d"
+									FontSize="12"
+									Text="预览"
+									Margin="0,-7,0,0"
+									HorizontalAlignment="Center" />
+							</StackPanel>
+						</Button>
+						<!--Unknown connection ID: 5-->
+						<Button
+							Name="btnCollect"
+							Style="{DynamicResource GuangXiVIconButtonStyle}"
+							Margin="20,0,10,0"
+							Width="50"
+							Visibility="{Binding ElementName=btnMore, Path=Visibility, Converter={StaticResource revertCvt}}">
+							<StackPanel
+								Orientation="Vertical">
+								<TextBlock
+									Foreground="{DynamicResource ThemeColor}"
+									Style="{DynamicResource NormalTextStyle}"
+									FontSize="30"
+									HorizontalAlignment="Center"
+									Margin="0,0,0,0"
+									FontFamily="{StaticResource PepFontIcon}"
+									Text="{Binding ResCollect, Converter={StaticResource collectCvt}}" />
+								<TextBlock
+									FontFamily="微软雅黑"
+									Foreground="#6d6d6d"
+									FontSize="12"
+									Margin="0,0,0,0"
+									HorizontalAlignment="Center"
+									Text="{Binding ResCollect, ConverterParameter=1, Converter={StaticResource collectCvt}}" />
+							</StackPanel>
+						</Button>
+						<!--Unknown connection ID: 6-->
+						<Button
+							Name="btnDownload"
+							Style="{DynamicResource GuangXiVIconButtonStyle}"
+							Margin="15,0,10,0">
+							<StackPanel
+								Orientation="Vertical">
+								<TextBlock
+									Foreground="{DynamicResource ThemeColor}"
+									Style="{DynamicResource NormalTextStyle}"
+									Text=""
+									FontSize="32"
+									HorizontalAlignment="Center"
+									Margin="0,0,0,0"
+									FontFamily="{StaticResource PepFontIcon}" />
+								<TextBlock
+									FontFamily="微软雅黑"
+									Foreground="#6d6d6d"
+									FontSize="12"
+									Text="下载"
+									Margin="0,0,0,0"
+									HorizontalAlignment="Center" />
+							</StackPanel>
+							<UIElement.Visibility>
+								<MultiBinding
+									Converter="{StaticResource btnVisibleCvt}">
+									<Binding
+										Path="ResFlg" />
+									<Binding
+										Path="Dzwjlx" />
+									<Binding
+										Path="ShowMoreBtn"
+										ElementName="root" />
+								</MultiBinding>
+							</UIElement.Visibility>
+						</Button>
+						<!--Unknown connection ID: 7-->
+						<Button
+							Style="{DynamicResource GuangXiVIconButtonStyle}"
+							Margin="15,0,10,0"
+							Visibility="{Binding ElementName=btnMore, Path=Visibility, Converter={StaticResource revertCvt}}">
+							<StackPanel
+								Orientation="Vertical">
+								<TextBlock
+									Foreground="{DynamicResource ThemeColor}"
+									Style="{DynamicResource NormalTextStyle}"
+									Text=""
+									FontSize="22"
+									HorizontalAlignment="Center"
+									Margin="0,7,0,0"
+									FontFamily="{StaticResource PepFontIcon}" />
+								<TextBlock
+									FontFamily="微软雅黑"
+									Foreground="#6d6d6d"
+									FontSize="12"
+									Text="添加至课程"
+									Margin="0,5,0,0"
+									HorizontalAlignment="Center" />
+							</StackPanel>
+						</Button>
+						<!--Unknown connection ID: 8-->
+						<Button
+							Name="btnMore"
+							Style="{DynamicResource GuangXiPrepareLessonsFlatButton}"
+							Width="60"
+							Content=" "
+							Height="33"
+							Margin="25,0,0,0"
+							controlAttach:ControlAttachProperty.CornerRadius="0"
+							Background="#00FFFFFF"
+							Foreground="{DynamicResource ThemeColor}"
+							FontSize="40"
+							FontFamily="{StaticResource PepFontIcon}"
+							Visibility="{Binding ShowMoreBtn, ElementName=root, Converter={StaticResource Bool2Visibility}}" />
+					</StackPanel>
+					<Rectangle
+						Fill="#e9e9e9"
+						Grid.Row="1"
+						Grid.Column="0"
+						Grid.ColumnSpan="7"
+						Margin="5,0,5,0" />
+				</Grid>
+			</DataTemplate>
+			<DataTemplate
+				x:Key="imageLstDT">
+				<Border
+					Height="140"
+					BorderBrush="#cccccc"
+					BorderThickness="1"
+					CornerRadius="5"
+					Margin="5,2,5,3">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="10" />
+							<RowDefinition
+								Height="*" />
+							<RowDefinition
+								Height="10" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition
+								Width="10" />
+							<ColumnDefinition
+								Width="*" />
+							<ColumnDefinition
+								Width="10" />
+						</Grid.ColumnDefinitions>
+						<Grid
+							Row="1"
+							Column="1">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition
+									Width="190" />
+								<ColumnDefinition
+									Width="10" />
+								<ColumnDefinition
+									Width="*" />
+							</Grid.ColumnDefinitions>
+							<!--Unknown connection ID: 9-->
+							<Image
+								Grid.Column="0"
+								Stretch="Fill"
+								VerticalAlignment="Center"
+								Cursor="Hand"
+								drag:DragSource.AllowedEffects="Move"
+								drag:DragSource.AllowedInitiators="MouseLeftButton"
+								drag:DragSource.DataProvider="{DynamicResource DataObjectProvider}"
+								Source="{Binding ThumbUrl, IsAsync=True}"
+								drag:DragSource.AllowDrag="{Binding IsDrag, ElementName=root}"
+								drag:DragSource.VisualFeedbackOffset="{Binding (drag:DragSource.ContactPosition), RelativeSource={RelativeSource Self}}"
+								drag:DragSource.Data="{Binding}" />
+							<Grid
+								Column="0"
+								VerticalAlignment="Top"
+								Height="30">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition
+										Width="5" />
+									<ColumnDefinition
+										Width="5" />
+									<ColumnDefinition
+										Width="auto" />
+									<ColumnDefinition
+										Width="5" />
+									<ColumnDefinition
+										Width="*" />
+								</Grid.ColumnDefinitions>
+								<Border
+									Grid.Column="1"
+									Grid.ColumnSpan="3"
+									CornerRadius="5"
+									Background="#473926"
+									Opacity="0.5"
+									Margin="0,5,0,3" />
+								<StackPanel
+									Grid.Column="2"
+									Orientation="Horizontal"
+									HorizontalAlignment="Left"
+									VerticalAlignment="Center">
+									<TextBlock
+										Style="{DynamicResource NormalTextStyle}"
+										Foreground="#f6fbfb"
+										FontSize="12"
+										Text="{Binding ZyLxZhptName}" />
+									<StackPanel
+										Orientation="Horizontal"
+										HorizontalAlignment="Center">
+										<UIElement.Visibility>
+											<MultiBinding
+												Converter="{StaticResource showPageCvt}">
+												<Binding
+													Path="FileFormat" />
+												<Binding
+													Path="H5PageNum" />
+											</MultiBinding>
+										</UIElement.Visibility>
+										<TextBlock
+											Text="/"
+											Foreground="#f6fbfb"
+											FontSize="12"
+											Style="{DynamicResource NormalTextStyle}"
+											Margin="2,0,0,0" />
+										<TextBlock
+											Foreground="#f6fbfb"
+											Style="{DynamicResource NormalTextStyle}"
+											FontSize="12"
+											Margin="2,0,0,0"
+											Text="{Binding H5PageNum}" />
+										<TextBlock
+											Text="页"
+											Foreground="#f6fbfb"
+											Style="{DynamicResource NormalTextStyle}"
+											FontSize="12"
+											Margin="0,0,0,0" />
+									</StackPanel>
+								</StackPanel>
+							</Grid>
+							<Grid
+								Name="gridContent1"
+								Column="2">
+								<Grid.RowDefinitions>
+									<RowDefinition
+										Height="auto" />
+									<RowDefinition
+										Height="*" />
+									<RowDefinition
+										Height="auto" />
+									<RowDefinition
+										Height="auto" />
+									<RowDefinition
+										Height="auto" />
+								</Grid.RowDefinitions>
+								<!--Unknown connection ID: 10-->
+								<TextBlock
+									Grid.Row="0"
+									FontSize="18"
+									Cursor="Hand"
+									Margin="0,5,0,0"
+									TextTrimming="CharacterEllipsis"
+									HorizontalAlignment="Left"
+									VerticalAlignment="Top"
+									TextWrapping="Wrap"
+									MaxHeight="50"
+									FontFamily="{Binding IsUsePinyinFont, Converter={StaticResource PinyinFontFamilyCvt}}">
+									<TextBlock.Text>
+										<MultiBinding
+											Converter="{StaticResource resTitleCvt}">
+											<Binding
+												Path="ResTitle" />
+											<Binding
+												Path="DisplayInfo" />
+											<Binding
+												Path="ResFlg" />
+										</MultiBinding>
+									</TextBlock.Text>
+									<FrameworkElement.ToolTip>
+										<ToolTip
+											FontFamily="{Binding IsUsePinyinFont, Converter={StaticResource PinyinFontFamilyCvt}}">
+											<ContentControl.Content>
+												<MultiBinding
+													Converter="{StaticResource resTitleCvt}">
+													<Binding
+														Path="ResTitle" />
+													<Binding
+														Path="DisplayInfo" />
+													<Binding
+														Path="ResFlg" />
+												</MultiBinding>
+											</ContentControl.Content>
+										</ToolTip>
+									</FrameworkElement.ToolTip>
+									<FrameworkElement.Style>
+										<Style
+											TargetType="{x:Type TextBlock}"
+											BasedOn="{StaticResource NormalTextStyle}">
+											<Setter
+												Property="Foreground"
+												Value="{Binding Path=State, Converter={StaticResource resTitleForgroundCvt}}" />
+											<Style.Triggers>
+												<Trigger
+													Property="UIElement.IsMouseOver"
+													Value="True">
+													<Setter
+														Property="Foreground"
+														Value="{DynamicResource ThemeColor}" />
+												</Trigger>
+											</Style.Triggers>
+										</Style>
+									</FrameworkElement.Style>
+								</TextBlock>
+								<StackPanel
+									Grid.Row="2"
+									Orientation="Horizontal"
+									VerticalAlignment="Center"
+									Margin="0,0,0,0">
+									<TextBlock
+										Style="{DynamicResource NormalTextStyle}"
+										Foreground="#999999"
+										FontSize="12"
+										Margin="0,0,0,0"
+										Text="{Binding DzwjLxZhptName}" />
+									<TextBlock
+										Text="/"
+										Style="{DynamicResource NormalTextStyle}"
+										Foreground="#999999"
+										FontSize="12"
+										Margin="0,0,0,0" />
+									<TextBlock
+										Style="{DynamicResource NormalTextStyle}"
+										Foreground="#999999"
+										FontSize="12"
+										Margin="0,0,0,0"
+										Text="{Binding ShowResSize}" />
+									<TextBlock
+										Style="{DynamicResource NormalTextStyle}"
+										Foreground="#999999"
+										FontSize="12"
+										Margin="8,0,0,0"
+										Text="{Binding UseCount, StringFormat=使用数: {0}}" />
+									<TextBlock
+										Style="{DynamicResource NormalTextStyle}"
+										Foreground="#999999"
+										FontSize="12"
+										TextTrimming="CharacterEllipsis"
+										Margin="8,0,0,0"
+										Text="{Binding ShareTime, StringFormat=分享时间: {0}}"
+										ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+										Visibility="{Binding ResFlg, Converter={StaticResource showShareTimeCvt}}"
+										MaxWidth="{Binding ElementName=gridContent1, Path=ActualWidth, ConverterParameter=140, Converter={StaticResource maxwidthCvt}}" />
+								</StackPanel>
+								<StackPanel
+									Grid.Row="3"
+									Orientation="Horizontal"
+									VerticalAlignment="Center"
+									Margin="0,5,0,0">
+									<TextBlock
+										Style="{DynamicResource NormalTextStyle}"
+										Foreground="#999999"
+										FontSize="12"
+										Margin="0,0,0,0"
+										TextTrimming="CharacterEllipsis"
+										ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+										MaxWidth="{Binding ElementName=gridContent1, Path=ActualWidth, ConverterParameter=0, Converter={StaticResource maxwidthCvt}}">
+										<TextBlock.Text>
+											<MultiBinding
+												Converter="{StaticResource multiLyTxtCvt}">
+												<Binding
+													Path="ResFlg" />
+												<Binding
+													Path="PlatformShare" />
+												<Binding
+													Path="OrgId" />
+												<Binding
+													Path="ResSource" />
+											</MultiBinding>
+										</TextBlock.Text>
+									</TextBlock>
+									<TextBlock
+										Style="{DynamicResource NormalTextStyle}"
+										Margin="8,0,0,0"
+										Foreground="#999999"
+										FontSize="12"
+										TextTrimming="CharacterEllipsis"
+										Text="{Binding ResShareUnit}"
+										ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+										Visibility="{Binding ResFlg, Converter={StaticResource showShareTimeCvt}}" />
+									<TextBlock
+										Style="{DynamicResource NormalTextStyle}"
+										Foreground="#999999"
+										FontSize="12"
+										Margin="8,0,0,0"
+										Text="{Binding ResAuthor}"
+										ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"
+										Visibility="{Binding ResFlg, Converter={StaticResource showShareTimeCvt}}" />
+								</StackPanel>
+								<StackPanel
+									Grid.Row="4"
+									Orientation="Horizontal"
+									VerticalAlignment="Bottom"
+									HorizontalAlignment="Right">
+									<!--Unknown connection ID: 11-->
+									<Button
+										Style="{DynamicResource GuangXiVIconButtonStyle}"
+										Content=""
+										FontSize="22"
+										Margin="0,0,0,0"
+										FontFamily="{StaticResource PepFontIcon}" />
+									<!--Unknown connection ID: 12-->
+									<Button
+										Name="btnImageLstMore"
+										Style="{DynamicResource GuangXiVIconButtonStyle}"
+										Content=""
+										FontSize="28"
+										Margin="8,0,0,0"
+										FontFamily="{StaticResource PepFontIcon}" />
+								</StackPanel>
+							</Grid>
+						</Grid>
+					</Grid>
+				</Border>
+			</DataTemplate>
+			<ItemsPanelTemplate
+				x:Key="imageIT">
+				<userControls:AnimatedColumnUniformGrid
+					MaxColumnCount="2"
+					Columns="2"
+					IsItemsHost="True"
+					WidthOfEach="380"
+					VerticalAlignment="Top" />
+			</ItemsPanelTemplate>
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid
+		Background="{StaticResource UCBackgroundSolidColorBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="*" />
+			<RowDefinition
+				Height="55" />
+		</Grid.RowDefinitions>
+		<Grid
+			Name="gridResNormal"
+			Row="0"
+			Background="#FFFFFF">
+			<ListBox
+				Name="lstboxRes"
+				ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+				Visibility="{Binding ElementName=txtNoData, Path=Visibility, Converter={StaticResource revertCvt}}"
+				ItemsSource="{Binding ResList, ElementName=root}"
+				SelectedItem="{Binding SelectRes, ElementName=root}">
+				<FrameworkElement.Style>
+					<Style
+						BasedOn="{StaticResource DefaultListBoxStyle}"
+						TargetType="{x:Type ListBox}">
+						<Setter
+							Property="ItemContainerStyle"
+							Value="{StaticResource ListBoxItemStyleForRes}" />
+						<Setter
+							Property="ItemTemplate"
+							Value="{StaticResource TextDataTemplate}" />
+						<Style.Triggers>
+							<DataTrigger
+								Value="true"
+								Binding="{Binding ImageTextChecked, ElementName=root}">
+								<Setter
+									Property="ItemTemplate"
+									Value="{StaticResource imageLstDT}" />
+								<Setter
+									Property="ItemsPanel"
+									Value="{StaticResource imageIT}" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</FrameworkElement.Style>
+			</ListBox>
+			<TextBlock
+				Name="txtNoData"
+				Style="{DynamicResource NormalTextStyle}"
+				FontSize="18"
+				Margin="20,20,0,0"
+				VerticalAlignment="Top"
+				Text="{Binding MessageContent, ElementName=root}"
+				Visibility="{Binding ShowNoDataMessage, ElementName=root, Converter={StaticResource boolToVisCvt}}" />
+			<TextBlock
+				Style="{DynamicResource NormalTextStyle}"
+				FontSize="18"
+				Margin="20,20,0,0"
+				VerticalAlignment="Top"
+				Visibility="{Binding ShowGroupResNoData, ElementName=root, Converter={StaticResource boolToVisCvt}}">
+				<Run
+					Text="抱歉！没有符合条件的数据，你可以通过 &quot;"
+					FontSize="18"
+					FontFamily="Microsoft YaHei"
+					Foreground="#333333" /> <Run
+					Text="创建群组"
+					FontSize="18"
+					FontFamily="Microsoft YaHei"
+					Foreground="{DynamicResource ThemeColor}"
+					Cursor="Hand"
+					MouseLeftButtonDown="CreateGroup_MouseLeftButtonDown" /> <Run
+					Text="&quot; 邀请老师加入来共享群资源。"
+					FontSize="18"
+					FontFamily="Microsoft YaHei"
+					Foreground="#333333" /></TextBlock>
+		</Grid>
+		<Grid
+			Row="4"
+			VerticalAlignment="Center"
+			HorizontalAlignment="Center"
+			Visibility="{Binding ShowBottomInfo, ElementName=root, Converter={StaticResource boolToVisCvt}}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="*" />
+				<ColumnDefinition
+					Width="auto" />
+				<ColumnDefinition
+					Width="150" />
+				<ColumnDefinition
+					Width="*" />
+			</Grid.ColumnDefinitions>
+			<uc2:Pagination
+				Name="ucPagingControl"
+				Grid.Column="1" />
+			<TextBlock
+				Grid.Column="2"
+				Style="{DynamicResource NormalTextStyle}"
+				FontSize="14"
+				Margin="10,0,0,0"
+				MaxWidth="150"
+				Text="{Binding TotalCount, ElementName=root, StringFormat=共{0}条}"
+				ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}" />
+		</Grid>
+		<Grid
+			Name="gridWaiting"
+			Row="0"
+			RowSpan="2"
+			Visibility="Collapsed">
+			<Grid
+				Background="#FF000000"
+				Opacity="0.2" />
+			<uc:WaitingControls
+				Width="200"
+				Height="200"
+				Margin="-80,-50,0,0" />
+		</Grid>
+		<Popup
+			Name="popBtn"
+			Width="Auto"
+			Height="Auto"
+			AllowsTransparency="True"
+			Placement="Bottom"
+			PopupAnimation="Fade"
+			StaysOpen="False"
+			VerticalOffset="5"
+			HorizontalOffset="-5">
+			<Grid
+				Background="#00FFFFFF">
+				<Border
+					Background="#F7F9F9"
+					BorderBrush="{DynamicResource ThemeColor}"
+					BorderThickness="1"
+					CornerRadius="5"
+					SnapsToDevicePixels="True"
+					UseLayoutRounding="True">
+					<StackPanel
+						Width="90"
+						Margin="1"
+						Background="#00FFFFFF">
+						<Button
+							Name="btnPreview1"
+							Background="#F7F9F9"
+							Content="预览"
+							Style="{DynamicResource MenuButton}"
+							Click="btnPreview1_Click" />
+						<Button
+							Name="btnAddCourse"
+							Background="#F7F9F9"
+							Content="添加至课程"
+							Style="{DynamicResource MenuButton}"
+							Click="btnAddCourseMenu_Click" />
+						<Button
+							Name="btnCollect1"
+							Background="#F7F9F9"
+							Content="收藏"
+							Style="{DynamicResource MenuButton}"
+							Click="btnCollect1_Click" />
+						<Button
+							Name="btnDownload1"
+							Background="#F7F9F9"
+							Content="下载"
+							Style="{DynamicResource MenuButton}"
+							Click="btnDownload1_Click" />
+					</StackPanel>
+				</Border>
+			</Grid>
+		</Popup>
+		<Popup
+			Name="popImageLst"
+			Width="Auto"
+			Height="Auto"
+			AllowsTransparency="True"
+			Placement="Bottom"
+			PopupAnimation="Fade"
+			StaysOpen="False"
+			VerticalOffset="5"
+			HorizontalOffset="-5">
+			<Border
+				Background="#F7F9F9"
+				BorderBrush="{DynamicResource ThemeColor}"
+				BorderThickness="1"
+				CornerRadius="5"
+				SnapsToDevicePixels="True"
+				UseLayoutRounding="True">
+				<StackPanel
+					Width="90"
+					Margin="1"
+					Background="#00FFFFFF">
+					<Button
+						Name="btnPreview2"
+						Background="#F7F9F9"
+						Content="预览"
+						Style="{DynamicResource MenuButton}"
+						Click="btnPreview1_Click" />
+					<Button
+						Name="btnCollect2"
+						Background="#F7F9F9"
+						Content="收藏"
+						Style="{DynamicResource MenuButton}"
+						Click="btnCollect1_Click" />
+					<Button
+						Name="btnDownload2"
+						Background="#F7F9F9"
+						Content="下载"
+						Style="{DynamicResource MenuButton}"
+						Click="btnDownload1_Click" />
+				</StackPanel>
+			</Border>
+		</Popup>
+	</Grid>
+</UserControl>

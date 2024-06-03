@@ -1,0 +1,681 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.UserControls.MyHomeControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:JXP.PepDtp.View.UserControls" xmlns:controlAttach="clr-namespace:JXP.Resources;assembly=JXP.Resources" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:uc1="clr-namespace:JXP.Controls;assembly=JXP.Controls" xmlns:uc2="clr-namespace:JXP.Controls.CustomControl;assembly=JXP.Controls" xmlns:vm="clr-namespace:JXP.PepDtp.ViewModel" xmlns:jxpuc="clr-namespace:JXP.Controls.CustomControl;assembly=JXP.Controls" xmlns:cvt="clr-namespace:JXP.PepDtp.Converters" xmlns:cvt1="clr-namespace:JXP.WpfConverters;assembly=JXP.WpfConverters" xmlns:gif="http://wpfanimatedgif.codeplex.com">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<cvt:ResBoolToVisible
+				x:Key="boolToVisCvt" />
+			<cvt:RevertBoolToVisible
+				x:Key="RevertBoolToVisCvt" />
+			<cvt:MaxWidthConverter
+				x:Key="maxwidthCvt" />
+			<cvt1:PinyinFontFamilyConverter
+				NormalFontFamily="{StaticResource NormalFont}"
+				PinyinFontFamily="{StaticResource Pinyin}"
+				x:Key="PinyinFontFamilyCvt" />
+			<SolidColorBrush
+				Opacity="0.3"
+				Color="#33cccc"
+				x:Key="borderBrush" />
+			<SolidColorBrush
+				Opacity="0.3"
+				Color="#3399ff"
+				x:Key="borderBrush1" />
+			<SolidColorBrush
+				Opacity="0.3"
+				Color="#ffce4b"
+				x:Key="borderBrush2" />
+			<Style
+				TargetType="{x:Type RadioButton}"
+				x:Key="PageRadioBtnStyle">
+				<Setter
+					Property="Foreground"
+					Value="#666666" />
+				<Setter
+					Property="Background"
+					Value="#00FFFFFF" />
+				<Setter
+					Property="HorizontalContentAlignment"
+					Value="Center" />
+				<Setter
+					Property="VerticalContentAlignment"
+					Value="Center" />
+				<Setter
+					Property="Width"
+					Value="25" />
+				<Setter
+					Property="FrameworkElement.Cursor"
+					Value="Hand" />
+				<Setter
+					Property="FontFamily"
+					Value="微软雅黑" />
+				<Setter
+					Property="FontSize"
+					Value="14" />
+				<Setter
+					Property="Template">
+					<Setter.Value>
+						<ControlTemplate
+							TargetType="{x:Type RadioButton}">
+							<ContentPresenter
+								ContentTemplate="{TemplateBinding ContentTemplate}"
+								ContentStringFormat="{TemplateBinding ContentStringFormat}"
+								HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+								Margin="{TemplateBinding Padding}"
+								RecognizesAccessKey="True"
+								VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+								<ContentPresenter.Content>
+									<TextBlock
+										Name="lblContent"
+										Text="{TemplateBinding Content}"
+										TextTrimming="CharacterEllipsis"
+										Width="{TemplateBinding Width}"
+										HorizontalAlignment="Stretch" />
+								</ContentPresenter.Content>
+							</ContentPresenter>
+							<ControlTemplate.Triggers>
+								<Trigger
+									Property="ToggleButton.IsChecked"
+									Value="True">
+									<Setter
+										Value="{DynamicResource ThemeColor}"
+										Property="Foreground" />
+									<Setter
+										Property="FontSize"
+										Value="17" />
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid
+		Background="#f6f9fe">
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="51" />
+			<RowDefinition
+				Height="*" />
+		</Grid.RowDefinitions>
+		<Grid
+			Background="#f5f6f9">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="0" />
+				<ColumnDefinition
+					Width="158" />
+				<ColumnDefinition
+					Width="*" />
+			</Grid.ColumnDefinitions>
+			<Rectangle
+				Height="3"
+				VerticalAlignment="Bottom"
+				Fill="#ededed"
+				Grid.Column="2" />
+			<RadioButton
+				Style="{DynamicResource UnderlineRadioBtnStyleNew}"
+				Content="首   页"
+				Width="158"
+				Grid.Column="1"
+				IsChecked="True"
+				FontSize="22" />
+		</Grid>
+		<jxpuc:TouchableScrollViewer
+			Grid.Row="1"
+			VerticalScrollBarVisibility="Auto"
+			HorizontalScrollBarVisibility="Disabled">
+			<Grid
+				Background="#f6f9fe">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="40" />
+					<ColumnDefinition
+						Width="*" />
+					<ColumnDefinition
+						Width="40" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition
+						Height="*" />
+					<RowDefinition
+						Height="520" />
+					<RowDefinition
+						Height="*" />
+				</Grid.RowDefinitions>
+				<Grid
+					Row="1"
+					Column="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="300" />
+						<ColumnDefinition
+							Width="10" />
+						<ColumnDefinition
+							Width="*" />
+					</Grid.ColumnDefinitions>
+					<Grid
+						Background="#ffffff">
+						<Border
+							CornerRadius="5"
+							BorderThickness="0.8"
+							BorderBrush="{StaticResource borderBrush}">
+							<UIElement.Effect>
+								<DropShadowEffect
+									BlurRadius="8"
+									ShadowDepth="1"
+									Direction="270"
+									Color="#33cccc"
+									Opacity="1"
+									RenderingBias="Quality" />
+							</UIElement.Effect>
+						</Border>
+						<Grid
+							Margin="5">
+							<Grid.RowDefinitions>
+								<RowDefinition
+									Height="20" />
+								<RowDefinition
+									Height="23" />
+								<RowDefinition
+									Height="*" />
+								<RowDefinition
+									Height="10" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition
+									Width="25" />
+								<ColumnDefinition
+									Width="*" />
+								<ColumnDefinition
+									Width="25" />
+							</Grid.ColumnDefinitions>
+							<StackPanel
+								Grid.Row="1"
+								Grid.Column="1"
+								Orientation="Horizontal">
+								<Border
+									Background="{DynamicResource ThemeColor}"
+									Width="3" />
+								<TextBlock
+									Style="{DynamicResource NormalTextStyle}"
+									Foreground="{DynamicResource ThemeColor}"
+									Text="教材"
+									FontSize="22"
+									Margin="10,0,0,0" />
+							</StackPanel>
+							<Grid
+								Row="2"
+								Column="1"
+								Visibility="{Binding ShowNoBook, Converter={StaticResource RevertBoolToVisCvt}}">
+								<Grid.RowDefinitions>
+									<RowDefinition
+										Height="20" />
+									<RowDefinition
+										Height="*" />
+									<RowDefinition
+										Height="10" />
+									<RowDefinition
+										Height="30" />
+									<RowDefinition
+										Height="15" />
+									<RowDefinition
+										Height="auto" />
+								</Grid.RowDefinitions>
+								<Image
+									Grid.Row="1"
+									Stretch="Fill"
+									HorizontalAlignment="Center"
+									VerticalAlignment="Center"
+									Cursor="Hand"
+									Source="{Binding CurBookData.ThumbUrl, IsAsync=True}"
+									Visibility="{Binding ShowNoBook, Converter={StaticResource RevertBoolToVisCvt}}">
+									<i:Interaction.Triggers>
+										<i:EventTrigger
+											EventName="MouseLeftButtonDown">
+											<i:InvokeCommandAction
+												Command="{Binding OpenBookCommand}"
+												CommandParameter="{Binding CurBookData.Tbid}" />
+										</i:EventTrigger>
+									</i:Interaction.Triggers>
+								</Image>
+								<Border
+									Grid.Row="1"
+									Height="30"
+									Width="100"
+									Background="#FF000000"
+									Opacity="0.5"
+									CornerRadius="10"
+									HorizontalAlignment="Right"
+									VerticalAlignment="Bottom"
+									Margin="0,0,20,20" />
+								<Button
+									Grid.Row="1"
+									Width="100"
+									Height="30"
+									Content="打开教材"
+									HorizontalAlignment="Right"
+									VerticalAlignment="Bottom"
+									Margin="0,0,20,20"
+									Style="{DynamicResource GuangXiPrepareLessonsFlatButton}"
+									Background="#00FFFFFF"
+									FontSize="16"
+									Visibility="{Binding ShowNoBook, Converter={StaticResource RevertBoolToVisCvt}}"
+									Command="{Binding OpenBookCommand}"
+									CommandParameter="{Binding CurBookData.Tbid}" />
+								<ListBox
+									Grid.Row="3"
+									HorizontalAlignment="Center"
+									VerticalAlignment="Stretch"
+									Style="{DynamicResource DefaultListBoxStyle}"
+									ItemContainerStyle="{DynamicResource DefaultListBoxItemStyle}"
+									SelectionMode="Single"
+									ItemsSource="{Binding LstPageBtn}">
+									<ItemsControl.ItemsPanel>
+										<ItemsPanelTemplate>
+											<StackPanel
+												Orientation="Horizontal"
+												Background="#00FFFFFF" />
+										</ItemsPanelTemplate>
+									</ItemsControl.ItemsPanel>
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<RadioButton
+												Margin="0,0,0,0"
+												GroupName="B2F6F17C"
+												Style="{StaticResource PageRadioBtnStyle}"
+												Content="{Binding Text}"
+												IsChecked="{Binding Selected}"
+												Command="{Binding DataContext.PageBtnCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MyHomeControl}}}" />
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ListBox>
+								<Button
+									Grid.Row="5"
+									HorizontalAlignment="Right"
+									VerticalAlignment="Bottom"
+									Background="#00FFFFFF"
+									Content="更多教材&gt;&gt;"
+									Foreground="{DynamicResource ThemeColor}"
+									Style="{DynamicResource LikedButtonStyle}"
+									Margin="0,0,0,10"
+									FontSize="16"
+									Visibility="{Binding ShowNoBook, Converter={StaticResource RevertBoolToVisCvt}}"
+									Command="{Binding MoreBookCommand}" />
+							</Grid>
+							<Grid
+								Row="2"
+								Column="1"
+								Background="#01000000"
+								Cursor="Hand"
+								Visibility="{Binding ShowNoBook, Converter={StaticResource boolToVisCvt}}">
+								<Grid.RowDefinitions>
+									<RowDefinition
+										Height="20" />
+									<RowDefinition
+										Height="*" />
+									<RowDefinition
+										Height="30" />
+								</Grid.RowDefinitions>
+								<i:Interaction.Triggers>
+									<i:EventTrigger
+										EventName="MouseLeftButtonDown">
+										<i:InvokeCommandAction
+											Command="{Binding AddBookCommand}" />
+									</i:EventTrigger>
+								</i:Interaction.Triggers>
+								<Border
+									Grid.Row="1"
+									CornerRadius="5"
+									BorderThickness="1"
+									BorderBrush="{StaticResource borderBrush2}">
+									<UIElement.Effect>
+										<DropShadowEffect
+											BlurRadius="8"
+											ShadowDepth="0"
+											Direction="270"
+											Color="#ffce4b"
+											Opacity="1"
+											RenderingBias="Quality" />
+									</UIElement.Effect>
+								</Border>
+								<Grid
+									Margin="5"
+									Row="1">
+									<StackPanel
+										HorizontalAlignment="Center"
+										VerticalAlignment="Center">
+										<TextBlock
+											Style="{DynamicResource iFont}"
+											Text=""
+											Foreground="#ffce4b"
+											FontSize="60" />
+										<TextBlock
+											Style="{DynamicResource NormalTextStyle}"
+											Text="点击添加教材"
+											Foreground="#ffce4b"
+											FontSize="25"
+											Margin="0,30,0,0" />
+									</StackPanel>
+								</Grid>
+							</Grid>
+						</Grid>
+					</Grid>
+					<Grid
+						Column="2"
+						Background="#ffffff">
+						<Border
+							CornerRadius="5"
+							BorderThickness="0.8"
+							BorderBrush="{StaticResource borderBrush1}">
+							<UIElement.Effect>
+								<DropShadowEffect
+									BlurRadius="8"
+									ShadowDepth="1"
+									Direction="270"
+									Color="#3399ff"
+									Opacity="1"
+									RenderingBias="Quality" />
+							</UIElement.Effect>
+						</Border>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition
+									Width="20" />
+								<ColumnDefinition
+									Width="*" />
+								<ColumnDefinition
+									Width="10" />
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition
+									Height="20" />
+								<RowDefinition
+									Height="23" />
+								<RowDefinition
+									Height="*" />
+								<RowDefinition
+									Height="10" />
+							</Grid.RowDefinitions>
+							<StackPanel
+								Grid.Row="1"
+								Grid.Column="1"
+								Grid.ColumnSpan="6"
+								Orientation="Horizontal">
+								<Border
+									Background="{DynamicResource ThemeColor}"
+									Width="3" />
+								<TextBlock
+									Style="{DynamicResource NormalTextStyle}"
+									Foreground="{DynamicResource ThemeColor}"
+									Text="备课授课"
+									FontSize="22"
+									Margin="10,0,0,0" />
+							</StackPanel>
+							<Grid
+								Row="2"
+								Column="1"
+								Visibility="{Binding ShowNoCourse, Converter={StaticResource RevertBoolToVisCvt}}">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition
+										Width="*" />
+									<ColumnDefinition
+										Width="10" />
+									<ColumnDefinition
+										Width="1" />
+									<ColumnDefinition
+										Width="10" />
+									<ColumnDefinition
+										Width="260" />
+									<ColumnDefinition
+										Width="10" />
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition
+										Height="10" />
+									<RowDefinition
+										Height="*" />
+									<RowDefinition
+										Height="10" />
+									<RowDefinition
+										Height="auto" />
+									<RowDefinition
+										Height="10" />
+								</Grid.RowDefinitions>
+								<ListBox
+									Grid.Row="1"
+									Grid.Column="0"
+									ItemContainerStyle="{DynamicResource ListBoxItemStyleForRes}"
+									SelectionMode="Single"
+									ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+									Style="{DynamicResource DefaultListBoxStyle}"
+									ItemsSource="{Binding LstCourse}"
+									SelectedItem="{Binding SelectCourse}">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<Grid
+												Height="80">
+												<Grid.RowDefinitions>
+													<RowDefinition
+														Height="*" />
+													<RowDefinition
+														Height="1" />
+												</Grid.RowDefinitions>
+												<Grid>
+													<Grid.RowDefinitions>
+														<RowDefinition
+															Height="20" />
+														<RowDefinition
+															Height="auto" />
+														<RowDefinition
+															Height="*" />
+														<RowDefinition
+															Height="auto" />
+														<RowDefinition
+															Height="5" />
+													</Grid.RowDefinitions>
+													<Grid.ColumnDefinitions>
+														<ColumnDefinition
+															Width="*" />
+														<ColumnDefinition
+															Width="83" />
+														<ColumnDefinition
+															Width="10" />
+													</Grid.ColumnDefinitions>
+													<TextBlock
+														Grid.Row="1"
+														Grid.Column="0"
+														FontSize="18"
+														Cursor="Hand"
+														Text="{Binding Title}"
+														FontFamily="{Binding IsUsePinyinFont, Converter={StaticResource PinyinFontFamilyCvt}}">
+														<FrameworkElement.Style>
+															<Style
+																BasedOn="{StaticResource NormalTextStyle}"
+																TargetType="{x:Type TextBlock}">
+																<Style.Triggers>
+																	<Trigger
+																		Property="UIElement.IsMouseOver"
+																		Value="True">
+																		<Setter
+																			Property="Foreground"
+																			Value="{DynamicResource ThemeColor}" />
+																	</Trigger>
+																	<Trigger
+																		Property="UIElement.IsMouseOver"
+																		Value="False">
+																		<Setter
+																			Property="Foreground"
+																			Value="#333333" />
+																	</Trigger>
+																</Style.Triggers>
+															</Style>
+														</FrameworkElement.Style>
+														<i:Interaction.Triggers>
+															<i:EventTrigger
+																EventName="MouseLeftButtonDown">
+																<i:InvokeCommandAction
+																	Command="{Binding DataContext.EditeCourseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MyHomeControl}}}"
+																	CommandParameter="{Binding Id}" />
+															</i:EventTrigger>
+														</i:Interaction.Triggers>
+													</TextBlock>
+													<StackPanel
+														Orientation="Horizontal"
+														Grid.Row="3"
+														Grid.Column="0">
+														<TextBlock
+															Style="{DynamicResource NormalTextStyle}"
+															FontSize="12"
+															Foreground="#999999">
+															<Run
+																Text="教学设计" /> <Run
+																Foreground="#319bfe"
+																Text="{Binding JxsjNum}" /> <Run
+																Text="个" /></TextBlock>
+														<TextBlock
+															Style="{DynamicResource NormalTextStyle}"
+															FontSize="12"
+															Margin="15,0,0,0"
+															Foreground="#999999">
+															<Run
+																Text="授课资源" /> <Run
+																Foreground="#feb331"
+																Text="{Binding SkzyNum}" /> <Run
+																Text="个" /></TextBlock>
+														<TextBlock
+															Style="{DynamicResource NormalTextStyle}"
+															FontSize="12"
+															Margin="15,0,0,0"
+															Foreground="#999999"
+															Text="{Binding ModifyTime}" />
+													</StackPanel>
+													<Button
+														Grid.Column="1"
+														Grid.Row="1"
+														Grid.RowSpan="3"
+														Style="{DynamicResource GuangXiPrepareLessonsFlatButton}"
+														controlAttach:ControlAttachProperty.CornerRadius="5"
+														VerticalAlignment="Bottom"
+														HorizontalAlignment="Right"
+														Margin="0,0,0,10"
+														Content="上  课"
+														Width="83"
+														Height="28"
+														Command="{Binding DataContext.StartClassCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MyHomeControl}}}"
+														CommandParameter="{Binding Id}" />
+												</Grid>
+												<Border
+													Background="#e9e9e9"
+													Grid.Row="1" />
+											</Grid>
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ListBox>
+								<Button
+									Grid.Row="3"
+									Grid.Column="0"
+									HorizontalAlignment="Right"
+									VerticalAlignment="Bottom"
+									Background="#00FFFFFF"
+									FontSize="16"
+									Content="更多课程&gt;&gt;"
+									Foreground="{DynamicResource ThemeColor}"
+									Style="{DynamicResource LikedButtonStyle}"
+									Margin="0,0,0,10"
+									Command="{Binding MoreCourseCommand}" />
+								<Border
+									Grid.Column="2"
+									Grid.Row="1"
+									Background="#e9e9e9" />
+								<Grid
+									Row="1"
+									RowSpan="2"
+									Column="4"
+									Background="#01000000"
+									Cursor="Hand">
+									<i:Interaction.Triggers>
+										<i:EventTrigger
+											EventName="MouseLeftButtonDown">
+											<i:InvokeCommandAction
+												Command="{Binding CreateCourseCommand}" />
+										</i:EventTrigger>
+									</i:Interaction.Triggers>
+									<Grid.RowDefinitions>
+										<RowDefinition
+											Height="*" />
+										<RowDefinition
+											Height="190" />
+										<RowDefinition
+											Height="50" />
+										<RowDefinition
+											Height="38" />
+										<RowDefinition
+											Height="*" />
+									</Grid.RowDefinitions>
+									<Image
+										Grid.Row="1"
+										Source="../../Resources/Images/createCourse.png" />
+									<Image
+										Grid.Row="3"
+										Source="../../Resources/Images/createCourse1.png" />
+								</Grid>
+							</Grid>
+							<Grid
+								Row="2"
+								Column="1"
+								Background="#01000000"
+								Cursor="Hand"
+								Visibility="{Binding ShowNoCourse, Converter={StaticResource boolToVisCvt}}">
+								<i:Interaction.Triggers>
+									<i:EventTrigger
+										EventName="MouseLeftButtonDown">
+										<i:InvokeCommandAction
+											Command="{Binding CreateCourseCommand}" />
+									</i:EventTrigger>
+								</i:Interaction.Triggers>
+								<StackPanel
+									Orientation="Vertical"
+									HorizontalAlignment="Center"
+									VerticalAlignment="Center">
+									<Image
+										Source="../../Resources/Images/createCourse.png"
+										Width="319"
+										Height="197" />
+									<TextBlock
+										Style="{DynamicResource NormalTextStyle}"
+										Foreground="#c0c0c0"
+										FontSize="20"
+										Text="当前未创建课程，一键建课"
+										HorizontalAlignment="Center"
+										Margin="0,20,0,0" />
+									<Image
+										Source="../../Resources/Images/createCourse1.png"
+										Width="151"
+										Height="38"
+										Margin="0,20,0,0" />
+								</StackPanel>
+							</Grid>
+						</Grid>
+					</Grid>
+				</Grid>
+			</Grid>
+		</jxpuc:TouchableScrollViewer>
+		<Grid
+			Row="1"
+			Background="#FFFFFF"
+			Visibility="{Binding ShowWaiting, Converter={StaticResource Bool2Visibility}}">
+			<TextBlock
+				FontSize="20"
+				Style="{DynamicResource NormalTextStyle}"
+				VerticalAlignment="Top"
+				HorizontalAlignment="Left"
+				Margin="20,30,0,0"
+				Text="{Binding MessageContent}"
+				Visibility="{Binding ShowDataMessage, Converter={StaticResource boolToVisCvt}}" />
+			<uc1:WaitingControls
+				Width="200"
+				Height="200" />
+		</Grid>
+	</Grid>
+</UserControl>

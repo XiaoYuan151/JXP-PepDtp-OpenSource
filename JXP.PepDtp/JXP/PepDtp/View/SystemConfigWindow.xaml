@@ -1,0 +1,606 @@
+<Window
+	x:Class="JXP.PepDtp.View.SystemConfigWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:uc="clr-namespace:JXP.Controls;assembly=JXP.Controls" xmlns:local="clr-namespace:JXP.PepDtp.View" xmlns:cvt="clr-namespace:JXP.PepDtp.Converters" xmlns:controlAttach="clr-namespace:JXP.Resources;assembly=JXP.Resources"
+	ShowInTaskbar="False"
+	Title="SystemConfigWindow"
+	Height="412"
+	Width="551"
+	WindowStartupLocation="CenterScreen"
+	WindowStyle="None"
+	AllowsTransparency="True"
+	Background="#00FFFFFF"
+	ResizeMode="NoResize"
+	BorderThickness="5"
+	Loaded="Window_Loaded"
+	MouseLeftButtonDown="Window_MouseLeftButtonDown">
+	<UIElement.Effect>
+		<DropShadowEffect
+			BlurRadius="5"
+			Opacity="0.2"
+			Direction="-90"
+			ShadowDepth="3" />
+	</UIElement.Effect>
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<cvt:RevertVisibilityConverter
+				x:Key="revertVisibilityCvt" />
+			<ImageBrush
+				ImageSource="/JXP.PepDtp;component/Resources/Images/customer_service_back.png"
+				x:Key="customer_service_back" />
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="50" />
+			<RowDefinition />
+			<RowDefinition
+				Height="0" />
+		</Grid.RowDefinitions>
+		<Border
+			Grid.Row="0"
+			Background="#ffffff"
+			CornerRadius="3,3,0,0"
+			BorderThickness="0,1,0,0"
+			BorderBrush="#eaeaea">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="17" />
+					<ColumnDefinition
+						Width="auto" />
+					<ColumnDefinition
+						Width="*" />
+					<ColumnDefinition
+						Width="auto" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition
+						Height="*" />
+					<RowDefinition
+						Height="2" />
+				</Grid.RowDefinitions>
+				<Border
+					Grid.Row="1"
+					Grid.ColumnSpan="4"
+					Background="#cccccc"
+					Margin="0,0,0,0" />
+				<TextBlock
+					Text="设置"
+					Grid.Column="1"
+					FontSize="24"
+					Style="{StaticResource NormalTextStyle}" />
+				<Button
+					Name="btnClose"
+					Grid.Column="3"
+					Style="{StaticResource WebPreCloseButtonStyle}"
+					Margin="0,0,5,0"
+					Width="30"
+					Height="30"
+					FontSize="35"
+					Padding="-3,-5,0,0"
+					Content=""
+					FontFamily="{StaticResource PepFontIcon}"
+					Foreground="#333333"
+					Click="btn_ok_Click" />
+			</Grid>
+		</Border>
+		<Grid
+			Row="1"
+			Background="#ffffff">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="92" />
+				<ColumnDefinition
+					Width="2" />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<StackPanel>
+				<Grid
+					Name="grid_sys"
+					Height="38"
+					Margin="0,0,0,0"
+					Cursor="Hand"
+					Background="{Binding SysBackGroundColorBrush}"
+					MouseLeftButtonDown="grid_sys_MouseLeftButtonDown">
+					<TextBlock
+						Text="系统设置"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="14"
+						Foreground="{Binding SysForegroundBrush}" />
+				</Grid>
+				<Grid
+					Name="grid_about"
+					Height="38"
+					Margin="0,5,0,0"
+					Cursor="Hand"
+					Background="{Binding AboutBackGroundColorBrush}"
+					MouseLeftButtonDown="grid_about_MouseLeftButtonDown">
+					<TextBlock
+						Text="关于我们"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="14"
+						Foreground="{Binding AboutForegroundBrush}" />
+				</Grid>
+				<Grid
+					Name="grid_report"
+					Height="38"
+					Margin="0,5,0,0"
+					Cursor="Hand"
+					Background="{Binding ReportBackGroundColorBrush}"
+					MouseLeftButtonDown="grid_report_MouseLeftButtonDown">
+					<TextBlock
+						Text="帮助与反馈"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center"
+						FontSize="14"
+						Foreground="{Binding ReportForegroundBrush}" />
+				</Grid>
+			</StackPanel>
+			<Grid
+				Background="#eaeaea"
+				Column="1" />
+			<Grid
+				Column="2">
+				<Grid
+					Name="grid_sys_content"
+					Visibility="{Binding SystemConfigVisibility}">
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="2*" />
+						<RowDefinition
+							Height="1.8*" />
+						<RowDefinition
+							Height="20" />
+					</Grid.RowDefinitions>
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="60" />
+							<RowDefinition
+								Height="*" />
+						</Grid.RowDefinitions>
+						<TextBlock
+							Text="常规"
+							FontSize="20"
+							Foreground="#FF000000"
+							Margin="20,0,0,0"
+							Style="{StaticResource NormalTextStyle}" />
+						<StackPanel
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Stretch"
+							Margin="20,0,0,0">
+							<CheckBox
+								Name="startcheckbox"
+								Style="{StaticResource ShareGroupCheckboxStyle}"
+								Margin="0,5"
+								IsChecked="{Binding AutoStartUp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								Click="CheckBox_Click">
+								<ContentControl.Content>
+									<TextBlock
+										Text="启动Windows时,启动八桂教学通"
+										Style="{StaticResource NormalTextStyle}" />
+								</ContentControl.Content>
+							</CheckBox>
+							<CheckBox
+								Name="autoupdate"
+								Style="{StaticResource ShareGroupCheckboxStyle}"
+								Margin="0,5"
+								IsChecked="{Binding AutoUpdateClient, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								Click="autoupdate_Click">
+								<ContentControl.Content>
+									<TextBlock
+										Text="自动检查客户端更新"
+										Style="{StaticResource NormalTextStyle}" />
+								</ContentControl.Content>
+							</CheckBox>
+							<CheckBox
+								Name="setClose"
+								Style="{StaticResource ShareGroupCheckboxStyle}"
+								Margin="0,5"
+								IsChecked="{Binding ColseToPallet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								Click="setClose_Click">
+								<ContentControl.Content>
+									<TextBlock
+										Text="点击X时到系统托盘"
+										Style="{StaticResource NormalTextStyle}" />
+								</ContentControl.Content>
+							</CheckBox>
+							<CheckBox
+								Name="mRemindSyncRes"
+								Style="{StaticResource ShareGroupCheckboxStyle}"
+								Margin="0,5"
+								IsChecked="{Binding IsRemindSyncRes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								Click="mRemindSyncRes_Click">
+								<ContentControl.Content>
+									<TextBlock
+										Text="提醒同步资源"
+										Style="{StaticResource NormalTextStyle}" />
+								</ContentControl.Content>
+							</CheckBox>
+						</StackPanel>
+					</Grid>
+					<Grid
+						Row="1">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="60" />
+							<RowDefinition
+								Height="*" />
+						</Grid.RowDefinitions>
+						<TextBlock
+							Text="锁定"
+							FontSize="20"
+							Foreground="#FF000000"
+							Margin="20,0,0,0"
+							Style="{StaticResource NormalTextStyle}" />
+						<StackPanel
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Stretch"
+							Margin="20,0,0,0">
+							<CheckBox
+								Name="cbx_autoLock"
+								Style="{StaticResource ShareGroupCheckboxStyle}"
+								Margin="0,5"
+								IsChecked="{Binding AutoLockClient, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								Checked="cbx_autoLock_Checked"
+								Unchecked="cbx_autoLock_Unchecked">
+								<ContentControl.Content>
+									<StackPanel
+										Orientation="Horizontal">
+										<TextBlock
+											Text="鼠标键盘"
+											Style="{StaticResource NormalTextStyle}" />
+										<xctk:IntegerUpDown
+											Name="tb_LockTime"
+											NumericUpDown_x0060_1.Increment="1"
+											UpDownBase_x0060_1.Minimum="5"
+											UpDownBase_x0060_1.Value="5" />
+										<TextBlock
+											Text="分钟内无操作,自动进入锁定状态"
+											Style="{StaticResource NormalTextStyle}" />
+									</StackPanel>
+								</ContentControl.Content>
+							</CheckBox>
+							<TextBlock
+								Name="lblSearch"
+								Text="应用统计查询（只有管理员有此权限）"
+								Style="{DynamicResource NormalTextStyle}"
+								Margin="0,10,0,0"
+								Cursor="Hand"
+								MouseLeftButtonDown="lblSearch_MouseLeftButtonDown" />
+						</StackPanel>
+					</Grid>
+				</Grid>
+				<Grid
+					Name="grid_about_content"
+					Visibility="{Binding AboutVisibility}">
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="25" />
+						<RowDefinition
+							Height="60" />
+						<RowDefinition
+							Height="5" />
+						<RowDefinition
+							Height="30" />
+						<RowDefinition
+							Height="30" />
+						<RowDefinition
+							Height="*" />
+						<RowDefinition
+							Height="Auto" />
+						<RowDefinition
+							Height="25" />
+					</Grid.RowDefinitions>
+					<Image
+						Grid.Row="1"
+						Height="60"
+						Width="60"
+						Source="/JXP.PepDtp;component/Resources/Images/logo.ico"
+						Stretch="Fill" />
+					<StackPanel
+						Grid.Row="3"
+						Orientation="Horizontal"
+						HorizontalAlignment="Center">
+						<TextBlock
+							Text="八桂教学通"
+							FontSize="16"
+							Style="{StaticResource NormalTextStyle}" />
+						<TextBlock
+							Name="tb_version"
+							Text=" V1.0.1"
+							FontSize="16"
+							Style="{StaticResource NormalTextStyle}" />
+						<Ellipse
+							Name="ellipse"
+							Height="6"
+							Width="6"
+							Fill="#FFFF4500"
+							VerticalAlignment="Top"
+							Margin="0,5,0,0"
+							Visibility="{Binding UpdateVisibility}" />
+					</StackPanel>
+					<Button
+						Name="btn_update"
+						Grid.Row="5"
+						Width="110"
+						Height="30"
+						FontSize="16"
+						Content="升级"
+						Style="{StaticResource GuangXiPrepareLessonsFlatButton}"
+						controlAttach:ControlAttachProperty.CornerRadius="5"
+						VerticalAlignment="Top"
+						HorizontalAlignment="Center"
+						Visibility="{Binding UpdateVisibility}"
+						Click="btn_update_Click" />
+					<StackPanel
+						Grid.Row="6"
+						Orientation="Vertical"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center">
+						<TextBlock
+							Name="lblUserAgreement"
+							Text="《用户使用协议》"
+							FontSize="16"
+							Style="{StaticResource NormalTextStyle}"
+							Foreground="{DynamicResource ThemeColor}"
+							Cursor="Hand"
+							MouseLeftButtonDown="lblUserAgreement_MouseLeftButtonDown" />
+						<TextBlock
+							Name="lblConcealAgreement"
+							Text="《隐私保护政策》"
+							FontSize="16"
+							Style="{StaticResource NormalTextStyle}"
+							Foreground="{DynamicResource ThemeColor}"
+							Cursor="Hand"
+							Margin="0,10,0,0"
+							MouseLeftButtonDown="lblConcealAgreement_MouseLeftButtonDown" />
+					</StackPanel>
+				</Grid>
+				<Grid
+					Name="grid_report_content"
+					Visibility="{Binding ReportVisibility}">
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="0" />
+						<RowDefinition
+							Height="0" />
+						<RowDefinition
+							Height="0" />
+						<RowDefinition
+							Height="0" />
+						<RowDefinition
+							Height="0" />
+						<RowDefinition
+							Height="0" />
+						<RowDefinition
+							Height="165" />
+						<RowDefinition
+							Height="2" />
+						<RowDefinition
+							Height="30" />
+						<RowDefinition
+							Height="Auto" />
+						<RowDefinition
+							Height="*" />
+						<RowDefinition
+							Height="50" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="8" />
+						<ColumnDefinition
+							Width="*" />
+						<ColumnDefinition
+							Width="8" />
+					</Grid.ColumnDefinitions>
+					<Image
+						Grid.Column="1"
+						Grid.Row="1"
+						Grid.RowSpan="4"
+						Width="100"
+						Height="100"
+						Cursor="Hand"
+						Margin="0,0,10,0"
+						HorizontalAlignment="Right"
+						Source="/JXP.PepDtp;component/Resources/Images/customer_service2.png"
+						Stretch="Uniform"
+						Visibility="Collapsed"
+						MouseLeftButtonDown="Image_MouseLeftButtonDown" />
+					<Border
+						Grid.Row="6"
+						Grid.Column="1"
+						BorderBrush="#FFD3D3D3"
+						CornerRadius="10"
+						Height="165"
+						BorderThickness="1"
+						VerticalAlignment="Top"
+						Visibility="Collapsed">
+						<uc:WatermarkTextBox
+							Name="tb_report"
+							Watermark="有任何对我们产品的意见或反馈，欢迎输入提交"
+							FontSize="14"
+							AcceptsReturn="True"
+							AcceptsTab="True"
+							Margin="5"
+							BorderThickness="0"
+							BorderBrush="#00FFFFFF" />
+					</Border>
+					<Button
+						Name="btnUploadImg"
+						Grid.Column="1"
+						Grid.Row="8"
+						Width="80"
+						Height="25"
+						Content="+上传图片"
+						FontSize="14"
+						Style="{StaticResource GuangXiPrepareLessonsFlatButton}"
+						HorizontalAlignment="Left"
+						controlAttach:ControlAttachProperty.CornerRadius="5"
+						Visibility="Collapsed"
+						Click="btnUploadImg_Click" />
+					<Grid
+						Row="8"
+						Column="1"
+						Visibility="Collapsed">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition
+								Width="auto" />
+							<ColumnDefinition
+								Width="5" />
+							<ColumnDefinition
+								Width="30" />
+						</Grid.ColumnDefinitions>
+						<TextBlock
+							Name="lblImageName"
+							Grid.Column="0"
+							Style="{StaticResource NormalTextStyle}"
+							TextTrimming="CharacterEllipsis" />
+						<Button
+							Name="btnCancelImage"
+							Grid.Column="2"
+							Style="{StaticResource WebPreCloseButtonStyle}"
+							Margin="0,0,5,0"
+							Width="30"
+							Height="30"
+							FontSize="25"
+							Padding="-3,2,0,0"
+							Content=""
+							FontFamily="{StaticResource PepFontIcon}"
+							Foreground="#FFFF0000"
+							Click="btnCancelImage_Click" />
+					</Grid>
+					<CheckBox
+						Name="cbLog"
+						Grid.Row="9"
+						Grid.Column="1"
+						Content="同时上传错误日志"
+						Style="{DynamicResource SelectChapterCheckboxStyle}"
+						Visibility="Collapsed"
+						IsChecked="{Binding CheckLog}" />
+					<Button
+						Name="btn_commit"
+						Grid.Column="1"
+						Grid.Row="10"
+						Width="110"
+						Height="30"
+						Content="提交反馈"
+						FontSize="16"
+						HorizontalAlignment="Center"
+						Style="{StaticResource GuangXiPrepareLessonsFlatButton}"
+						controlAttach:ControlAttachProperty.CornerRadius="5"
+						Visibility="Collapsed"
+						Click="btn_commit_Click" />
+					<Grid
+						Row="6"
+						RowSpan="5"
+						Column="1">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="20" />
+							<RowDefinition
+								Height="auto" />
+							<RowDefinition
+								Height="10" />
+							<RowDefinition
+								Height="auto" />
+							<RowDefinition
+								Height="*" />
+							<RowDefinition
+								Height="50" />
+						</Grid.RowDefinitions>
+						<TextBlock
+							Grid.Row="1"
+							Style="{StaticResource NormalTextStyle}"
+							Text="在线客服"
+							FontSize="16" />
+						<Grid
+							Row="3">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition
+									Width="auto" />
+								<ColumnDefinition
+									Width="*" />
+							</Grid.ColumnDefinitions>
+							<Image
+								Width="103"
+								Height="117"
+								Cursor="Hand"
+								Margin="70,20,0,0"
+								Source="/JXP.PepDtp;component/Resources/Images/customer_service2.png"
+								MouseLeftButtonDown="Image_MouseLeftButtonDown" />
+							<Button
+								Grid.Column="1"
+								Width="185"
+								Height="63"
+								Background="{StaticResource customer_service_back}"
+								Style="{DynamicResource GuangXiPrepareLessonsFlatButton}"
+								VerticalAlignment="Center"
+								BorderThickness="0"
+								Margin="-50,50,0,0"
+								Foreground="#FFFFFFFF"
+								FontSize="20"
+								Content="在 线 客 服"
+								FontWeight="Bold"
+								Padding="0,0,10,10"
+								Click="Button_Click" />
+						</Grid>
+					</Grid>
+					<Border
+						Grid.Row="11"
+						Grid.ColumnSpan="3"
+						CornerRadius="0,0,0,0"
+						Background="#eeefef">
+						<StackPanel
+							HorizontalAlignment="Right"
+							VerticalAlignment="Center">
+							<TextBlock
+								Text="服务时间：工作日  8:00-12:00    15:00-18:00"
+								Foreground="#999999"
+								Style="{DynamicResource NormalTextStyle}"
+								Margin="0,0,30,10"
+								FontSize="16" />
+						</StackPanel>
+					</Border>
+				</Grid>
+				<TextBlock
+					Name="toastTarget"
+					VerticalAlignment="Top"
+					Margin="0,100,0,0"
+					Opacity="0"
+					Height="0"
+					Grid.Column="2" />
+			</Grid>
+		</Grid>
+		<Border
+			Grid.Row="2"
+			Background="#f9f9f9"
+			CornerRadius="0,0,5,5">
+			<Button
+				Name="btn_ok"
+				Width="100"
+				Height="32"
+				HorizontalAlignment="Right"
+				Content="确定"
+				Margin="0,0,10,0"
+				Style="{StaticResource DefaultButtonStyleNew}"
+				Click="btn_ok_Click" />
+		</Border>
+		<Grid
+			Name="gridWaiting"
+			Row="0"
+			RowSpan="3"
+			Visibility="{Binding WaitingVisibility}">
+			<Grid
+				Background="#FF000000"
+				Opacity="0.2" />
+			<uc:WaitingControls
+				Width="180"
+				Height="180" />
+		</Grid>
+	</Grid>
+</Window>

@@ -1,0 +1,14 @@
+<Window
+	x:Class="JXP.PepDtp.View.CustomSelectFile" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="CustomSelectFile"
+	Height="3"
+	Width="3"
+	Topmost="True"
+	WindowStyle="None"
+	ShowInTaskbar="False"
+	ResizeMode="NoResize"
+	WindowStartupLocation="CenterScreen"
+	Opacity="0.1" xmlns:view="clr-namespace:JXP.PepDtp.View"
+	Loaded="Window_Loaded">
+	<Grid />
+</Window>

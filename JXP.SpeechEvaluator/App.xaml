@@ -1,0 +1,13 @@
+<Application
+	x:Class="JXP.SpeechEvaluator.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:JXP.SpeechEvaluator">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary
+					Source="pack://application:,,,/JXP.Resources;component/Styles/Index.xaml" />
+				<ResourceDictionary
+					Source="/JXP.SpeechEvaluator;component/Resources/Styles/EvaluatorStyle.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

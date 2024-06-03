@@ -1,0 +1,448 @@
+<UserControl
+	x:Class="JXP.PepDtp.View.UserControls.MainMenu" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:JXP.PepDtp.View.CustomControl"
+	Name="root" xmlns:usercontrols="clr-namespace:JXP.PepDtp.View.UserControls">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<Storyboard
+				FillBehavior="Stop"
+				x:Key="Storyboard1">
+				<DoubleAnimationUsingKeyFrames
+					Storyboard.TargetProperty="(TextElement.FontSize)"
+					Storyboard.TargetName="textBlock">
+					<EasingDoubleKeyFrame
+						KeyTime="0"
+						Value="12" />
+					<EasingDoubleKeyFrame
+						KeyTime="0:0:2"
+						Value="25" />
+					<EasingDoubleKeyFrame
+						KeyTime="0:0:2.4"
+						Value="25" />
+				</DoubleAnimationUsingKeyFrames>
+				<DoubleAnimationUsingKeyFrames
+					Storyboard.TargetProperty="(UIElement.Opacity)"
+					Storyboard.TargetName="textBlock">
+					<EasingDoubleKeyFrame
+						KeyTime="0:0:2"
+						Value="1" />
+					<EasingDoubleKeyFrame
+						KeyTime="0:0:2.4"
+						Value="0" />
+				</DoubleAnimationUsingKeyFrames>
+			</Storyboard>
+			<LinearGradientBrush
+				StartPoint="0,0"
+				EndPoint="1,1"
+				x:Key="background">
+				<GradientStop
+					Color="#353142"
+					Offset="1.0" />
+				<GradientStop
+					Color="#202632"
+					Offset="0.0" />
+			</LinearGradientBrush>
+			<Style
+				TargetType="{x:Type ListBoxItem}"
+				x:Key="ListBoxItemStyleForMenu1">
+				<Setter
+					Property="IsEnabled"
+					Value="{Binding IsMenuEnnabled}" />
+				<Setter
+					Property="Template">
+					<Setter.Value>
+						<ControlTemplate
+							TargetType="{x:Type ListBoxItem}">
+							<Border
+								Name="itemBor"
+								CornerRadius="0"
+								Height="50"
+								Cursor="Hand"
+								Background="#01000000">
+								<Grid
+									IsEnabled="{Binding IsMenuEnnabled}">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition
+											Width="auto" />
+										<ColumnDefinition
+											Width="*" />
+										<ColumnDefinition
+											Width="5" />
+										<ColumnDefinition
+											Width="auto" />
+									</Grid.ColumnDefinitions>
+									<TextBlock
+										Name="iconText"
+										Grid.Column="0"
+										Margin="30,0,0,0"
+										Style="{DynamicResource iFont}"
+										Foreground="#00323a"
+										FontWeight="Regular"
+										Text="{Binding Icon}"
+										FontSize="{Binding IconFontSize}" />
+									<TextBlock
+										Name="contentText"
+										Grid.Column="1"
+										FontSize="18"
+										VerticalAlignment="Center"
+										Margin="15,0,0,0"
+										Foreground="#00323a"
+										FontFamily="Microsoft YaHei"
+										FontWeight="Heavy"
+										TextWrapping="Wrap"
+										Text="{Binding Content}" />
+									<Border
+										Name="recRight"
+										Grid.Column="3"
+										Visibility="Collapsed"
+										Width="5"
+										Background="{DynamicResource ThemeColor}"
+										VerticalAlignment="Stretch" />
+									<StackPanel
+										Name="contentpanel"
+										Grid.Column="1"
+										HorizontalAlignment="Left"
+										VerticalAlignment="Center"
+										Margin="12,0,0,0"
+										Visibility="Collapsed">
+										<TextBlock
+											Name="contentText1"
+											FontSize="12"
+											HorizontalAlignment="Center"
+											VerticalAlignment="Center"
+											Foreground="#00323a"
+											FontFamily="Microsoft YaHei"
+											FontWeight="Heavy"
+											Text="{Binding Content}" />
+										<TextBlock
+											Name="contentText2"
+											FontSize="12"
+											HorizontalAlignment="Center"
+											VerticalAlignment="Center"
+											Foreground="#00323a"
+											FontFamily="Microsoft YaHei"
+											FontWeight="Heavy"
+											Text="{Binding Content2}" />
+									</StackPanel>
+								</Grid>
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger
+									Property="UIElement.IsMouseOver"
+									Value="True">
+									<Setter
+										TargetName="itemBor"
+										Property="Background"
+										Value="#CFFBFC" />
+									<Setter
+										Value="{DynamicResource ThemeColor}"
+										TargetName="contentText"
+										Property="Foreground" />
+									<Setter
+										Value="{DynamicResource ThemeColor}"
+										TargetName="contentText1"
+										Property="Foreground" />
+									<Setter
+										Value="{DynamicResource ThemeColor}"
+										TargetName="contentText2"
+										Property="Foreground" />
+									<Setter
+										Value="{DynamicResource ThemeColor}"
+										TargetName="iconText"
+										Property="Foreground" />
+									<Setter
+										TargetName="contentText"
+										Property="FontSize"
+										Value="19" />
+									<Setter
+										TargetName="contentText1"
+										Property="FontSize"
+										Value="13" />
+									<Setter
+										TargetName="contentText2"
+										Property="FontSize"
+										Value="13" />
+									<Setter
+										TargetName="iconText"
+										Property="FontSize"
+										Value="26" />
+									<Setter
+										TargetName="recRight"
+										Property="Visibility"
+										Value="Visible" />
+								</Trigger>
+								<Trigger
+									Property="ListBoxItem.IsSelected"
+									Value="True">
+									<Setter
+										TargetName="itemBor"
+										Property="Background"
+										Value="#CFFBFC" />
+									<Setter
+										Value="{DynamicResource ThemeColor}"
+										TargetName="contentText"
+										Property="Foreground" />
+									<Setter
+										Value="{DynamicResource ThemeColor}"
+										TargetName="contentText1"
+										Property="Foreground" />
+									<Setter
+										Value="{DynamicResource ThemeColor}"
+										TargetName="contentText2"
+										Property="Foreground" />
+									<Setter
+										Value="{DynamicResource ThemeColor}"
+										TargetName="iconText"
+										Property="Foreground" />
+									<Setter
+										TargetName="contentText"
+										Property="FontSize"
+										Value="19" />
+									<Setter
+										TargetName="contentText1"
+										Property="FontSize"
+										Value="13" />
+									<Setter
+										TargetName="contentText2"
+										Property="FontSize"
+										Value="13" />
+									<Setter
+										TargetName="iconText"
+										Property="FontSize"
+										Value="26" />
+									<Setter
+										TargetName="recRight"
+										Property="Visibility"
+										Value="Visible" />
+								</Trigger>
+								<Trigger
+									Property="IsEnabled"
+									Value="False">
+									<Setter
+										TargetName="itemBor"
+										Property="Background"
+										Value="#DCE0DF" />
+								</Trigger>
+								<DataTrigger
+									Value="True"
+									Binding="{Binding Multiline}">
+									<Setter
+										TargetName="contentText"
+										Property="Visibility"
+										Value="Collapsed" />
+									<Setter
+										TargetName="contentpanel"
+										Property="Visibility"
+										Value="Visible" />
+								</DataTrigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+				<Style.Triggers>
+					<Trigger
+						Property="IsEnabled"
+						Value="False">
+						<Setter
+							Property="Foreground"
+							Value="#DCE0DF" />
+					</Trigger>
+				</Style.Triggers>
+			</Style>
+			<Style
+				TargetType="{x:Type ListBox}"
+				x:Key="ListBoxStyleForMainMenu1">
+				<Setter
+					Property="Background"
+					Value="#00FFFFFF" />
+				<Setter
+					Property="BorderThickness"
+					Value="0" />
+				<Setter
+					Property="FontFamily"
+					Value="Microsoft YaHei,SimSun" />
+				<Setter
+					Property="FontSize"
+					Value="22" />
+				<Setter
+					Property="Foreground"
+					Value="#00323a" />
+				<Setter
+					Property="ItemContainerStyle"
+					Value="{StaticResource ListBoxItemStyleForMenu1}" />
+			</Style>
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid>
+		<Grid>
+			<Grid
+				Background="#f9fafb">
+				<Grid.RowDefinitions>
+					<RowDefinition
+						Height="30" />
+					<RowDefinition
+						Height="80" />
+					<RowDefinition
+						Height="10" />
+					<RowDefinition
+						Height="auto" />
+					<RowDefinition
+						Height="25" />
+					<RowDefinition
+						Height="1" />
+					<RowDefinition
+						Height="10" />
+					<RowDefinition
+						Height="*" />
+					<RowDefinition
+						Height="5" />
+					<RowDefinition
+						Height="50" />
+					<RowDefinition
+						Height="20" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="*" />
+					<ColumnDefinition
+						Width="4" />
+				</Grid.ColumnDefinitions>
+				<Grid
+					Column="1"
+					Row="0"
+					RowSpan="11"
+					Margin="-2,0,0,0">
+					<Panel.Background>
+						<ImageBrush
+							ImageSource="../../Resources/Images/menu_bg.png" />
+					</Panel.Background>
+				</Grid>
+				<Image
+					Grid.Row="1"
+					Height="80"
+					Width="90"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					Source="../../Resources/Images/logo.png" />
+				<TextBlock
+					Grid.Row="3"
+					Text="八桂教学通"
+					FontSize="20"
+					Foreground="#00323a"
+					Style="{DynamicResource NormalTextStyle}"
+					FontWeight="Heavy"
+					HorizontalAlignment="Center" />
+				<Rectangle
+					Grid.Row="5"
+					Width="160"
+					Height="0.5"
+					Fill="#00323a"
+					HorizontalAlignment="Center" />
+				<ListBox
+					Name="lstMenu"
+					Grid.Row="7"
+					SelectionMode="Single"
+					Style="{StaticResource ListBoxStyleForMainMenu1}"
+					ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+					ScrollViewer.VerticalScrollBarVisibility="Hidden"
+					ItemsSource="{Binding MenuLst, ElementName=root}"
+					PreviewMouseDown="lstMenu_PreviewMouseDown">
+					<ItemsControl.ItemContainerStyle>
+						<!--Unknown connection ID: 3-->
+						<Style
+							BasedOn="{StaticResource ListBoxItemStyleForMenu1}"
+							TargetType="{x:Type ListBoxItem}" />
+					</ItemsControl.ItemContainerStyle>
+				</ListBox>
+				<Grid
+					Row="9">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="20" />
+						<ColumnDefinition
+							Width="50" />
+						<ColumnDefinition
+							Width="10" />
+						<ColumnDefinition
+							Width="*" />
+					</Grid.ColumnDefinitions>
+					<Ellipse
+						Name="elpsLogo"
+						Cursor="Hand"
+						Grid.Column="1"
+						Width="40"
+						Height="50"
+						Stretch="Fill">
+						<Shape.Fill>
+							<ImageBrush
+								x:Name="imgBtnUserPhoto"
+								ImageSource="/JXP.PepDtp;component/Resources/Images/user_default_photo.png" />
+						</Shape.Fill>
+					</Ellipse>
+					<Grid
+						Column="3">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="*" />
+							<RowDefinition
+								Height="*" />
+						</Grid.RowDefinitions>
+						<Grid
+							VerticalAlignment="Center"
+							HorizontalAlignment="Left">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition
+									Width="Auto"
+									MaxWidth="70" />
+								<ColumnDefinition
+									Width="*" />
+							</Grid.ColumnDefinitions>
+							<TextBlock
+								Name="lblName"
+								MaxWidth="80"
+								Cursor="Hand"
+								Text=""
+								Foreground="#00323a"
+								Style="{DynamicResource NormalTextStyle}"
+								FontSize="16"
+								TextTrimming="CharacterEllipsis"
+								ToolTip="{Binding ElementName=lblName, Path=Text}" />
+							<local:InterImageButton
+								Name="btnMessage"
+								Grid.Column="1"
+								Visibility="Visible"
+								Margin="10,0,0,0"
+								Width="30"
+								Height="30"
+								Opacity="1"
+								Padding="0,-3,0,0"
+								Content=""
+								FontFamily="{StaticResource PepFontIcon}"
+								FontSize="20"
+								Foreground="#00323a" />
+						</Grid>
+						<TextBlock
+							Name="lblSchool"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Center"
+							Style="{DynamicResource NormalTextStyle}"
+							Foreground="#00323a"
+							FontSize="14"
+							TextTrimming="CharacterEllipsis"
+							Cursor="Hand"
+							ToolTip="{Binding ElementName=lblSchool, Path=Text}" />
+					</Grid>
+				</Grid>
+			</Grid>
+			<TextBlock
+				Name="textBlock"
+				HorizontalAlignment="Left"
+				Margin="125,280,0,0"
+				TextWrapping="Wrap"
+				Text="+1"
+				VerticalAlignment="Top"
+				Foreground="#FFE44F4F"
+				Opacity="0" />
+		</Grid>
+	</Grid>
+</UserControl>

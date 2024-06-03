@@ -1,0 +1,100 @@
+<Window
+	x:Class="JXP.PepDtp.View.ExitTip" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Name="root"
+	Height="200"
+	Width="400"
+	ShowInTaskbar="False"
+	WindowStyle="None"
+	AllowsTransparency="True"
+	Background="#00FFFFFF" xmlns:view="clr-namespace:JXP.PepDtp.View"
+	Loaded="Window_Loaded">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="30" />
+			<RowDefinition
+				Height="*" />
+			<RowDefinition
+				Height="46" />
+		</Grid.RowDefinitions>
+		<Border
+			CornerRadius="5,5,0,0"
+			Background="#ffffff">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="*" />
+					<ColumnDefinition
+						Width="40" />
+				</Grid.ColumnDefinitions>
+				<Button
+					Name="btnClose"
+					Style="{StaticResource WebPreCloseButtonStyle}"
+					Foreground="#333333"
+					Margin="0"
+					Width="30"
+					Height="30"
+					Grid.Column="1"
+					FontSize="35"
+					Padding="-3,-2,0,0"
+					Content=""
+					FontFamily="{StaticResource PepFontIcon}"
+					Click="BtnClose_Click" />
+			</Grid>
+		</Border>
+		<Grid
+			Row="1"
+			Background="#FFFFFFFF">
+			<StackPanel
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center">
+				<TextBlock
+					Name="lblInfo"
+					Text="您有正在下载的资源，退出会中断下载进程"
+					Margin="0,0,0,20"
+					Style="{StaticResource NormalTextStyle}"
+					FontSize="14"
+					Foreground="#333333" />
+				<TextBlock
+					Name="lblMsg"
+					Text="确定要退出客户端吗?"
+					Style="{StaticResource NormalTextStyle}"
+					FontSize="18"
+					HorizontalAlignment="Center" />
+			</StackPanel>
+		</Grid>
+		<Border
+			Grid.Row="2"
+			CornerRadius="0,0,5,5"
+			Background="#ffffff">
+			<StackPanel
+				Orientation="Horizontal"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Center">
+				<Button
+					Name="btnCancel"
+					Grid.Column="1"
+					Cursor="Hand"
+					Height="30"
+					Style="{StaticResource DefaultButtonStyleNew}"
+					HorizontalAlignment="Left"
+					Width="auto"
+					MinWidth="95"
+					Background="#c0c0c0"
+					Margin="0,0,50,0"
+					Content="{Binding CancelContent, ElementName=root}"
+					Click="btnCancel_Click" />
+				<Button
+					Name="btnOk"
+					Grid.Column="3"
+					Cursor="Hand"
+					Height="30"
+					Style="{StaticResource DefaultButtonStyleNew}"
+					MinWidth="95"
+					HorizontalAlignment="Right"
+					Content="{Binding OkContent, ElementName=root}"
+					Click="btnOk_Click" />
+			</StackPanel>
+		</Border>
+	</Grid>
+</Window>
